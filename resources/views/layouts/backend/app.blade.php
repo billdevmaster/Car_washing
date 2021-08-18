@@ -121,6 +121,34 @@
     <div class="app-content content ">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
+        @if (Session::has('added'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert-body">
+                    {{session('added')}}
+                </div>
+                <button type="button" class="close session-close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @elseif (Session::has('updated'))
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <div class="alert-body">
+                {{session('updated')}}
+            </div>
+            <button type="button" class="close session-close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @elseif (Session::has('deleted'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div class="alert-body">
+                {{session('deleted')}}
+            </div>
+            <button type="button" class="close session-close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
         @yield('content')
     </div>
     <!-- END: Content-->
@@ -143,6 +171,7 @@
     <!-- BEGIN: Page Vendor JS-->
     <script src="{{asset('assets/backend/app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('assets/backend/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
+    @yield('page_vendor')
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -152,6 +181,7 @@
 
     <!-- BEGIN: Page JS-->
     <script src="{{asset('assets/backend/app-assets/js/scripts/tables/table-datatables-advanced.js')}}"></script>
+    @yield('page_script')
     <!-- END: Page JS-->
 
     <script>
@@ -162,6 +192,11 @@
                     height: 14
                 });
             }
+            $( document ).ready(function() {
+                setTimeout(function() {
+                    $('.session-close').trigger("click");
+                }, 4000);
+            });
         })
     </script>
 </body>

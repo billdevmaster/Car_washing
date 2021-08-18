@@ -14,4 +14,10 @@ class AdminVehicleController extends Controller
         $vehicle_list = Vehicle_types::all();
         return view('backend.vehicles.index', compact("vehicle_list"));
     }
+
+    public function save(Request $request) {
+        $input = $request->all();
+        Vehicle_types::create($input);
+        return back()->with("added", "Vehicle type is successfully added");
+    }
 }

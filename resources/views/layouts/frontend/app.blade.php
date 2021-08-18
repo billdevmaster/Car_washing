@@ -6,9 +6,9 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon">
+        {{-- <link href="img/favicon.ico" rel="icon"> --}}
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> 
@@ -22,6 +22,8 @@
 
         <!-- Template Stylesheet -->
         <link href="{{asset('assets/frontend/css/style.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/frontend/css/booking.css')}}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{asset('icon.css')}}">
     </head>
 
     <body>
@@ -181,8 +183,6 @@
         <script src="{{asset('assets/frontend/lib/counterup/counterup.min.js')}}"></script>
         
         <!-- Contact Javascript File -->
-        <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script>
 
         <!-- Template Javascript -->
         <script src="{{asset('assets/frontend/js/main.js')}}"></script>

@@ -34,5 +34,6 @@ Route::group(['middleware'=>'isadmin'], function() {
     Route::resource('admin/services', 'Backend\AdminServiceController');
     Route::resource('admin/locations', 'Backend\AdminLocationController');
     Route::resource('admin/vehicles', 'Backend\AdminVehicleController');
+    Route::post('admin/vehicles/save', 'Backend\AdminVehicleController@save')->name('admin.vehicles.save');
 });
 
