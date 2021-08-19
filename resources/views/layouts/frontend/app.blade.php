@@ -24,6 +24,8 @@
         <link href="{{asset('assets/frontend/css/style.css')}}" rel="stylesheet">
         <link href="{{asset('assets/frontend/css/booking.css')}}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{asset('icon.css')}}">
+
+        
     </head>
 
     <body>
@@ -97,7 +99,7 @@
                         </div>
                         <div class="ml-auto">
                             <a class="btn btn-custom" href="#">Get Appointment</a>
-                            <a class="btn btn-custom" href="/signin">SignIn Admin</a>
+                            <a class="btn btn-custom" href="{{ route('backend.signin') }}">SignIn Admin</a>
                         </div>
                     </div>
                 </nav>
@@ -178,13 +180,15 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
         <script src="{{asset('assets/frontend/lib/easing/easing.min.js')}}"></script>
-        <script src="{{asset('assets/frontend/lib/owlcarousel/owl.carousel.min.js')}}"></script>
-        <script src="{{asset('assets/frontend/lib/waypoints/waypoints.min.js')}}"></script>
         <script src="{{asset('assets/frontend/lib/counterup/counterup.min.js')}}"></script>
-        
+        @yield('vendor_js')
         <!-- Contact Javascript File -->
-
+        
         <!-- Template Javascript -->
         <script src="{{asset('assets/frontend/js/main.js')}}"></script>
+        {{-- <script src="{{asset('assets/frontend/js/booking.js')}}"></script> --}}
+        <!-- Page Javascript -->
+        @yield('page_js')
+        <!-- End Page Javascript -->
     </body>
 </html>

@@ -76,7 +76,7 @@
                                                                                 <div class="cbs-service-name">
                                                                                     <div class="cbs-title-link">
                                                                                         <span>Survepesu</span>
-                                                                                        <a class="cbs-more-link" href="http://auto.mydisain.com/test/#">
+                                                                                        <a class="cbs-more-link" href="#">
                                                                                             <span>More...</span>
                                                                                             <span class="cbs-state-hidden">Less...</span>
                                                                                         </a>
@@ -106,7 +106,7 @@
                                                                                     9,00 €				
                                                                                 </div>
                                                                                 <div class="cbs-button-box">
-                                                                                    <a class="cbs-button" href="http://auto.mydisain.com/test/#">Select</a>
+                                                                                    <a class="cbs-button" href="#">Select</a>
                                                                                 </div>
                                                                             </li>
                                                                         </ul>
@@ -129,7 +129,7 @@
                                                                     <div class="cbs-main-list-item-section-content cbs-clear-fix">
                                                                         <div class="cbs-main-list-item-section-content cbs-clear-fix">
                                                                             <div class="cbs-calendar-header">
-                                                                                <a href="http://auto.mydisain.com/test/#" class="cbs-calendar-header-arrow-left cbs-meta-icon cbs-meta-icon-arrow-horizontal" data-advance-period="7">
+                                                                                <a href="#" class="cbs-calendar-header-arrow-left cbs-meta-icon cbs-meta-icon-arrow-horizontal" data-advance-period="7">
                                                                                 </a>
                                                                                 <span class="cbs-calendar-header-caption">
                                                                                     <span class="cbs-calendar-month-number-08" style="display: inline;">August 2021
@@ -137,7 +137,7 @@
                                                                                     <span class="cbs-calendar-month-number-0" style="display: inline;"> / </span>
                                                                                     <span class="cbs-calendar-month-number-09" style="display: inline;">September 2021</span>				
                                                                                 </span>
-                                                                                <a href="http://auto.mydisain.com/test/#" class="cbs-calendar-header-arrow-right cbs-meta-icon cbs-meta-icon-arrow-horizontal" data-advance-period="7">
+                                                                                <a href="#" class="cbs-calendar-header-arrow-right cbs-meta-icon cbs-meta-icon-arrow-horizontal" data-advance-period="7">
                                                                                 </a>
                                                                             </div>
               
@@ -193,190 +193,190 @@
                                                                                         <td style="display: table-cell;">
                                                                                             <div>
                                                                                                 <ul class="cbs-list-reset cbs-state-to-hidden cbs-date-list">
-                                                                                                    <li class="cbs-date-id-310820210800"><a href="http://auto.mydisain.com/test/#">08:00</a></li>
-                                                                                                    <li class="cbs-date-id-310820210830"><a href="http://auto.mydisain.com/test/#">08:30</a></li>
-                                                                                                    <li class="cbs-date-id-310820210900"><a href="http://auto.mydisain.com/test/#">09:00</a></li>
-                                                                                                    <li class="cbs-date-id-310820210930"><a href="http://auto.mydisain.com/test/#">09:30</a></li>
-                                                                                                    <li class="cbs-date-id-310820211000"><a href="http://auto.mydisain.com/test/#">10:00</a></li>
-                                                                                                    <li class="cbs-date-id-310820211030"><a href="http://auto.mydisain.com/test/#">10:30</a></li>
-                                                                                                    <li class="cbs-date-id-310820211100"><a href="http://auto.mydisain.com/test/#">11:00</a></li>
-                                                                                                    <li class="cbs-date-id-310820211130"><a href="http://auto.mydisain.com/test/#">11:30</a></li>
-                                                                                                    <li class="cbs-date-id-310820211200"><a href="http://auto.mydisain.com/test/#">12:00</a></li>
-                                                                                                    <li class="cbs-date-id-310820211230"><a href="http://auto.mydisain.com/test/#">12:30</a></li>
-                                                                                                    <li class="cbs-date-id-310820211300"><a href="http://auto.mydisain.com/test/#">13:00</a></li>
-                                                                                                    <li class="cbs-date-id-310820211330"><a href="http://auto.mydisain.com/test/#">13:30</a></li>
-                                                                                                    <li class="cbs-date-id-310820211400"><a href="http://auto.mydisain.com/test/#">14:00</a></li>
-                                                                                                    <li class="cbs-date-id-310820211430"><a href="http://auto.mydisain.com/test/#">14:30</a></li>
-                                                                                                    <li class="cbs-date-id-310820211500"><a href="http://auto.mydisain.com/test/#">15:00</a></li>
-                                                                                                    <li class="cbs-date-id-310820211530"><a href="http://auto.mydisain.com/test/#">15:30</a></li>
-                                                                                                    <li class="cbs-date-id-310820211600"><a href="http://auto.mydisain.com/test/#">16:00</a></li>
-                                                                                                    <li class="cbs-date-id-310820211630"><a href="http://auto.mydisain.com/test/#">16:30</a></li>
-                                                                                                    <li class="cbs-date-id-310820211700"><a href="http://auto.mydisain.com/test/#">17:00</a></li>
-                                                                                                    <li class="cbs-date-id-310820211730"><a href="http://auto.mydisain.com/test/#">17:30</a></li>
-                                                                                                    <li class="cbs-date-id-310820211800"><a href="http://auto.mydisain.com/test/#">18:00</a></li>
-                                                                                                    <li class="cbs-date-id-310820211830"><a href="http://auto.mydisain.com/test/#">18:30</a></li>
-                                                                                                    <li class="cbs-date-id-310820211900"><a href="http://auto.mydisain.com/test/#">19:00</a></li>
-                                                                                                    <li class="cbs-date-id-310820211930"><a href="http://auto.mydisain.com/test/#">19:30</a></li>
+                                                                                                    <li class="cbs-date-id-310820210800"><a href="#">08:00</a></li>
+                                                                                                    <li class="cbs-date-id-310820210830"><a href="#">08:30</a></li>
+                                                                                                    <li class="cbs-date-id-310820210900"><a href="#">09:00</a></li>
+                                                                                                    <li class="cbs-date-id-310820210930"><a href="#">09:30</a></li>
+                                                                                                    <li class="cbs-date-id-310820211000"><a href="#">10:00</a></li>
+                                                                                                    <li class="cbs-date-id-310820211030"><a href="#">10:30</a></li>
+                                                                                                    <li class="cbs-date-id-310820211100"><a href="#">11:00</a></li>
+                                                                                                    <li class="cbs-date-id-310820211130"><a href="#">11:30</a></li>
+                                                                                                    <li class="cbs-date-id-310820211200"><a href="#">12:00</a></li>
+                                                                                                    <li class="cbs-date-id-310820211230"><a href="#">12:30</a></li>
+                                                                                                    <li class="cbs-date-id-310820211300"><a href="#">13:00</a></li>
+                                                                                                    <li class="cbs-date-id-310820211330"><a href="#">13:30</a></li>
+                                                                                                    <li class="cbs-date-id-310820211400"><a href="#">14:00</a></li>
+                                                                                                    <li class="cbs-date-id-310820211430"><a href="#">14:30</a></li>
+                                                                                                    <li class="cbs-date-id-310820211500"><a href="#">15:00</a></li>
+                                                                                                    <li class="cbs-date-id-310820211530"><a href="#">15:30</a></li>
+                                                                                                    <li class="cbs-date-id-310820211600"><a href="#">16:00</a></li>
+                                                                                                    <li class="cbs-date-id-310820211630"><a href="#">16:30</a></li>
+                                                                                                    <li class="cbs-date-id-310820211700"><a href="#">17:00</a></li>
+                                                                                                    <li class="cbs-date-id-310820211730"><a href="#">17:30</a></li>
+                                                                                                    <li class="cbs-date-id-310820211800"><a href="#">18:00</a></li>
+                                                                                                    <li class="cbs-date-id-310820211830"><a href="#">18:30</a></li>
+                                                                                                    <li class="cbs-date-id-310820211900"><a href="#">19:00</a></li>
+                                                                                                    <li class="cbs-date-id-310820211930"><a href="#">19:30</a></li>
                                                                                                 </ul>
                                                                                             </div>
                                                                                         </td>
                                                                                         <td style="display: table-cell;">
                                                                                             <div>
                                                                                                 <ul class="cbs-list-reset cbs-state-to-hidden cbs-date-list">
-                                                                                                    <li class="cbs-date-id-010920210800"><a href="http://auto.mydisain.com/test/#">08:00</a></li>
-                                                                                                    <li class="cbs-date-id-010920210830"><a href="http://auto.mydisain.com/test/#">08:30</a></li>
-                                                                                                    <li class="cbs-date-id-010920210900"><a href="http://auto.mydisain.com/test/#">09:00</a></li>
-                                                                                                    <li class="cbs-date-id-010920210930"><a href="http://auto.mydisain.com/test/#">09:30</a></li>
-                                                                                                    <li class="cbs-date-id-010920211000"><a href="http://auto.mydisain.com/test/#">10:00</a></li>
-                                                                                                    <li class="cbs-date-id-010920211030"><a href="http://auto.mydisain.com/test/#">10:30</a></li>
-                                                                                                    <li class="cbs-date-id-010920211100"><a href="http://auto.mydisain.com/test/#">11:00</a></li>
-                                                                                                    <li class="cbs-date-id-010920211130"><a href="http://auto.mydisain.com/test/#">11:30</a></li>
-                                                                                                    <li class="cbs-date-id-010920211200"><a href="http://auto.mydisain.com/test/#">12:00</a></li>
-                                                                                                    <li class="cbs-date-id-010920211230"><a href="http://auto.mydisain.com/test/#">12:30</a></li>
-                                                                                                    <li class="cbs-date-id-010920211300"><a href="http://auto.mydisain.com/test/#">13:00</a></li>
-                                                                                                    <li class="cbs-date-id-010920211330"><a href="http://auto.mydisain.com/test/#">13:30</a></li>
-                                                                                                    <li class="cbs-date-id-010920211400"><a href="http://auto.mydisain.com/test/#">14:00</a></li>
-                                                                                                    <li class="cbs-date-id-010920211430"><a href="http://auto.mydisain.com/test/#">14:30</a></li>
-                                                                                                    <li class="cbs-date-id-010920211500"><a href="http://auto.mydisain.com/test/#">15:00</a></li>
-                                                                                                    <li class="cbs-date-id-010920211530"><a href="http://auto.mydisain.com/test/#">15:30</a></li>
-                                                                                                    <li class="cbs-date-id-010920211600"><a href="http://auto.mydisain.com/test/#">16:00</a></li>
-                                                                                                    <li class="cbs-date-id-010920211630"><a href="http://auto.mydisain.com/test/#">16:30</a></li>
-                                                                                                    <li class="cbs-date-id-010920211700"><a href="http://auto.mydisain.com/test/#">17:00</a></li>
-                                                                                                    <li class="cbs-date-id-010920211730"><a href="http://auto.mydisain.com/test/#">17:30</a></li>
-                                                                                                    <li class="cbs-date-id-010920211800"><a href="http://auto.mydisain.com/test/#">18:00</a></li>
-                                                                                                    <li class="cbs-date-id-010920211830"><a href="http://auto.mydisain.com/test/#">18:30</a></li>
-                                                                                                    <li class="cbs-date-id-010920211900"><a href="http://auto.mydisain.com/test/#">19:00</a></li>
-                                                                                                    <li class="cbs-date-id-010920211930"><a href="http://auto.mydisain.com/test/#">19:30</a></li>
+                                                                                                    <li class="cbs-date-id-010920210800"><a href="#">08:00</a></li>
+                                                                                                    <li class="cbs-date-id-010920210830"><a href="#">08:30</a></li>
+                                                                                                    <li class="cbs-date-id-010920210900"><a href="#">09:00</a></li>
+                                                                                                    <li class="cbs-date-id-010920210930"><a href="#">09:30</a></li>
+                                                                                                    <li class="cbs-date-id-010920211000"><a href="#">10:00</a></li>
+                                                                                                    <li class="cbs-date-id-010920211030"><a href="#">10:30</a></li>
+                                                                                                    <li class="cbs-date-id-010920211100"><a href="#">11:00</a></li>
+                                                                                                    <li class="cbs-date-id-010920211130"><a href="#">11:30</a></li>
+                                                                                                    <li class="cbs-date-id-010920211200"><a href="#">12:00</a></li>
+                                                                                                    <li class="cbs-date-id-010920211230"><a href="#">12:30</a></li>
+                                                                                                    <li class="cbs-date-id-010920211300"><a href="#">13:00</a></li>
+                                                                                                    <li class="cbs-date-id-010920211330"><a href="#">13:30</a></li>
+                                                                                                    <li class="cbs-date-id-010920211400"><a href="#">14:00</a></li>
+                                                                                                    <li class="cbs-date-id-010920211430"><a href="#">14:30</a></li>
+                                                                                                    <li class="cbs-date-id-010920211500"><a href="#">15:00</a></li>
+                                                                                                    <li class="cbs-date-id-010920211530"><a href="#">15:30</a></li>
+                                                                                                    <li class="cbs-date-id-010920211600"><a href="#">16:00</a></li>
+                                                                                                    <li class="cbs-date-id-010920211630"><a href="#">16:30</a></li>
+                                                                                                    <li class="cbs-date-id-010920211700"><a href="#">17:00</a></li>
+                                                                                                    <li class="cbs-date-id-010920211730"><a href="#">17:30</a></li>
+                                                                                                    <li class="cbs-date-id-010920211800"><a href="#">18:00</a></li>
+                                                                                                    <li class="cbs-date-id-010920211830"><a href="#">18:30</a></li>
+                                                                                                    <li class="cbs-date-id-010920211900"><a href="#">19:00</a></li>
+                                                                                                    <li class="cbs-date-id-010920211930"><a href="#">19:30</a></li>
                                                                                                 </ul>
                                                                                             </div>
                                                                                         </td>
                                                                                         <td style="display: table-cell;">
                                                                                             <div>
                                                                                                 <ul class="cbs-list-reset cbs-state-to-hidden cbs-date-list">
-                                                                                                    <li class="cbs-date-id-020920210800"><a href="http://auto.mydisain.com/test/#">08:00</a></li>
-                                                                                                    <li class="cbs-date-id-020920210830"><a href="http://auto.mydisain.com/test/#">08:30</a></li>
-                                                                                                    <li class="cbs-date-id-020920210900"><a href="http://auto.mydisain.com/test/#">09:00</a></li>
-                                                                                                    <li class="cbs-date-id-020920210930"><a href="http://auto.mydisain.com/test/#">09:30</a></li>
-                                                                                                    <li class="cbs-date-id-020920211000"><a href="http://auto.mydisain.com/test/#">10:00</a></li>
-                                                                                                    <li class="cbs-date-id-020920211030"><a href="http://auto.mydisain.com/test/#">10:30</a></li>
-                                                                                                    <li class="cbs-date-id-020920211100"><a href="http://auto.mydisain.com/test/#">11:00</a></li>
-                                                                                                    <li class="cbs-date-id-020920211130"><a href="http://auto.mydisain.com/test/#">11:30</a></li>
-                                                                                                    <li class="cbs-date-id-020920211200"><a href="http://auto.mydisain.com/test/#">12:00</a></li>
-                                                                                                    <li class="cbs-date-id-020920211230"><a href="http://auto.mydisain.com/test/#">12:30</a></li>
-                                                                                                    <li class="cbs-date-id-020920211300"><a href="http://auto.mydisain.com/test/#">13:00</a></li>
-                                                                                                    <li class="cbs-date-id-020920211330"><a href="http://auto.mydisain.com/test/#">13:30</a></li>
-                                                                                                    <li class="cbs-date-id-020920211400"><a href="http://auto.mydisain.com/test/#">14:00</a></li>
-                                                                                                    <li class="cbs-date-id-020920211430"><a href="http://auto.mydisain.com/test/#">14:30</a></li>
-                                                                                                    <li class="cbs-date-id-020920211500"><a href="http://auto.mydisain.com/test/#">15:00</a></li>
-                                                                                                    <li class="cbs-date-id-020920211530"><a href="http://auto.mydisain.com/test/#">15:30</a></li>
-                                                                                                    <li class="cbs-date-id-020920211600"><a href="http://auto.mydisain.com/test/#">16:00</a></li>
-                                                                                                    <li class="cbs-date-id-020920211630"><a href="http://auto.mydisain.com/test/#">16:30</a></li>
-                                                                                                    <li class="cbs-date-id-020920211700"><a href="http://auto.mydisain.com/test/#">17:00</a></li>
-                                                                                                    <li class="cbs-date-id-020920211730"><a href="http://auto.mydisain.com/test/#">17:30</a></li>
-                                                                                                    <li class="cbs-date-id-020920211800"><a href="http://auto.mydisain.com/test/#">18:00</a></li>
-                                                                                                    <li class="cbs-date-id-020920211830"><a href="http://auto.mydisain.com/test/#">18:30</a></li>
-                                                                                                    <li class="cbs-date-id-020920211900"><a href="http://auto.mydisain.com/test/#">19:00</a></li>
-                                                                                                    <li class="cbs-date-id-020920211930"><a href="http://auto.mydisain.com/test/#">19:30</a></li>
+                                                                                                    <li class="cbs-date-id-020920210800"><a href="#">08:00</a></li>
+                                                                                                    <li class="cbs-date-id-020920210830"><a href="#">08:30</a></li>
+                                                                                                    <li class="cbs-date-id-020920210900"><a href="#">09:00</a></li>
+                                                                                                    <li class="cbs-date-id-020920210930"><a href="#">09:30</a></li>
+                                                                                                    <li class="cbs-date-id-020920211000"><a href="#">10:00</a></li>
+                                                                                                    <li class="cbs-date-id-020920211030"><a href="#">10:30</a></li>
+                                                                                                    <li class="cbs-date-id-020920211100"><a href="#">11:00</a></li>
+                                                                                                    <li class="cbs-date-id-020920211130"><a href="#">11:30</a></li>
+                                                                                                    <li class="cbs-date-id-020920211200"><a href="#">12:00</a></li>
+                                                                                                    <li class="cbs-date-id-020920211230"><a href="#">12:30</a></li>
+                                                                                                    <li class="cbs-date-id-020920211300"><a href="#">13:00</a></li>
+                                                                                                    <li class="cbs-date-id-020920211330"><a href="#">13:30</a></li>
+                                                                                                    <li class="cbs-date-id-020920211400"><a href="#">14:00</a></li>
+                                                                                                    <li class="cbs-date-id-020920211430"><a href="#">14:30</a></li>
+                                                                                                    <li class="cbs-date-id-020920211500"><a href="#">15:00</a></li>
+                                                                                                    <li class="cbs-date-id-020920211530"><a href="#">15:30</a></li>
+                                                                                                    <li class="cbs-date-id-020920211600"><a href="#">16:00</a></li>
+                                                                                                    <li class="cbs-date-id-020920211630"><a href="#">16:30</a></li>
+                                                                                                    <li class="cbs-date-id-020920211700"><a href="#">17:00</a></li>
+                                                                                                    <li class="cbs-date-id-020920211730"><a href="#">17:30</a></li>
+                                                                                                    <li class="cbs-date-id-020920211800"><a href="#">18:00</a></li>
+                                                                                                    <li class="cbs-date-id-020920211830"><a href="#">18:30</a></li>
+                                                                                                    <li class="cbs-date-id-020920211900"><a href="#">19:00</a></li>
+                                                                                                    <li class="cbs-date-id-020920211930"><a href="#">19:30</a></li>
                                                                                                 </ul>
                                                                                             </div>
                                                                                         </td>
                                                                                         <td style="display: table-cell;">
                                                                                             <div>
                                                                                                 <ul class="cbs-list-reset cbs-state-to-hidden cbs-date-list">
-                                                                                                    <li class="cbs-date-id-030920210800"><a href="http://auto.mydisain.com/test/#">08:00</a></li>
-                                                                                                    <li class="cbs-date-id-030920210830"><a href="http://auto.mydisain.com/test/#">08:30</a></li>
-                                                                                                    <li class="cbs-date-id-030920210900"><a href="http://auto.mydisain.com/test/#">09:00</a></li>
-                                                                                                    <li class="cbs-date-id-030920210930"><a href="http://auto.mydisain.com/test/#">09:30</a></li>
-                                                                                                    <li class="cbs-date-id-030920211000"><a href="http://auto.mydisain.com/test/#">10:00</a></li>
-                                                                                                    <li class="cbs-date-id-030920211030"><a href="http://auto.mydisain.com/test/#">10:30</a></li>
-                                                                                                    <li class="cbs-date-id-030920211100"><a href="http://auto.mydisain.com/test/#">11:00</a></li>
-                                                                                                    <li class="cbs-date-id-030920211130"><a href="http://auto.mydisain.com/test/#">11:30</a></li>
-                                                                                                    <li class="cbs-date-id-030920211200"><a href="http://auto.mydisain.com/test/#">12:00</a></li>
-                                                                                                    <li class="cbs-date-id-030920211230"><a href="http://auto.mydisain.com/test/#">12:30</a></li>
-                                                                                                    <li class="cbs-date-id-030920211300"><a href="http://auto.mydisain.com/test/#">13:00</a></li>
-                                                                                                    <li class="cbs-date-id-030920211330"><a href="http://auto.mydisain.com/test/#">13:30</a></li>
-                                                                                                    <li class="cbs-date-id-030920211400"><a href="http://auto.mydisain.com/test/#">14:00</a></li>
-                                                                                                    <li class="cbs-date-id-030920211430"><a href="http://auto.mydisain.com/test/#">14:30</a></li>
-                                                                                                    <li class="cbs-date-id-030920211500"><a href="http://auto.mydisain.com/test/#">15:00</a></li>
-                                                                                                    <li class="cbs-date-id-030920211530"><a href="http://auto.mydisain.com/test/#">15:30</a></li>
-                                                                                                    <li class="cbs-date-id-030920211600"><a href="http://auto.mydisain.com/test/#">16:00</a></li>
-                                                                                                    <li class="cbs-date-id-030920211630"><a href="http://auto.mydisain.com/test/#">16:30</a></li>
-                                                                                                    <li class="cbs-date-id-030920211700"><a href="http://auto.mydisain.com/test/#">17:00</a></li>
-                                                                                                    <li class="cbs-date-id-030920211730"><a href="http://auto.mydisain.com/test/#">17:30</a></li>
-                                                                                                    <li class="cbs-date-id-030920211800"><a href="http://auto.mydisain.com/test/#">18:00</a></li>
-                                                                                                    <li class="cbs-date-id-030920211830"><a href="http://auto.mydisain.com/test/#">18:30</a></li>
-                                                                                                    <li class="cbs-date-id-030920211900"><a href="http://auto.mydisain.com/test/#">19:00</a></li>
-                                                                                                    <li class="cbs-date-id-030920211930"><a href="http://auto.mydisain.com/test/#">19:30</a></li>
+                                                                                                    <li class="cbs-date-id-030920210800"><a href="#">08:00</a></li>
+                                                                                                    <li class="cbs-date-id-030920210830"><a href="#">08:30</a></li>
+                                                                                                    <li class="cbs-date-id-030920210900"><a href="#">09:00</a></li>
+                                                                                                    <li class="cbs-date-id-030920210930"><a href="#">09:30</a></li>
+                                                                                                    <li class="cbs-date-id-030920211000"><a href="#">10:00</a></li>
+                                                                                                    <li class="cbs-date-id-030920211030"><a href="#">10:30</a></li>
+                                                                                                    <li class="cbs-date-id-030920211100"><a href="#">11:00</a></li>
+                                                                                                    <li class="cbs-date-id-030920211130"><a href="#">11:30</a></li>
+                                                                                                    <li class="cbs-date-id-030920211200"><a href="#">12:00</a></li>
+                                                                                                    <li class="cbs-date-id-030920211230"><a href="#">12:30</a></li>
+                                                                                                    <li class="cbs-date-id-030920211300"><a href="#">13:00</a></li>
+                                                                                                    <li class="cbs-date-id-030920211330"><a href="#">13:30</a></li>
+                                                                                                    <li class="cbs-date-id-030920211400"><a href="#">14:00</a></li>
+                                                                                                    <li class="cbs-date-id-030920211430"><a href="#">14:30</a></li>
+                                                                                                    <li class="cbs-date-id-030920211500"><a href="#">15:00</a></li>
+                                                                                                    <li class="cbs-date-id-030920211530"><a href="#">15:30</a></li>
+                                                                                                    <li class="cbs-date-id-030920211600"><a href="#">16:00</a></li>
+                                                                                                    <li class="cbs-date-id-030920211630"><a href="#">16:30</a></li>
+                                                                                                    <li class="cbs-date-id-030920211700"><a href="#">17:00</a></li>
+                                                                                                    <li class="cbs-date-id-030920211730"><a href="#">17:30</a></li>
+                                                                                                    <li class="cbs-date-id-030920211800"><a href="#">18:00</a></li>
+                                                                                                    <li class="cbs-date-id-030920211830"><a href="#">18:30</a></li>
+                                                                                                    <li class="cbs-date-id-030920211900"><a href="#">19:00</a></li>
+                                                                                                    <li class="cbs-date-id-030920211930"><a href="#">19:30</a></li>
                                                                                                 </ul>
                                                                                             </div>
                                                                                         </td>
                                                                                         <td style="display: table-cell;">
                                                                                             <div>
                                                                                                 <ul class="cbs-list-reset cbs-state-to-hidden cbs-date-list">
-                                                                                                    <li class="cbs-date-id-040920211000"><a href="http://auto.mydisain.com/test/#">10:00</a></li>
-                                                                                                    <li class="cbs-date-id-040920211030"><a href="http://auto.mydisain.com/test/#">10:30</a></li>
-                                                                                                    <li class="cbs-date-id-040920211100"><a href="http://auto.mydisain.com/test/#">11:00</a></li>
-                                                                                                    <li class="cbs-date-id-040920211130"><a href="http://auto.mydisain.com/test/#">11:30</a></li>
-                                                                                                    <li class="cbs-date-id-040920211200"><a href="http://auto.mydisain.com/test/#">12:00</a></li>
-                                                                                                    <li class="cbs-date-id-040920211230"><a href="http://auto.mydisain.com/test/#">12:30</a></li>
-                                                                                                    <li class="cbs-date-id-040920211300"><a href="http://auto.mydisain.com/test/#">13:00</a></li>
-                                                                                                    <li class="cbs-date-id-040920211330"><a href="http://auto.mydisain.com/test/#">13:30</a></li>
-                                                                                                    <li class="cbs-date-id-040920211400"><a href="http://auto.mydisain.com/test/#">14:00</a></li>
-                                                                                                    <li class="cbs-date-id-040920211430"><a href="http://auto.mydisain.com/test/#">14:30</a></li>
-                                                                                                    <li class="cbs-date-id-040920211500"><a href="http://auto.mydisain.com/test/#">15:00</a></li>
-                                                                                                    <li class="cbs-date-id-040920211530"><a href="http://auto.mydisain.com/test/#">15:30</a></li>
-                                                                                                    <li class="cbs-date-id-040920211600"><a href="http://auto.mydisain.com/test/#">16:00</a></li>
-                                                                                                    <li class="cbs-date-id-040920211630"><a href="http://auto.mydisain.com/test/#">16:30</a></li>
+                                                                                                    <li class="cbs-date-id-040920211000"><a href="#">10:00</a></li>
+                                                                                                    <li class="cbs-date-id-040920211030"><a href="#">10:30</a></li>
+                                                                                                    <li class="cbs-date-id-040920211100"><a href="#">11:00</a></li>
+                                                                                                    <li class="cbs-date-id-040920211130"><a href="#">11:30</a></li>
+                                                                                                    <li class="cbs-date-id-040920211200"><a href="#">12:00</a></li>
+                                                                                                    <li class="cbs-date-id-040920211230"><a href="#">12:30</a></li>
+                                                                                                    <li class="cbs-date-id-040920211300"><a href="#">13:00</a></li>
+                                                                                                    <li class="cbs-date-id-040920211330"><a href="#">13:30</a></li>
+                                                                                                    <li class="cbs-date-id-040920211400"><a href="#">14:00</a></li>
+                                                                                                    <li class="cbs-date-id-040920211430"><a href="#">14:30</a></li>
+                                                                                                    <li class="cbs-date-id-040920211500"><a href="#">15:00</a></li>
+                                                                                                    <li class="cbs-date-id-040920211530"><a href="#">15:30</a></li>
+                                                                                                    <li class="cbs-date-id-040920211600"><a href="#">16:00</a></li>
+                                                                                                    <li class="cbs-date-id-040920211630"><a href="#">16:30</a></li>
                                                                                                 </ul>
                                                                                             </div>
                                                                                         </td>
                                                                                         <td style="display: table-cell;">
                                                                                             <div>
                                                                                                 <ul class="cbs-list-reset cbs-state-to-hidden cbs-date-list">
-                                                                                                    <li class="cbs-date-id-050920211000"><a href="http://auto.mydisain.com/test/#">10:00</a></li>
-                                                                                                    <li class="cbs-date-id-050920211030"><a href="http://auto.mydisain.com/test/#">10:30</a></li>
-                                                                                                    <li class="cbs-date-id-050920211100"><a href="http://auto.mydisain.com/test/#">11:00</a></li>
-                                                                                                    <li class="cbs-date-id-050920211130"><a href="http://auto.mydisain.com/test/#">11:30</a></li>
-                                                                                                    <li class="cbs-date-id-050920211200"><a href="http://auto.mydisain.com/test/#">12:00</a></li>
-                                                                                                    <li class="cbs-date-id-050920211230"><a href="http://auto.mydisain.com/test/#">12:30</a></li>
-                                                                                                    <li class="cbs-date-id-050920211300"><a href="http://auto.mydisain.com/test/#">13:00</a></li>
-                                                                                                    <li class="cbs-date-id-050920211330"><a href="http://auto.mydisain.com/test/#">13:30</a></li>
-                                                                                                    <li class="cbs-date-id-050920211400"><a href="http://auto.mydisain.com/test/#">14:00</a></li>
-                                                                                                    <li class="cbs-date-id-050920211430"><a href="http://auto.mydisain.com/test/#">14:30</a></li>
-                                                                                                    <li class="cbs-date-id-050920211500"><a href="http://auto.mydisain.com/test/#">15:00</a></li>
-                                                                                                    <li class="cbs-date-id-050920211530"><a href="http://auto.mydisain.com/test/#">15:30</a></li>
-                                                                                                    <li class="cbs-date-id-050920211600"><a href="http://auto.mydisain.com/test/#">16:00</a></li>
-                                                                                                    <li class="cbs-date-id-050920211630"><a href="http://auto.mydisain.com/test/#">16:30</a></li>
+                                                                                                    <li class="cbs-date-id-050920211000"><a href="#">10:00</a></li>
+                                                                                                    <li class="cbs-date-id-050920211030"><a href="#">10:30</a></li>
+                                                                                                    <li class="cbs-date-id-050920211100"><a href="#">11:00</a></li>
+                                                                                                    <li class="cbs-date-id-050920211130"><a href="#">11:30</a></li>
+                                                                                                    <li class="cbs-date-id-050920211200"><a href="#">12:00</a></li>
+                                                                                                    <li class="cbs-date-id-050920211230"><a href="#">12:30</a></li>
+                                                                                                    <li class="cbs-date-id-050920211300"><a href="#">13:00</a></li>
+                                                                                                    <li class="cbs-date-id-050920211330"><a href="#">13:30</a></li>
+                                                                                                    <li class="cbs-date-id-050920211400"><a href="#">14:00</a></li>
+                                                                                                    <li class="cbs-date-id-050920211430"><a href="#">14:30</a></li>
+                                                                                                    <li class="cbs-date-id-050920211500"><a href="#">15:00</a></li>
+                                                                                                    <li class="cbs-date-id-050920211530"><a href="#">15:30</a></li>
+                                                                                                    <li class="cbs-date-id-050920211600"><a href="#">16:00</a></li>
+                                                                                                    <li class="cbs-date-id-050920211630"><a href="#">16:30</a></li>
                                                                                                 </ul>
                                                                                             </div>
                                                                                         </td>
                                                                                         <td style="display: table-cell;">
                                                                                             <div>
                                                                                                 <ul class="cbs-list-reset cbs-state-to-hidden cbs-date-list">
-                                                                                                    <li class="cbs-date-id-060920210800"><a href="http://auto.mydisain.com/test/#">08:00</a></li>
-                                                                                                    <li class="cbs-date-id-060920210830"><a href="http://auto.mydisain.com/test/#">08:30</a></li>
-                                                                                                    <li class="cbs-date-id-060920210900"><a href="http://auto.mydisain.com/test/#">09:00</a></li>
-                                                                                                    <li class="cbs-date-id-060920210930"><a href="http://auto.mydisain.com/test/#">09:30</a></li>
-                                                                                                    <li class="cbs-date-id-060920211000"><a href="http://auto.mydisain.com/test/#">10:00</a></li>
-                                                                                                    <li class="cbs-date-id-060920211030"><a href="http://auto.mydisain.com/test/#">10:30</a></li>
-                                                                                                    <li class="cbs-date-id-060920211100"><a href="http://auto.mydisain.com/test/#">11:00</a></li>
-                                                                                                    <li class="cbs-date-id-060920211130"><a href="http://auto.mydisain.com/test/#">11:30</a></li>
-                                                                                                    <li class="cbs-date-id-060920211200"><a href="http://auto.mydisain.com/test/#">12:00</a></li>
-                                                                                                    <li class="cbs-date-id-060920211230"><a href="http://auto.mydisain.com/test/#">12:30</a></li>
-                                                                                                    <li class="cbs-date-id-060920211300"><a href="http://auto.mydisain.com/test/#">13:00</a></li>
-                                                                                                    <li class="cbs-date-id-060920211330"><a href="http://auto.mydisain.com/test/#">13:30</a></li>
-                                                                                                    <li class="cbs-date-id-060920211400"><a href="http://auto.mydisain.com/test/#">14:00</a></li>
-                                                                                                    <li class="cbs-date-id-060920211430"><a href="http://auto.mydisain.com/test/#">14:30</a></li>
-                                                                                                    <li class="cbs-date-id-060920211500"><a href="http://auto.mydisain.com/test/#">15:00</a></li>
-                                                                                                    <li class="cbs-date-id-060920211530"><a href="http://auto.mydisain.com/test/#">15:30</a></li>
-                                                                                                    <li class="cbs-date-id-060920211600"><a href="http://auto.mydisain.com/test/#">16:00</a></li>
-                                                                                                    <li class="cbs-date-id-060920211630"><a href="http://auto.mydisain.com/test/#">16:30</a></li>
-                                                                                                    <li class="cbs-date-id-060920211700"><a href="http://auto.mydisain.com/test/#">17:00</a></li>
-                                                                                                    <li class="cbs-date-id-060920211730"><a href="http://auto.mydisain.com/test/#">17:30</a></li>
-                                                                                                    <li class="cbs-date-id-060920211800"><a href="http://auto.mydisain.com/test/#">18:00</a></li>
-                                                                                                    <li class="cbs-date-id-060920211830"><a href="http://auto.mydisain.com/test/#">18:30</a></li>
-                                                                                                    <li class="cbs-date-id-060920211900"><a href="http://auto.mydisain.com/test/#">19:00</a></li>
-                                                                                                    <li class="cbs-date-id-060920211930"><a href="http://auto.mydisain.com/test/#">19:30</a></li>
+                                                                                                    <li class="cbs-date-id-060920210800"><a href="#">08:00</a></li>
+                                                                                                    <li class="cbs-date-id-060920210830"><a href="#">08:30</a></li>
+                                                                                                    <li class="cbs-date-id-060920210900"><a href="#">09:00</a></li>
+                                                                                                    <li class="cbs-date-id-060920210930"><a href="#">09:30</a></li>
+                                                                                                    <li class="cbs-date-id-060920211000"><a href="#">10:00</a></li>
+                                                                                                    <li class="cbs-date-id-060920211030"><a href="#">10:30</a></li>
+                                                                                                    <li class="cbs-date-id-060920211100"><a href="#">11:00</a></li>
+                                                                                                    <li class="cbs-date-id-060920211130"><a href="#">11:30</a></li>
+                                                                                                    <li class="cbs-date-id-060920211200"><a href="#">12:00</a></li>
+                                                                                                    <li class="cbs-date-id-060920211230"><a href="#">12:30</a></li>
+                                                                                                    <li class="cbs-date-id-060920211300"><a href="#">13:00</a></li>
+                                                                                                    <li class="cbs-date-id-060920211330"><a href="#">13:30</a></li>
+                                                                                                    <li class="cbs-date-id-060920211400"><a href="#">14:00</a></li>
+                                                                                                    <li class="cbs-date-id-060920211430"><a href="#">14:30</a></li>
+                                                                                                    <li class="cbs-date-id-060920211500"><a href="#">15:00</a></li>
+                                                                                                    <li class="cbs-date-id-060920211530"><a href="#">15:30</a></li>
+                                                                                                    <li class="cbs-date-id-060920211600"><a href="#">16:00</a></li>
+                                                                                                    <li class="cbs-date-id-060920211630"><a href="#">16:30</a></li>
+                                                                                                    <li class="cbs-date-id-060920211700"><a href="#">17:00</a></li>
+                                                                                                    <li class="cbs-date-id-060920211730"><a href="#">17:30</a></li>
+                                                                                                    <li class="cbs-date-id-060920211800"><a href="#">18:00</a></li>
+                                                                                                    <li class="cbs-date-id-060920211830"><a href="#">18:30</a></li>
+                                                                                                    <li class="cbs-date-id-060920211900"><a href="#">19:00</a></li>
+                                                                                                    <li class="cbs-date-id-060920211930"><a href="#">19:30</a></li>
                                                                                                 </ul>
                                                                                             </div>
                                                                                         </td>
@@ -503,9 +503,9 @@
                                                             
                                                                         <div class="cbs-form-summary cbs-clear-fix">
                                                                             <div class="cbs-coupon-code cbs-clear-fix">
-                                                                                <a class="cbs-show-coupon" href="http://auto.mydisain.com/test/#">Do you have a coupon code ?</a>				
+                                                                                <a class="cbs-show-coupon" href="#">Do you have a coupon code ?</a>				
                                                                                 <input type="text" name="coupon_code" autocomplete="off">
-                                                                                <a class="cbs-button cbs-button-apply-coupon" href="http://auto.mydisain.com/test/#">Apply</a>				
+                                                                                <a class="cbs-button cbs-button-apply-coupon" href="#">Apply</a>				
                                                                                 <div class="cbs-coupon-code-success">
                                                                                     The provided coupon is valid, total order value was reduced respectively.<br>
                                                                                     Please note that if you change your booking details then you will have to insert coupon code once again.					</div>
@@ -548,4 +548,56 @@
     </article> <!-- .et_pb_post -->
 </div> <!-- #main-content -->
 <!-- Carousel End -->
+<script src="{{asset('assets/frontend/js/jquery.cbs-plugin.js')}}"></script>
+<script>
+    $(".cbs-main").CBSPlugin();
+    // var container = $(".cbs-main");
+    // (function ($) {
+    //     $(function() {
+    //         setInterval(function() {
+    //             var widthWrapper = $(".cbs-main");
+    //             var classPrefix = 'cbs-width-';
+    //             var width = screen.width;
+    //             if(width >= 1170) className = '1170';
+    //             else if(width >= 960) className = '960';
+    //             else if(width >= 768) className = '768';
+    //             else if(width >= 480) className = '480';
+    //             else if(width >= 300) className = '300';
+    //             else if(width >= 0) className = '0';
+    //             var oldClassName = getValueFromClass(widthWrapper, classPrefix);
+    //             if (oldClassName != width) {
+    //                 widthWrapper.removeClass(classPrefix + oldClassName);
+    //                 widthWrapper.addClass(classPrefix + className);
+    //             }
+    //             console.log(oldClassName)
+    //         }, 500);
+    //     });
+
+    //     var getValueFromClass = function (object, pattern){
+    //         try { 
+    //             var reg=new RegExp(pattern);
+    //             var className=$(object).attr('class').split(' ');
+    //             for(var i in className) { 
+    //                 if(reg.test(className[i]))
+    //                 return(className[i].substring(pattern.length))
+    //             }
+    //         }
+    //         catch(e){}
+    //         return(!1)
+    //     }
+
+    //     container.on('click','.cbs-calendar-header-arrow-left', function(e)
+    //     {
+    //         console.log("okay")
+    //         var advancePeriod=parseInt($(this).attr('data-advance-period'));
+    //         moveCalendar(e,-advancePeriod);
+    //     });
+    // })(jQuery)
+    // var et_pb_custom = {"ajaxurl":"","images_uri":"","builder_images_uri":"","et_frontend_nonce":"90f5ef9b30","subscription_failed":"Please, check the fields below to make sure you entered the correct information.","et_ab_log_nonce":"4201a34bb2","fill_message":"Please, fill in the following fields:","contact_error_message":"Please, fix the following errors:","invalid":"Invalid email","captcha":"Captcha","prev":"Prev","previous":"Previous","next":"Next","wrong_captcha":"You entered the wrong number in captcha.","wrong_checkbox":"Checkbox","ignore_waypoints":"no","is_divi_theme_used":"1","widget_search_selector":".widget_search","ab_tests":[],"is_ab_testing_active":"","page_id":"2209","unique_test_id":"","ab_bounce_rate":"5","is_cache_plugin_active":"yes","is_shortcode_tracking":"","tinymce_uri":""}; 
+    // var et_builder_utils_params = {"condition":{"diviTheme":true,"extraTheme":false},"scrollLocations":["app","top"],"builderScrollLocations":{"desktop":"app","tablet":"app","phone":"app"},"onloadScrollLocation":"app","builderType":"fe"}; 
+    // var et_frontend_scripts = {"builderCssContainerPrefix":"#et-boc","builderCssLayoutPrefix":"#et-boc .et-l"};
+
+    
+</script>
+
 @endsection

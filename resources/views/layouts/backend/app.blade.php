@@ -27,15 +27,15 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/themes/semi-dark-layout.css')}}">
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/themes/semi-dark-layout.css')}}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/themes/semi-dark-layout.css')}}"> --}}
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/assets/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('icon.css')}}">
     <!-- END: Custom CSS-->
-
+    
 </head>
 <!-- END: Head-->
 
@@ -163,15 +163,13 @@
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
     <!-- END: Footer-->
 
-
     <!-- BEGIN: Vendor JS-->
     <script src="{{asset('assets/backend/app-assets/vendors/js/vendors.min.js')}}"></script>
+    @yield('vendor_js')
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-    <script src="{{asset('assets/backend/app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/backend/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
-    @yield('page_vendor')
+    @yield('page_vendor_js')
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -180,8 +178,9 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="{{asset('assets/backend/app-assets/js/scripts/tables/table-datatables-advanced.js')}}"></script>
-    @yield('page_script')
+    @yield('page_js')
+    <script src="{{asset('assets/backend/assets/js/scripts.js')}}"></script>
+
     <!-- END: Page JS-->
 
     <script>
