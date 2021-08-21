@@ -20,4 +20,8 @@ class AdminVehicleController extends Controller
         Vehicle_types::create($input);
         return back()->with("added", "Vehicle type is successfully added");
     }
+
+    public function get_list (Request $request) {
+        
+    }
 }

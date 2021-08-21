@@ -99,14 +99,13 @@
                         </div>
                         <div class="ml-auto">
                             <a class="btn btn-custom" href="#">Get Appointment</a>
-                            <a class="btn btn-custom" href="{{ route('backend.signin') }}">SignIn Admin</a>
+                            <a class="btn btn-custom" href="{{ route('signin') }}">SignIn Admin</a>
                         </div>
                     </div>
                 </nav>
             </div>
         </div>
         <!-- Nav Bar End -->
-
 
         @yield('content')
 

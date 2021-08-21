@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 // authentication
 Route::get('/signin', function () {
     return view('auth.backend.signin');
-});
+})->name('signin');
 
 Route::get('/signup', function () {
     return view('auth.backend.signup');
-});
+})->name('signup');
 
 Route::post('/backend/signin', 'Auth\Backend\AuthController@signin')->name('backend.signin');
 Route::post('/backend/signup', 'Auth\Backend\AuthController@signup')->name('backend.signup');
@@ -35,5 +35,6 @@ Route::group(['middleware'=>'isadmin'], function() {
     Route::resource('admin/locations', 'Backend\AdminLocationController');
     Route::resource('admin/vehicles', 'Backend\AdminVehicleController');
     Route::post('admin/vehicles/save', 'Backend\AdminVehicleController@save')->name('admin.vehicles.save');
+    Route::post('admin/vehicles/get_list', 'Backend\AdminVehicleController@get_list')->name('admin.vehicles.get_list');
 });
 
