@@ -29,12 +29,29 @@ Route::post('/backend/signup', 'Auth\Backend\AuthController@signup')->name('back
 Route::resource('/', 'Frontend\HomePageController');
 
 // backend
-Route::group(['middleware'=>'isadmin'], function() {
-    Route::get('/admin', 'Backend\AdminController@index');
-    Route::resource('admin/services', 'Backend\AdminServiceController');
-    Route::resource('admin/locations', 'Backend\AdminLocationController');
-    Route::resource('admin/vehicles', 'Backend\AdminVehicleController');
-    Route::post('admin/vehicles/save', 'Backend\AdminVehicleController@save')->name('admin.vehicles.save');
-    Route::post('admin/vehicles/get_list', 'Backend\AdminVehicleController@get_list')->name('admin.vehicles.get_list');
+Route::group(['middleware' => 'auth'], function(){
+    Route::group(['middleware'=>'isadmin'], function() {
+        Route::get('/admin', 'Backend\AdminController@index')->name('admin');
+        // vehicle route
+        Route::get('/admin/vehicles', 'Backend\AdminVehicleController@index')->name('admin.vehicles');;
+        Route::post('/admin/vehicles/save', 'Backend\AdminVehicleController@save')->name('admin.vehicles.save');
+        Route::get('/admin/vehicles/get_list', 'Backend\AdminVehicleController@get_list');
+        // end vehicle route
+        
+        // service route
+        Route::get('/admin/services', 'Backend\AdminServiceController@index')->name('admin.services');
+        Route::get('/admin/services/get_list', 'Backend\AdminServiceController@get_list');
+        Route::post('/admin/services/save', 'Backend\AdminServiceController@save')->name('admin.services.save');
+        Route::post('/admin/services/remove', 'Backend\AdminServiceController@remove');
+        // end service route
+        
+        // location route
+        Route::get('/admin/locations', 'Backend\AdminLocationController@index')->name('admin.locations');
+        Route::post('/admin/locations/save', 'Backend\AdminLocationController@save')->name('admin.locations.save');
+        Route::post('/admin/locations/save_general', 'Backend\AdminLocationController@save_general')->name('admin.locations.save_general');
+        Route::get('/admin/locations/edit/', 'Backend\AdminLocationController@edit')->name('admin.locations.edit');
+        Route::get('/admin/locations/get_list', 'Backend\AdminLocationController@get_list');
+        // end location route
+    });
 });
 

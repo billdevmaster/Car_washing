@@ -108,14 +108,14 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="active nav-item"><a class="d-flex align-items-center" href="/admin"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Home">Home</span></a>
+                <li class="active nav-item"><a class="d-flex align-items-center" href="{{ route('admin') }}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Home">Home</span></a>
                 </li>
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Management Items</span><i data-feather="more-horizontal"></i>
-                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('locations.index') }}"><i data-feather='map-pin'></i><span class="menu-title text-truncate" data-i18n="Home">Locations</span></a>
+                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.locations') }}"><i data-feather='map-pin'></i><span class="menu-title text-truncate" data-i18n="Home">Locations</span></a>
                 </li>
-                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('services.index') }}"><i data-feather='activity'></i><span class="menu-title text-truncate" data-i18n="Home">Services</span></a>
+                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.services') }}"><i data-feather='activity'></i><span class="menu-title text-truncate" data-i18n="Home">Services</span></a>
                 </li>
-                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('vehicles.index') }}"><i data-feather='truck'></i><span class="menu-title text-truncate" data-i18n="Home">Vehicles</span></a>
+                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.vehicles') }}"><i data-feather='truck'></i><span class="menu-title text-truncate" data-i18n="Home">Vehicles</span></a>
                 </li>
             </ul>
         </div>
@@ -169,7 +169,7 @@
     <!-- END: Footer-->
 
     <script>
-        const app_route = '{{ public_path() }}';
+        var appUrl = '{{ env('APP_URL') }}';
     </script>
 
     <!-- BEGIN: Vendor JS-->
@@ -178,6 +178,8 @@
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
+    <script src="{{asset('assets/backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
+    <script src="{{asset('assets/backend/app-assets/vendors/js/extensions/polyfill.min.js')}}"></script>
     @yield('page_vendor_js')
     <!-- END: Page Vendor JS-->
 
@@ -191,7 +193,6 @@
     <script src="{{asset('assets/backend/assets/js/scripts.js')}}"></script>
 
     <!-- END: Page JS-->
-
     <script>
         $(window).on('load', function() {
             if (feather) {

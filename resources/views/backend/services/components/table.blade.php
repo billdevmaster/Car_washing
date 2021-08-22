@@ -4,16 +4,18 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header border-bottom">
-                    <h4 class="card-title">Vehicle types</h4>
-                    <Button class="btn btn-primary waves-effect waves-float waves-light" data-toggle="modal" data-target="#vehicle_type_modal" onclick="addNewVehicle()">Add New Vehicle</Button>
+                    <h4 class="card-title">Services</h4>
+                    <Button class="btn btn-primary waves-effect waves-float waves-light" data-toggle="modal" data-target="#service_modal" onclick="addNewService()">Add New Service</Button>
                 </div>
                 <div class="card-datatable col-12">
-                    <table class="table datatables-ajax" id="vehicle_table">
+                    <table class="table datatables-ajax" id="service_table">
                         <thead>
                             <tr>
                                 <th></th>
-                                <th width="45%">Name</th>
-                                <th width="45%">Icon</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Duration</th>
+                                <th>Price</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -27,7 +29,7 @@
 </section>
 <!--/ Responsive Datatable -->
 <script>
-    function addNewVehicle() {
+    function addNewService() {
         $("#vechileTypeModal #vehicle_id").val(0);
     }
 </script>

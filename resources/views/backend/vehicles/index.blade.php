@@ -7,11 +7,6 @@
 <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/vendors/css/forms/select/select2.min.css')}}">
 @endsection
 
-@section('page_vendor_css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/pages/page-profile.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/plugins/forms/pickers/form-flat-pickr.css')}}">
-@endsection
-
 @section('content')
 <div class="content-wrapper">
     <div class="content-header row">

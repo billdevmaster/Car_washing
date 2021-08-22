@@ -1,13 +1,23 @@
 (function (window, undefined) {
   'use strict';
+  
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
 
   const router = {
-    getVehicle: "/admin/vehicles/get_list",
+    getVehicle: appUrl + "/admin/vehicles/get_list",
+    getService: appUrl + "/admin/services/get_list",
+    removeService: appUrl + "/admin/services/remove",
+    getLocation: appUrl + "/admin/locations/get_list",
+    editLocation: appUrl + "/admin/locations/edit",
   }
 
-  var vehicle_type_table = $('#vehicle_table');
-  if (vehicle_type_table.length) {
-    vehicle_type_table.DataTable({
+  var vehicleTypeTable = $('#vehicle_table');
+  if (vehicleTypeTable.length) {
+    vehicleTypeTable.DataTable({
       processing: true,
       serverSide: true,
       language: {
@@ -20,14 +30,94 @@
             next: '&nbsp;'
         }
       },
-      order:[3,'desc'],
+      order:[2,'desc'],
       ajax: router.getVehicle,
       "lengthMenu": [[10, 50, 200, 1000000000], [10, 50, 200, "All"]],
       "pageLength": 10,
       columns: [
         { data: 'id', name: 'id', "visible": false },
-        { data: 'name', name: 'email' },
+        { data: 'name', name: 'name' },
         { data: 'icon', name: 'icon' },
+      ],
+      columnDefs: [
+        {
+          className: 'control',
+          orderable: false,
+          responsivePriority: 2,
+          targets: 0
+        },
+        {
+          targets: 2,
+          render: function (data, type, full, meta) {
+            var icon = full['icon'];
+            return '<span class="cbs-vehicle-icon cbs-vehicle-icon-' + icon + '" id="preview_icon"></span>';
+          }
+        },
+        {
+          // Actions
+          targets: 3,
+          title: 'status',
+          orderable: false,
+          render: function (data, type, full, meta) {
+            return (
+              '<div class="btn-group">' +
+                  '<a class="btn btn-sm dropdown-toggle hide-arrow" data-toggle="dropdown">' +
+                      feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
+                  '</a>' +
+                  '<div class="dropdown-menu dropdown-menu-right">' +
+                      '<a data-toggle="modal" data-target="#vehicle_type_modal" class="dropdown-item edit-vehicle" >' +
+                      feather.icons['archive'].toSvg({ class: 'font-small-4 mr-50' }) +
+                      'Edit</a>' +
+                  '</div>' +
+              '</div>'
+            );
+          },
+        }
+      ],
+    });
+
+    var vehicleTypeData;
+
+    vehicleTypeTable.on("click", 'tr', function() {
+      vehicleTypeData = vehicleTypeTable.DataTable().row(this).data();
+      $("#vehicle_type_modal #vehicle_id").val(vehicleTypeData.id);
+      $("#vehicle_type_modal #name").val(vehicleTypeData.name);
+      $("#vehicle_type_modal #icon").val(vehicleTypeData.icon);
+    });
+
+    $("#vehicle_type_modal #icon").change(function() {
+      var prefix = "cbs-vehicle-icon-";
+      var oldIcon = getValueFromClass($("#vehicle_type_modal #preview_icon"), prefix);
+      $("#vehicle_type_modal #preview_icon").removeClass(prefix + oldIcon);
+      $("#vehicle_type_modal #preview_icon").addClass(prefix + $("#vehicle_type_modal #icon").val());
+    });
+  }
+
+  var serviceTable = $('#service_table');
+  if ( serviceTable.length ) {
+    serviceTable.DataTable({
+      processing: true,
+      serverSide: true,
+      language: {
+        sLengthMenu: 'Show _MENU_',
+        search: 'Search',
+        searchPlaceholder: 'Search..',
+        paginate: {
+            // remove previous & next text from pagination
+            previous: '&nbsp;',
+            next: '&nbsp;'
+        }
+      },
+      order:[2,'desc'],
+      ajax: router.getService,
+      "lengthMenu": [[10, 50, 200, 1000000000], [10, 50, 200, "All"]],
+      "pageLength": 10,
+      columns: [
+        { data: 'id', name: 'id', "visible": false },
+        { data: 'name', name: 'name' },
+        { data: 'description', name: 'description' },
+        { data: 'duration', name: 'duration' },
+        { data: 'price', name: 'price' },
       ],
       columnDefs: [
         {
@@ -39,17 +129,182 @@
         {
           // Actions
           targets: 5,
-          title: 'status',
+          title: 'Action',
           orderable: false,
           render: function (data, type, full, meta) {
-              return (
-                  "<a>"+full['status']+"</a><br>\
-                   <a>"+full['view']+"</a>"
-              );
+            return (
+              '<div class="btn-group">' +
+                  '<a class="btn btn-sm dropdown-toggle hide-arrow" data-toggle="dropdown">' +
+                      feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
+                  '</a>' +
+                  '<div class="dropdown-menu dropdown-menu-right">' +
+                      '<a data-toggle="modal" data-target="#service_modal" class="dropdown-item edit-service" >' +
+                      feather.icons['save'].toSvg({ class: 'font-small-4 mr-50' }) +
+                      'Edit</a>' +
+                      '<a class="dropdown-item delete-service" >' +
+                      feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) +
+                      'Delete</a>' +
+                  '</div>' +
+              '</div>'
+            );
+          },
+        }
+      ],
+    });
+
+    var serviceData;
+
+    serviceTable.on("click", 'tr', function() {
+      serviceData = serviceTable.DataTable().row(this).data();
+      $("#service_modal #id").val(serviceData.id);
+      $("#service_modal #name").val(serviceData.name);
+      $("#service_modal #description").val(serviceData.description);
+      $("#service_modal #duration").val(serviceData.duration);
+      $("#service_modal #price").val(serviceData.price);
+    });
+
+    serviceTable.on("click", "tr .delete-service", function() {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        customClass: {
+          confirmButton: 'btn btn-primary',
+          cancelButton: 'btn btn-outline-danger ml-1'
+        },
+        buttonsStyling: false,
+        
+      }).then(function (result) {
+        if (result.value) {
+          $.ajax({
+            url: router.removeService,
+            type: 'post',
+            data: {id: $("#service_modal #id").val()},
+            success: (res) => {
+              Swal.fire({
+                icon: 'success',
+                title: 'Deleted!',
+                text: 'Your file has been deleted.',
+                customClass: {
+                  confirmButton: 'btn btn-success'
+                }
+              });
+            },
+            error: () => {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                customClass: {
+                  confirmButton: 'btn btn-primary'
+                },
+                buttonsStyling: false
+              });
+            }
+          })
+        }
+      });
+    });
+  }
+
+  var locationTable = $('#location_table');
+  if ( locationTable.length ) {
+    locationTable.DataTable({
+      processing: true,
+      serverSide: true,
+      language: {
+        sLengthMenu: 'Show _MENU_',
+        search: 'Search',
+        searchPlaceholder: 'Search..',
+        paginate: {
+            // remove previous & next text from pagination
+            previous: '&nbsp;',
+            next: '&nbsp;'
+        }
+      },
+      order:[2,'desc'],
+      ajax: router.getLocation,
+      "lengthMenu": [[10, 50, 200, 1000000000], [10, 50, 200, "All"]],
+      "pageLength": 10,
+      columns: [
+        { data: 'id', name: 'id', "visible": false },
+        { data: 'name', name: 'name' },
+      ],
+      columnDefs: [
+        {
+          className: 'control',
+          orderable: false,
+          responsivePriority: 2,
+          targets: 0
+        },
+        {
+          // Actions
+          targets: 2,
+          title: 'Action',
+          orderable: false,
+          render: function (data, type, full, meta) {
+            return (
+              '<div class="btn-group">' +
+                  '<a class="btn btn-sm dropdown-toggle hide-arrow" data-toggle="dropdown">' +
+                      feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
+                  '</a>' +
+                  '<div class="dropdown-menu dropdown-menu-right">' +
+                      '<a class="dropdown-item" href="' + router.editLocation + '?id=' + full['id'] + '">' +
+                      feather.icons['save'].toSvg({ class: 'font-small-4 mr-50' }) +
+                      'Edit</a>' +
+                      '<a class="dropdown-item delete-service" >' +
+                      feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) +
+                      'Delete</a>' +
+                  '</div>' +
+              '</div>'
+            );
           },
         }
       ],
     });
   }
 
+  var locationGeneralForm = $("#location_general_form");
+  if ( locationGeneralForm.length ) {
+    new Quill('#location_general_form #description_container .editor', {
+      bounds: '#location_general_form #description_container .editor',
+      modules: {
+        formula: true,
+        syntax: true,
+        toolbar: '#location_general_form #description_container .quill-toolbar'
+      },
+      theme: 'snow'
+    });
+
+    var locationGeneralForm = $("#location_general_form");
+
+
+    // $("#location_general_form #submit").click(function() {
+    //   var formdata = $("#location_general_form").serialize();
+    //   console.log(formdata)
+    })
+  }
+
 })(window);
+
+
+// help functions 
+function getValueFromClass (object, pattern)
+{
+    try
+    {
+        var reg=new RegExp(pattern);
+        var className=$(object).attr('class').split(' ');
+
+        for(var i in className)
+        {
+            if(reg.test(className[i]))
+                return(className[i].substring(pattern.length));
+        }
+    }
+    catch(e) {}
+
+    return(false);		
+};	

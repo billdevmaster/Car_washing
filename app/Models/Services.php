@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Vehicle_types extends Model
+class Services extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'icon',
+        'description',
+        'duration',
+        'price',
     ];
 }

@@ -551,53 +551,6 @@
 <script src="{{asset('assets/frontend/js/jquery.cbs-plugin.js')}}"></script>
 <script>
     $(".cbs-main").CBSPlugin();
-    // var container = $(".cbs-main");
-    // (function ($) {
-    //     $(function() {
-    //         setInterval(function() {
-    //             var widthWrapper = $(".cbs-main");
-    //             var classPrefix = 'cbs-width-';
-    //             var width = screen.width;
-    //             if(width >= 1170) className = '1170';
-    //             else if(width >= 960) className = '960';
-    //             else if(width >= 768) className = '768';
-    //             else if(width >= 480) className = '480';
-    //             else if(width >= 300) className = '300';
-    //             else if(width >= 0) className = '0';
-    //             var oldClassName = getValueFromClass(widthWrapper, classPrefix);
-    //             if (oldClassName != width) {
-    //                 widthWrapper.removeClass(classPrefix + oldClassName);
-    //                 widthWrapper.addClass(classPrefix + className);
-    //             }
-    //             console.log(oldClassName)
-    //         }, 500);
-    //     });
-
-    //     var getValueFromClass = function (object, pattern){
-    //         try { 
-    //             var reg=new RegExp(pattern);
-    //             var className=$(object).attr('class').split(' ');
-    //             for(var i in className) { 
-    //                 if(reg.test(className[i]))
-    //                 return(className[i].substring(pattern.length))
-    //             }
-    //         }
-    //         catch(e){}
-    //         return(!1)
-    //     }
-
-    //     container.on('click','.cbs-calendar-header-arrow-left', function(e)
-    //     {
-    //         console.log("okay")
-    //         var advancePeriod=parseInt($(this).attr('data-advance-period'));
-    //         moveCalendar(e,-advancePeriod);
-    //     });
-    // })(jQuery)
-    // var et_pb_custom = {"ajaxurl":"","images_uri":"","builder_images_uri":"","et_frontend_nonce":"90f5ef9b30","subscription_failed":"Please, check the fields below to make sure you entered the correct information.","et_ab_log_nonce":"4201a34bb2","fill_message":"Please, fill in the following fields:","contact_error_message":"Please, fix the following errors:","invalid":"Invalid email","captcha":"Captcha","prev":"Prev","previous":"Previous","next":"Next","wrong_captcha":"You entered the wrong number in captcha.","wrong_checkbox":"Checkbox","ignore_waypoints":"no","is_divi_theme_used":"1","widget_search_selector":".widget_search","ab_tests":[],"is_ab_testing_active":"","page_id":"2209","unique_test_id":"","ab_bounce_rate":"5","is_cache_plugin_active":"yes","is_shortcode_tracking":"","tinymce_uri":""}; 
-    // var et_builder_utils_params = {"condition":{"diviTheme":true,"extraTheme":false},"scrollLocations":["app","top"],"builderScrollLocations":{"desktop":"app","tablet":"app","phone":"app"},"onloadScrollLocation":"app","builderType":"fe"}; 
-    // var et_frontend_scripts = {"builderCssContainerPrefix":"#et-boc","builderCssLayoutPrefix":"#et-boc .et-l"};
-
-    
 </script>
 
 @endsection

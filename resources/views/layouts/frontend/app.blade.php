@@ -15,6 +15,7 @@
         
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        {{-- <link href="{{asset('assets/frontend/lib/bootstrap/bootstrap.min.css')}}" rel="stylesheet"> --}}
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="{{asset('assets/frontend/lib/flaticon/font/flaticon.css')}}" rel="stylesheet">
         <link href="{{asset('assets/frontend/lib/animate/animate.min.css')}}" rel="stylesheet">
@@ -176,6 +177,8 @@
         </div>
 
         <!-- JavaScript Libraries -->
+        {{-- <script src="{{asset('assets/frontend/lib/jQuery/jQuery-2.1.4.min.js')}}"></script>
+        <script src="{{asset('assets/frontend/lib/bootstrap/bootstrap.min.js')}}"></script> --}}
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
         <script src="{{asset('assets/frontend/lib/easing/easing.min.js')}}"></script>

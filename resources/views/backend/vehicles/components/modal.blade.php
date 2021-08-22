@@ -1,4 +1,4 @@
-<div class="modal fade text-left" id="defaultSize" tabindex="-1" role="dialog" aria-labelledby="myModalLabel18" aria-hidden="true">
+<div class="modal fade text-left" id="vehicle_type_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel18" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,19 +9,20 @@
             </div>
             <form action="{{ route('admin.vehicles.save') }}" method="post">
                 @csrf
+                <input type="hidden" name="id" id="vehicle_id">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="defaultInput">Vehicle Type</label>
-                        <input id="vehicle_type" class="form-control" type="text" placeholder="Normal Input" name="type" />
+                        <input class="form-control" type="text" placeholder="Normal Input" name="name"  id="name"/>
                     </div>
                     <div class="form-group">
                         <label for="selectDefault">Icon</label>
-                        <select class="form-control mb-1" id="vehicle_icon" name="icon">
+                        <select class="form-control mb-1" id="icon" name="icon">
                             @foreach (config('constants.vehicle_icons') as $icon)
-                            <option >{{ $icon }}</option>
+                                <option value={{ $icon }}>{{ $icon }}</option>
                             @endforeach
                         </select>
-                        <span class="cbs-vehicle-icon cbs-vehicle-icon-suv"></span>
+                        <span class="cbs-vehicle-icon cbs-vehicle-icon-{{ $icon }}" id="preview_icon"></span>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -32,3 +33,4 @@
         </div>
     </div>
 </div>
+
