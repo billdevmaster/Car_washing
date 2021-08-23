@@ -284,7 +284,7 @@
     // $("#location_general_form #submit").click(function() {
     //   var formdata = $("#location_general_form").serialize();
     //   console.log(formdata)
-    })
+    // })
   }
 
 })(window);
