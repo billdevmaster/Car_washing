@@ -33,7 +33,8 @@ class AdminLocationController extends Controller
 
     public function edit(Request $request) {
         $location = Locations::find($request->id);
-        return view('backend.locations.edit', compact("location"));
+        $menu = "locations";
+        return view('backend.locations.edit', compact("location", "menu"));
     }
 
     public function save_general(Request $request) {
