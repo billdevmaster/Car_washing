@@ -13,7 +13,8 @@ class AdminServiceController extends Controller
     public function index()
     {
         // $services = Service::all();
-        return view('backend.services.index');
+        $menu = "services";
+        return view('backend.services.index', compact("menu"));
     }
 
     public function save(Request $request) {

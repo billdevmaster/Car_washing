@@ -13,7 +13,8 @@ class AdminVehicleController extends Controller
     public function index(Request $request)
     {
         $vehicle_list = Vehicle_types::all();
-        return view('backend.vehicles.index', compact("vehicle_list"));
+        $menu = "vehicles";
+        return view('backend.vehicles.index', compact("vehicle_list", "menu"));
     }
 
     public function save(Request $request) {

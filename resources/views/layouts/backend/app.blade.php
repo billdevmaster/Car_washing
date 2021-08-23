@@ -108,14 +108,14 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="active nav-item"><a class="d-flex align-items-center" href="{{ route('admin') }}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Home">Home</span></a>
+                <li class="nav-item @php if($menu == 'home') echo 'active' @endphp"><a class="d-flex align-items-center" href="{{ route('admin') }}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Home">Home</span></a>
                 </li>
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Management Items</span><i data-feather="more-horizontal"></i>
-                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.locations') }}"><i data-feather='map-pin'></i><span class="menu-title text-truncate" data-i18n="Home">Locations</span></a>
+                <li class="nav-item @php if($menu == 'locations') echo 'active' @endphp"><a class="d-flex align-items-center" href="{{ route('admin.locations') }}"><i data-feather='map-pin'></i><span class="menu-title text-truncate" data-i18n="Home">Locations</span></a>
                 </li>
-                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.services') }}"><i data-feather='activity'></i><span class="menu-title text-truncate" data-i18n="Home">Services</span></a>
+                <li class="nav-item @php if($menu == 'services') echo 'active' @endphp"><a class="d-flex align-items-center" href="{{ route('admin.services') }}"><i data-feather='activity'></i><span class="menu-title text-truncate" data-i18n="Home">Services</span></a>
                 </li>
-                <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('admin.vehicles') }}"><i data-feather='truck'></i><span class="menu-title text-truncate" data-i18n="Home">Vehicles</span></a>
+                <li class="nav-item @php if($menu == 'vechiles') echo 'active' @endphp"><a class="d-flex align-items-center" href="{{ route('admin.vehicles') }}"><i data-feather='truck'></i><span class="menu-title text-truncate" data-i18n="Home">Vehicles</span></a>
                 </li>
             </ul>
         </div>

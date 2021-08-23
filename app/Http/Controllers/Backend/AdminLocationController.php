@@ -13,7 +13,8 @@ class AdminLocationController extends Controller
     public function index(Request $request)
     {
         // $services = Service::all();
-        return view('backend.locations.index');
+        $menu = "locations";
+        return view('backend.locations.index', compact("menu"));
     }
 
     public function save(Request $request) {

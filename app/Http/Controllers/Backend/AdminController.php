@@ -9,6 +9,7 @@ class AdminController extends Controller
 {
     //
     public function index() {
-        return view('backend.home.index');
+        $menu = "home";
+        return view('backend.home.index', compact("menu"));
     }
 }
