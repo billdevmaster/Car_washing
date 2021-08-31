@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DataTables;
-use App\Models\Vehicle_types;
+use App\Models\Vehicles;
 
 class AdminVehicleController extends Controller
 {
     //
     public function index(Request $request)
     {
-        $vehicle_list = Vehicle_types::all();
+        $vehicle_list = Vehicles::all();
         $menu = "vehicles";
         return view('backend.vehicles.index', compact("vehicle_list", "menu"));
     }
@@ -20,10 +20,10 @@ class AdminVehicleController extends Controller
     public function save(Request $request) {
         $input = $request->all();
         if ($input['id'] == 0) {
-            Vehicle_types::create($input);
+            Vehicles::create($input);
             return back()->with("added", "Vehicle type is successfully added");
         } else {
-            $vehicle = Vehicle_types::find($input['id']);
+            $vehicle = Vehicles::find($input['id']);
             $vehicle->name = $input['name'];
             $vehicle->icon = $input['icon'];
             $vehicle->save();
@@ -32,7 +32,7 @@ class AdminVehicleController extends Controller
     }
 
     public function get_list (Request $request) {
-        $vehicle_list = Vehicle_types::get();
+        $vehicle_list = Vehicles::get();
         return Datatables::of($vehicle_list)
                 ->addIndexColumn()
                 ->make(true);

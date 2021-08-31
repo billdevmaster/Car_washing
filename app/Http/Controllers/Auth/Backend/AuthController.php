@@ -9,6 +9,7 @@ use Auth;
 
 class AuthController extends Controller
 {
+
     //
     public function signin(Request $request) {
         
@@ -42,5 +43,15 @@ class AuthController extends Controller
             ]);
             return back()->with('status', true);
         }
+    }
+
+    public function signout(Request $request) {
+        if (Auth::check()) {
+            // $this->analyticlog('SignOut');
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+        }
+        return redirect()->route('index');
     }
 }

@@ -13,6 +13,11 @@
     removeService: appUrl + "/admin/services/remove",
     getLocation: appUrl + "/admin/locations/get_list",
     editLocation: appUrl + "/admin/locations/edit",
+    saveLocationGeneral: appUrl + "/admin/locations/save_general",
+    getLocationServices: appUrl + "/admin/locations/getLocationServices",
+    getLocationVehicles: appUrl + "/admin/locations/getLocationVehicles",
+    getLocationPesuboxs: appUrl + "/admin/locations/getLocationPesuboxs",
+    getLocationUsers: appUrl + "/admin/locations/getLocationUsers",
   }
 
   var vehicleTypeTable = $('#vehicle_table');
@@ -268,25 +273,118 @@
 
   var locationGeneralForm = $("#location_general_form");
   if ( locationGeneralForm.length ) {
-    new Quill('#location_general_form #description_container .editor', {
-      bounds: '#location_general_form #description_container .editor',
-      modules: {
-        formula: true,
-        syntax: true,
-        toolbar: '#location_general_form #description_container .quill-toolbar'
-      },
-      theme: 'snow'
-    });
+    // new Quill('#location_general_form #description_container .editor', {
+    //   bounds: '#location_general_form #description_container .editor',
+    //   modules: {
+    //     formula: true,
+    //     syntax: true,
+    //     toolbar: '#location_general_form #description_container .quill-toolbar'
+    //   },
+    //   theme: 'snow'
+    // });
 
     var locationGeneralForm = $("#location_general_form");
 
-
-    // $("#location_general_form #submit").click(function() {
-    //   var formdata = $("#location_general_form").serialize();
-    //   console.log(formdata)
-    // })
+    $("#location_general_form #submit").click(function() {
+      var formdata = new FormData($("#location_general_form")[0]);
+      formdata.append('description', $("#location_general_form #description_container .editor").html());
+      formdata.append('id', $("#location_id").val());
+      $.ajax({
+        url: router.saveLocationGeneral,
+        type: 'post',
+        data: formdata,
+        dataType:"JSON",
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: (res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Saved!',
+            text: 'Saved general info.',
+            customClass: {
+              confirmButton: 'btn btn-success'
+            }
+          });
+        },
+        error: (err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            customClass: {
+              confirmButton: 'btn btn-primary'
+            },
+            buttonsStyling: false
+          });
+        }
+      })
+    })
   }
 
+  // location service
+  $(".location-edit #services-tab").click(function () {
+    $.ajax({
+      type: 'get',
+      url: router.getLocationServices,
+      data: {id: $(".location-edit #location_id").val()},
+      success: (res) => {
+        $(".location-edit .tab-content #services").html(res)
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
+  });
+  // end location service
+
+  // location vehicle
+  $(".location-edit #vehicles-tab").click(function () {
+    $.ajax({
+      type: 'get',
+      url: router.getLocationVehicles,
+      data: {id: $(".location-edit #location_id").val()},
+      success: (res) => {
+        $(".location-edit .tab-content #vehicles").html(res)
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
+  });
+  // end location vehicle
+
+  // location pesubox
+  $(".location-edit #pesubox-tab").click(function () {
+    $.ajax({
+      type: 'get',
+      url: router.getLocationPesuboxs,
+      data: {id: $(".location-edit #location_id").val()},
+      success: (res) => {
+        $(".location-edit .tab-content #pesubox").html(res)
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
+  });
+  // end location pesubox
+
+  // location users
+  $(".location-edit #user-tab").click(function () {
+    $.ajax({
+      type: 'get',
+      url: router.getLocationUsers,
+      data: {id: $(".location-edit #location_id").val()},
+      success: (res) => {
+        $(".location-edit .tab-content #user").html(res)
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
+  });
+  // end location users
 })(window);
 
 

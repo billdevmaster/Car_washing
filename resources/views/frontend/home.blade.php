@@ -42,16 +42,13 @@
                                                                     </div>						
                                                                     <div class="cbs-main-list-item-section-content cbs-clear-fix">
                                                                         <ul class="cbs-vehicle-list cbs-list-reset cbs-clear-fix">
-                                                                            <li class="cbs-vehicle-id-24 cbs-state-selected">
-                                                                                <div>
-                                                                                    <div class="cbs-vehicle-icon cbs-vehicle-icon-small-car"></div>					<div>Sõiduauto</div>
-                                                                                </div>
-                                                                            </li>
-                                                                            <li class="cbs-vehicle-id-26">
-                                                                                <div>
-                                                                                    <div class="cbs-vehicle-icon cbs-vehicle-icon-suv"></div>					<div>Buss / maastur</div>
-                                                                                </div>
-                                                                            </li>
+                                                                            @foreach ($location_vehicles as $location_vehicle)
+                                                                                <li class="cbs-vehicle-id-24 ">
+                                                                                    <div>
+                                                                                    <div class="cbs-vehicle-icon cbs-vehicle-icon-{{ $location_vehicle->icon }}"></div>					<div>{{ $location_vehicle->name }}</div>
+                                                                                    </div>
+                                                                                </li>
+                                                                            @endforeach
                                                                         </ul>
                                                                     </div>
                                                                 </li>
@@ -66,49 +63,50 @@
                                                                             <span>Services menu</span>			
                                                                         </h4>
                                                                         <h5 class="cbs-main-list-item-section-header-subheader">
-                                                                            <span>A la carte services menu.</span>				
-                  
+                                                                            <span>Services Menu.</span>				
                                                                         </h5>
                                                                     </div>						
                                                                     <div class="cbs-main-list-item-section-content cbs-clear-fix">
                                                                         <ul class="cbs-service-list cbs-list-reset cbs-clear-fix cbs-state-to-hidden">
-                                                                            <li class="cbs-clear-fix cbs-service-id-233">
-                                                                                <div class="cbs-service-name">
-                                                                                    <div class="cbs-title-link">
-                                                                                        <span>Survepesu</span>
-                                                                                        <a class="cbs-more-link" href="#">
-                                                                                            <span>More...</span>
-                                                                                            <span class="cbs-state-hidden">Less...</span>
-                                                                                        </a>
+                                                                            @foreach ($location_services as $location_service)
+                                                                                <li class="cbs-clear-fix cbs-service-id-233">
+                                                                                    <div class="cbs-service-name">
+                                                                                        <div class="cbs-title-link">
+                                                                                            <span>{{ $location_service->name }}</span>
+                                                                                            <a class="cbs-more-link" href="#">
+                                                                                                <span>More...</span>
+                                                                                                <span class="cbs-state-hidden">Less...</span>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="cbs-more-content cbs-state-hidden">
+                                                                                            <strong>Teenuse pakett sisaldab</strong>:
+                                                                                            <ul>
+                                                                                                <li>pigileotus</li>
+                                                                                                <li>survepesu</li>
+                                                                                                <li>tavaleotus</li>
+                                                                                                <li>survepesu</li>
+                                                                                                <li>klaaside kuivatus</li>
+                                                                                            </ul>
+                                                                                            <strong>Teenuse kirjeldus ja kvaliteediootused</strong>.
+                                                                                            Teenuse käigus leotatakse ja eemaldataks survepesuriga autolt suurem mustus ja pigi. Kuivatatakse vaid klaase, kuna survepesu ei ole piisav liiva ja tolmu eemladamiseks sõidukilt. Sõidukile jäänud liivatolmu osakesed jäävad kergelt lapi sisse ning kuivatamisel tuhmistavad ja kriimustavad sõiduki värvkatet.
+    
+                                                                                            <strong>Soovitused.</strong>
+                                                                                            Seda teenust soovitame kasutada märja ilmaga suurema pori eemaldamiseks (et näha mis värvi auto on). Kuiva ilmaga ei ole see teenus soovitatav, kuna kuivamise järel jäävad kindlasti näha pesemise&nbsp; varjundid. Seda eriti siis, kui auto on tumedat värvi.	
+                                                                                        </div>
                                                                                     </div>
-                                                                                    <div class="cbs-more-content cbs-state-hidden">
-                                                                                        <strong>Teenuse pakett sisaldab</strong>:
-                                                                                        <ul>
-                                                                                            <li>pigileotus</li>
-                                                                                            <li>survepesu</li>
-                                                                                            <li>tavaleotus</li>
-                                                                                            <li>survepesu</li>
-                                                                                            <li>klaaside kuivatus</li>
-                                                                                        </ul>
-                                                                                        <strong>Teenuse kirjeldus ja kvaliteediootused</strong>.
-                                                                                        Teenuse käigus leotatakse ja eemaldataks survepesuriga autolt suurem mustus ja pigi. Kuivatatakse vaid klaase, kuna survepesu ei ole piisav liiva ja tolmu eemladamiseks sõidukilt. Sõidukile jäänud liivatolmu osakesed jäävad kergelt lapi sisse ning kuivatamisel tuhmistavad ja kriimustavad sõiduki värvkatet.
-  
-                                                                                        <strong>Soovitused.</strong>
-                                                                                        Seda teenust soovitame kasutada märja ilmaga suurema pori eemaldamiseks (et näha mis värvi auto on). Kuiva ilmaga ei ole see teenus soovitatav, kuna kuivamise järel jäävad kindlasti näha pesemise&nbsp; varjundid. Seda eriti siis, kui auto on tumedat värvi.	
+                                                                                    <div class="cbs-service-duration">
+                                                                                        <span class="cbs-meta-icon cbs-meta-icon-duration"></span>
+                                                                                        {{ $location_service->duration }}min				
                                                                                     </div>
-                                                                                </div>
-                                                                                <div class="cbs-service-duration">
-                                                                                    <span class="cbs-meta-icon cbs-meta-icon-duration"></span>
-                                                                                    20min				
-                                                                                </div>
-                                                                                <div class="cbs-service-price">
-                                                                                    <span class="cbs-meta-icon cbs-meta-icon-price"></span>
-                                                                                    9,00 €				
-                                                                                </div>
-                                                                                <div class="cbs-button-box">
-                                                                                    <a class="cbs-button" href="#">Select</a>
-                                                                                </div>
-                                                                            </li>
+                                                                                    <div class="cbs-service-price">
+                                                                                        <span class="cbs-meta-icon cbs-meta-icon-price"></span>
+                                                                                        {{ $location_service->price }} €
+                                                                                    </div>
+                                                                                    <div class="cbs-button-box">
+                                                                                        <a class="cbs-button" href="#">Select</a>
+                                                                                    </div>
+                                                                                </li>
+                                                                            @endforeach
                                                                         </ul>
                                                                     </div>
                                                                 </li>

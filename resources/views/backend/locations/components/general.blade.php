@@ -1,4 +1,4 @@
-<form action="{{ route('admin.locations.save_general') }}" method="post" id="location_general_form">
+<form method="post" id="location_general_form">
     @csrf
     <input type="hidden" name="id" id="id" value={{ $location->id }}>
     <div class="form-group">
@@ -19,7 +19,7 @@
             </div>
         </div>
     </div>
-    <div class="form-group">
+    {{-- <div class="form-group">
         <label for="defaultInput">Description</label>
         <div id="description_wrapper">
             <div id="description_container">
@@ -55,10 +55,11 @@
                     </span>
                 </div>
                 <div class="editor">
+                    {{ $location->description }}
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="form-group">
         <label for="defaultInput">Start - End</label>
         <div class="row">
@@ -68,13 +69,13 @@
                         <label for="first-name">Monday</label>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Mon_start" id="Mon_start" placeholder="Start time"  value="{{ $location->Mon_start }}"/>
+                        <input type="time" class="form-control" name="Mon_start" id="Mon_start" placeholder="Start time"  value="{{ $location->Mon_start }}"/>
                     </div>
                     <div class="col-sm-1" style="align-items: center; display: flex;">
                         <i data-feather='minus'></i>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Mon_end" id="Mon_end" placeholder="End time"  value="{{ $location->Mon_end }}"/>
+                        <input type="time" class="form-control" name="Mon_end" id="Mon_end" placeholder="End time"  value="{{ $location->Mon_end }}"/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -82,13 +83,13 @@
                         <label for="first-name">Wensday</label>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Wen_start" id="Wen_start" placeholder="Start time"  value="{{ $location->Wen_start }}"/>
+                        <input type="time" class="form-control" name="Wen_start" id="Wen_start" placeholder="Start time"  value="{{ $location->Wen_start }}"/>
                     </div>
                     <div class="col-sm-1" style="align-items: center; display: flex;">
                         <i data-feather='minus'></i>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Wen_end" id="Wen_end" placeholder="End time"  value="{{ $location->Wen_end }}"/>
+                        <input type="time" class="form-control" name="Wen_end" id="Wen_end" placeholder="End time"  value="{{ $location->Wen_end }}"/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -96,13 +97,13 @@
                         <label for="first-name">Tuesday</label>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Tue_start" id="Tue_start" placeholder="Start time"  value="{{ $location->Tue_start }}"/>
+                        <input type="time" class="form-control" name="Tue_start" id="Tue_start" placeholder="Start time"  value="{{ $location->Tue_start }}"/>
                     </div>
                     <div class="col-sm-1" style="align-items: center; display: flex;">
                         <i data-feather='minus'></i>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Tue_end" id="Tue_end" placeholder="End time"  value="{{ $location->Tue_end }}"/>
+                        <input type="time" class="form-control" name="Tue_end" id="Tue_end" placeholder="End time"  value="{{ $location->Tue_end }}"/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -110,13 +111,13 @@
                         <label for="first-name">Thursday</label>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Thu_start" id="Thu_start" placeholder="Start time"  value="{{ $location->Thu_start }}"/>
+                        <input type="time" class="form-control" name="Thu_start" id="Thu_start" placeholder="Start time"  value="{{ $location->Thu_start }}"/>
                     </div>
                     <div class="col-sm-1" style="align-items: center; display: flex;">
                         <i data-feather='minus'></i>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Thu_end" id="Thu_end" placeholder="End time"  value="{{ $location->Thu_end }}"/>
+                        <input type="time" class="form-control" name="Thu_end" id="Thu_end" placeholder="End time"  value="{{ $location->Thu_end }}"/>
                     </div>
                 </div>
             </div>
@@ -126,13 +127,13 @@
                         <label for="first-name">Friday</label>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Fri_start" id="Fri_start" placeholder="Start time"  value="{{ $location->Fri_start }}"/>
+                        <input type="time" class="form-control" name="Fri_start" id="Fri_start" placeholder="Start time"  value="{{ $location->Fri_start }}"/>
                     </div>
                     <div class="col-sm-1" style="align-items: center; display: flex;">
                         <i data-feather='minus'></i>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Fri_end" id="Fri_end" placeholder="End time"  value="{{ $location->Fri_end }}"/>
+                        <input type="time" class="form-control" name="Fri_end" id="Fri_end" placeholder="End time"  value="{{ $location->Fri_end }}"/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -140,13 +141,13 @@
                         <label for="first-name">Saturday</label>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Sat_start" id="Sat_start" placeholder="Start time"  value="{{ $location->Sat_start }}"/>
+                        <input type="time" class="form-control" name="Sat_start" id="Sat_start" placeholder="Start time"  value="{{ $location->Sat_start }}"/>
                     </div>
                     <div class="col-sm-1" style="align-items: center; display: flex;">
                         <i data-feather='minus'></i>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Sat_end" id="Sat_end" placeholder="End time"  value="{{ $location->Sat_end }}"/>
+                        <input type="time" class="form-control" name="Sat_end" id="Sat_end" placeholder="End time"  value="{{ $location->Sat_end }}"/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -154,13 +155,13 @@
                         <label for="first-name">Sunday</label>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Sun_start" id="Sun_start" placeholder="Start time"  value="{{ $location->Sun_start }}"/>
+                        <input type="time" class="form-control" name="Sun_start" id="Sun_start" placeholder="Start time"  value="{{ $location->Sun_start }}"/>
                     </div>
                     <div class="col-sm-1" style="align-items: center; display: flex;">
                         <i data-feather='minus'></i>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Sun_end" id="Sun_end" placeholder="End time"  value="{{ $location->Sun_end }}"/>
+                        <input type="time" class="form-control" name="Sun_end" id="Sun_end" placeholder="End time"  value="{{ $location->Sun_end }}"/>
                     </div>
                 </div>
             </div>

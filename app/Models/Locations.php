@@ -27,5 +27,8 @@ class Locations extends Model
         'Sun_start',
         'Sun_end',
         'interval',
+        'address',
+        'street',
+        'city',
     ];
 }

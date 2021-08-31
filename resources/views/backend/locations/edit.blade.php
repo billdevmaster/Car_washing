@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-<div class="content-wrapper">
+<div class="content-wrapper location-edit">
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
@@ -30,6 +30,7 @@
     </div>
     <div class="content-body">
         <section id="basic-tabs-components">
+            <input type="hidden" value="{{ $id }}" id="location_id">
             <div class="row match-height">
                 <!-- Basic Tabs starts -->
                 <div class="col-12">
@@ -43,13 +44,13 @@
                                     <a class="nav-link" id="services-tab" data-toggle="tab" href="#services" aria-controls="services" role="tab" aria-selected="false">Services</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="services-tab" data-toggle="tab" href="#services" aria-controls="services" role="tab" aria-selected="false">Vehicles</a>
+                                    <a class="nav-link" id="vehicles-tab" data-toggle="tab" href="#vehicles" aria-controls="services" role="tab" aria-selected="false">Vehicles</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="pesubox-tab" data-toggle="tab" href="#pesubox" aria-controls="pesubox" role="tab" aria-selected="false">PesuBox</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="pesubox-tab" data-toggle="tab" href="#pesubox" aria-controls="pesubox" role="tab" aria-selected="false">Users</a>
+                                    <a class="nav-link" id="user-tab" data-toggle="tab" href="#user" aria-controls="user" role="tab" aria-selected="false">Users</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -57,10 +58,12 @@
                                     @include('backend.locations.components.general')
                                 </div>
                                 <div class="tab-pane active" id="services" aria-labelledby="services-tab" role="tabpanel">
-                                    @include('backend.locations.components.services')
+                                </div>
+                                <div class="tab-pane active" id="vehicles" aria-labelledby="services-tab" role="tabpanel">
                                 </div>
                                 <div class="tab-pane active" id="pesubox" aria-labelledby="pesubox-tab" role="tabpanel">
-                                    @include('backend.locations.components.pesubox')
+                                </div>
+                                <div class="tab-pane active" id="user" aria-labelledby="user-tab" role="tabpanel">
                                 </div>
                             </div>
                         </div>

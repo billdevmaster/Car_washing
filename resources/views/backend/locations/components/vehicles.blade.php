@@ -1,11 +1,11 @@
-<div class="services-wrapper" style="padding: 30px 20px">
-    @foreach ($services as $service)
+<div class="vehicles-wrapper" style="padding: 30px 20px">
+    @foreach ($vehicles as $vehicle)
         <div class="form-group">
             <div class="custom-control custom-checkbox">
-                <input class="custom-control-input location-service" id="{{ $service->id }}" type="checkbox" tabindex="3" data-location_id="{{ $location_id }}" data-service_id="{{ $service->id }}" @if (in_array($service->id, $location_service_array))
+                <input class="custom-control-input location-vehicle" id="{{ $vehicle->id }}" type="checkbox" tabindex="3" data-location_id="{{ $location_id }}" data-vehicle_id="{{ $vehicle->id }}" @if (in_array($vehicle->id, $location_vehicle_array))
                   checked
                 @endif/>
-                <label class="custom-control-label" for="{{ $service->id }}"> {{ $service->name }} </label>
+                <label class="custom-control-label" for="{{ $vehicle->id }}"> {{ $vehicle->name }} </label>
             </div>
         </div>
     @endforeach
@@ -17,16 +17,11 @@
     }
   });
   $(function() {
-
-    $(".location-edit .services-wrapper .location-service").change(function() {
+    $(".location-edit .vehicles-wrapper .location-vehicle").change(function() {
       $.ajax({
           type: 'post',
-          url: appUrl + '/admin/locations/saveLocationService',
-          data: {location_id: $(this).data("location_id"), service_id: $(this).data("service_id"), is_checked: $(this).prop("checked")},
-          // dataType:"JSON",
-          // processData: false,
-          // contentType: false,
-          // cache: false,
+          url: appUrl + '/admin/locations/saveLocationVehicle',
+          data: {location_id: $(this).data("location_id"), vehicle_id: $(this).data("vehicle_id"), is_checked: $(this).prop("checked")},
           success: (res) => {
               Swal.fire({
                   icon: 'success',

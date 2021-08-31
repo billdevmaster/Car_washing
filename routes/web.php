@@ -23,10 +23,11 @@ Route::get('/signup', function () {
 
 Route::post('/backend/signin', 'Auth\Backend\AuthController@signin')->name('backend.signin');
 Route::post('/backend/signup', 'Auth\Backend\AuthController@signup')->name('backend.signup');
+Route::get('/backend/signout', 'Auth\Backend\AuthController@signout')->name('backend.signout');
 
 
 // frontend
-Route::resource('/', 'Frontend\HomePageController');
+Route::get('/', 'Frontend\HomePageController@index')->name('index');
 
 // backend
 Route::group(['middleware' => 'auth'], function(){
@@ -51,6 +52,18 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/admin/locations/save_general', 'Backend\AdminLocationController@save_general')->name('admin.locations.save_general');
         Route::get('/admin/locations/edit/', 'Backend\AdminLocationController@edit')->name('admin.locations.edit');
         Route::get('/admin/locations/get_list', 'Backend\AdminLocationController@get_list');
+        Route::get('/admin/locations/getLocationServices', 'Backend\AdminLocationController@getLocationServices');
+        Route::post('/admin/locations/saveLocationService', 'Backend\AdminLocationController@saveLocationService');
+        Route::get('/admin/locations/getLocationVehicles', 'Backend\AdminLocationController@getLocationVehicles');
+        Route::post('/admin/locations/saveLocationVehicle', 'Backend\AdminLocationController@saveLocationVehicle');
+        Route::get('/admin/locations/getLocationPesuboxs', 'Backend\AdminLocationController@getLocationPesuboxs');
+        Route::get('/admin/locations/getLocationPesubox', 'Backend\AdminLocationController@getLocationPesubox');
+        Route::post('/admin/locations/saveLocationPesubox', 'Backend\AdminLocationController@saveLocationPesubox');
+        Route::post('/admin/locations/saveLocationPesuboxStatus', 'Backend\AdminLocationController@saveLocationPesuboxStatus');
+        Route::get('/admin/locations/getLocationUsers', 'Backend\AdminLocationController@getLocationUsers');
+        Route::get('/admin/locations/getLocationUser', 'Backend\AdminLocationController@getLocationUser');
+        Route::post('/admin/locations/saveLocationUser', 'Backend\AdminLocationController@saveLocationUser');
+        Route::post('/admin/locations/saveLocationUserStatus', 'Backend\AdminLocationController@saveLocationUserStatus');
         // end location route
     });
 });
