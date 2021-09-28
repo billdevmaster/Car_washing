@@ -41,6 +41,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/assets/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('icon.css')}}">
     <!-- END: Custom CSS-->
+
+    <script src="{{asset('assets/backend/app-assets/vendors/js/vendors.min.js')}}"></script>
     
 </head>
 <!-- END: Head-->
@@ -114,9 +116,9 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="nav-item @php if($menu == 'home') echo 'active' @endphp"><a class="d-flex align-items-center" href="{{ route('admin') }}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Home">Home</span></a>
+                <li class="nav-item @php if($menu == 'home') echo 'active' @endphp"><a class="d-flex align-items-center" href="{{ route('admin') }}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Home">Orders</span></a>
                 </li>
-                <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Management Items</span><i data-feather="more-horizontal"></i>
+                {{-- <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Management Items</span><i data-feather="more-horizontal"></i> --}}
                 <li class="nav-item @php if($menu == 'locations') echo 'active' @endphp"><a class="d-flex align-items-center" href="{{ route('admin.locations') }}"><i data-feather='map-pin'></i><span class="menu-title text-truncate" data-i18n="Home">Locations</span></a>
                 </li>
                 <li class="nav-item @php if($menu == 'services') echo 'active' @endphp"><a class="d-flex align-items-center" href="{{ route('admin.services') }}"><i data-feather='activity'></i><span class="menu-title text-truncate" data-i18n="Home">Services</span></a>
@@ -179,7 +181,7 @@
     </script>
 
     <!-- BEGIN: Vendor JS-->
-    <script src="{{asset('assets/backend/app-assets/vendors/js/vendors.min.js')}}"></script>
+    
     @yield('vendor_js')
     <!-- BEGIN Vendor JS-->
 

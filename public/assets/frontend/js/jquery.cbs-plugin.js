@@ -44,77 +44,77 @@
 				window.location.href=$(this).find('a.cbs-location-url').attr('href');
 			});
 			
-			$this.on('click','.cbs-scroll-to-next-step .cbs-vehicle-list>li, .cbs-scroll-to-next-step .cbs-package-list>li>.cbs-button-box>.cbs-button, .cbs-scroll-to-next-step table.cbs-calendar .cbs-calendar-data a:not(.cbs-calendar-data-button-more)',function(e) 
-			{
-				//exception: deselect package
-				if($(this).closest('ul.cbs-package-list').length && 
-					$(this).closest('li.cbs-state-selected').length)
-					return;
+			// $this.on('click','.cbs-scroll-to-next-step .cbs-vehicle-list>li, .cbs-scroll-to-next-step .cbs-package-list>li>.cbs-button-box>.cbs-button, .cbs-scroll-to-next-step table.cbs-calendar .cbs-calendar-data a:not(.cbs-calendar-data-button-more)',function(e) 
+			// {
+			// 	//exception: deselect package
+			// 	if($(this).closest('ul.cbs-package-list').length && 
+			// 		$(this).closest('li.cbs-state-selected').length)
+			// 		return;
 				
-				var $nextStep = $(this).closest('.cbs-scroll-to-next-step')
-					.next('.cbs-main-list-item:not(.cbs-main-list-item-navigation-list)');
-				if($nextStep.length)
-					$.scrollTo($nextStep,{offset:-60});
-			});
+			// 	var $nextStep = $(this).closest('.cbs-scroll-to-next-step')
+			// 		.next('.cbs-main-list-item:not(.cbs-main-list-item-navigation-list)');
+			// 	if($nextStep.length)
+			// 		$.scrollTo($nextStep,{offset:-60});
+			// });
 			
-			$this.on('change','.cbs-location-drop-down>select',function(e) 
-			{
-				e.preventDefault();
-				var value=$(this).attr('value');
-				if(value.length)
-					window.location.href=value;
-			});
+			// $this.on('change','.cbs-location-drop-down>select',function(e) 
+			// {
+			// 	e.preventDefault();
+			// 	var value=$(this).attr('value');
+			// 	if(value.length)
+			// 		window.location.href=value;
+			// });
 			
-			$this.on('click','.cbs-vehicle-list>li',function(e) 
-			{
-				e.preventDefault();
+			// $this.on('click','.cbs-vehicle-list>li',function(e) 
+			// {
+			// 	e.preventDefault();
 				
-				$self.setButtonSelected(this,null,false,false);
+			// 	$self.setButtonSelected(this,null,false,false);
 				
-				var vehicleId=$self.getSelectedVehicleList();
+			// 	var vehicleId=$self.getSelectedVehicleList();
 				
-				$self.createPackage(vehicleId);
-				$self.createCalendar();
-			});
+			// 	$self.createPackage(vehicleId);
+			// 	$self.createCalendar();
+			// });
 			
-			$this.on('click','.cbs-package-list>li>.cbs-button-box>.cbs-button',function(e) 
-			{
-                if($(this).attr('href')=='#')
-                {
-                    e.preventDefault();
+			// $this.on('click','.cbs-package-list>li>.cbs-button-box>.cbs-button',function(e) 
+			// {
+            //     if($(this).attr('href')=='#')
+            //     {
+            //         e.preventDefault();
 
-                    $self.setButtonSelected($(this).parents('li:first'),null,true,false);
+            //         $self.setButtonSelected($(this).parents('li:first'),null,true,false);
 
-                    var vehicleId=$self.getSelectedVehicleList();
-                    var packageId=$self.getSelectedPackageList();
+            //         var vehicleId=$self.getSelectedVehicleList();
+            //         var packageId=$self.getSelectedPackageList();
 
-                    $self.toogleServiceHeader(packageId);
+            //         $self.toogleServiceHeader(packageId);
 
-                    $self.createService(vehicleId,packageId);
-                    $self.createCalendar();
-                }
-			});	
+            //         $self.createService(vehicleId,packageId);
+            //         $self.createCalendar();
+            //     }
+			// });	
 			
-			$this.on('click','.cbs-service-list>li>.cbs-button-box>.cbs-button',function(e) 
-			{
-				e.preventDefault();
+			// $this.on('click','.cbs-service-list>li>.cbs-button-box>.cbs-button',function(e) 
+			// {
+			// 	e.preventDefault();
 				
-				$self.setButtonSelected($(this).parents('li:first'),null,true,true);
+			// 	$self.setButtonSelected($(this).parents('li:first'),null,true,true);
 				
-				var i=0;
-				var serviceId=[];
+			// 	var i=0;
+			// 	var serviceId=[];
 				
-				$(this).parents('.cbs-service-list').children('li.cbs-state-selected').each(function()
-				{			
-					serviceId.push($self.getValueFromClass($(this),'cbs-service-id-'));
-				});
+			// 	$(this).parents('.cbs-service-list').children('li.cbs-state-selected').each(function()
+			// 	{			
+			// 		serviceId.push($self.getValueFromClass($(this),'cbs-service-id-'));
+			// 	});
 				
-				var vehicleId=$self.getSelectedVehicleList();
-				var packageId=$self.getSelectedPackageList();
+			// 	var vehicleId=$self.getSelectedVehicleList();
+			// 	var packageId=$self.getSelectedPackageList();
 				
-				$self.createCost(vehicleId,packageId,serviceId);
-				$self.createCalendar();
-			});	
+			// 	$self.createCost(vehicleId,packageId,serviceId);
+			// 	$self.createCalendar();
+			// });	
 			
 			$this.on('click','.cbs-button-service-more',function(e) 
 			{
@@ -221,48 +221,48 @@
                 text.val(value).trigger('change');
             });
 			
-			$this.children('form').bind('submit',function()
-			{
-				var data={};
+			// $this.children('form').bind('submit',function()
+			// {
+			// 	var data={};
 				
-				data.action='cbs_create_booking';
+			// 	data.action='cbs_create_booking';
 				
-				data.locationId=$option.locationId;
+			// 	data.locationId=$option.locationId;
 				
-				data.dateId=$self.getSelectedDateTime();
-				data.vehicleId=$self.getSelectedVehicleList();
-				data.packageId=$self.getSelectedPackageList();
-				data.serviceId=$self.getSelectedServiceList();
-				data.couponCode=$self.getCouponCode();
-				data.formAgreement=$self.getFormAgreement();
-				data.gratuity=$('.cbs-main-list-item-booking input[name="gratuity"]').val();
-				data.serviceLocation=$('.cbs-main-list-item-booking select[name="service_location"]').val();
+			// 	data.dateId=$self.getSelectedDateTime();
+			// 	data.vehicleId=$self.getSelectedVehicleList();
+			// 	data.packageId=$self.getSelectedPackageList();
+			// 	data.serviceId=$self.getSelectedServiceList();
+			// 	data.couponCode=$self.getCouponCode();
+			// 	data.formAgreement=$self.getFormAgreement();
+			// 	data.gratuity=$('.cbs-main-list-item-booking input[name="gratuity"]').val();
+			// 	data.serviceLocation=$('.cbs-main-list-item-booking select[name="service_location"]').val();
 				
-				data.clientFirstName=$('.cbs-main-list-item-booking input[name="client_first_name"]').val();
-				data.clientSecondName=$('.cbs-main-list-item-booking input[name="client_second_name"]').val();
-				data.clientCompanyName=$('.cbs-main-list-item-booking input[name="client_company_name"]').val();
-				data.clientVehicle=$('.cbs-main-list-item-booking input[name="client_vehicle"]').val();
-				data.clientEmailAddress=$('.cbs-main-list-item-booking input[name="client_email_address"]').val();
-				data.clientPhoneNumber=$('.cbs-main-list-item-booking input[name="client_phone_number"]').val();
-				data.clientMessage=$('.cbs-main-list-item-booking textarea[name="client_message"]').val();
+			// 	data.clientFirstName=$('.cbs-main-list-item-booking input[name="client_first_name"]').val();
+			// 	data.clientSecondName=$('.cbs-main-list-item-booking input[name="client_second_name"]').val();
+			// 	data.clientCompanyName=$('.cbs-main-list-item-booking input[name="client_company_name"]').val();
+			// 	data.clientVehicle=$('.cbs-main-list-item-booking input[name="client_vehicle"]').val();
+			// 	data.clientEmailAddress=$('.cbs-main-list-item-booking input[name="client_email_address"]').val();
+			// 	data.clientPhoneNumber=$('.cbs-main-list-item-booking input[name="client_phone_number"]').val();
+			// 	data.clientMessage=$('.cbs-main-list-item-booking textarea[name="client_message"]').val();
 				
-				data.clientAddressStreet=$('.cbs-main-list-item-booking input[name="client_address_street"]').val();
-				data.clientAddressPostCode=$('.cbs-main-list-item-booking input[name="client_address_post_code"]').val();
-				data.clientAddressCity=$('.cbs-main-list-item-booking input[name="client_address_city"]').val();
-				data.clientAddressState=$('.cbs-main-list-item-booking input[name="client_address_state"]').val();
-				data.clientAddressCountry=$('.cbs-main-list-item-booking input[name="client_address_country"]').val();
+			// 	data.clientAddressStreet=$('.cbs-main-list-item-booking input[name="client_address_street"]').val();
+			// 	data.clientAddressPostCode=$('.cbs-main-list-item-booking input[name="client_address_post_code"]').val();
+			// 	data.clientAddressCity=$('.cbs-main-list-item-booking input[name="client_address_city"]').val();
+			// 	data.clientAddressState=$('.cbs-main-list-item-booking input[name="client_address_state"]').val();
+			// 	data.clientAddressCountry=$('.cbs-main-list-item-booking input[name="client_address_country"]').val();
 				
-				data.registerUser=$('.cbs-register input[name="register_user"]').val();
-				data.username=$('.cbs-main-list-item-booking input[name="register_username"]').val();
-				data.password=$('.cbs-main-list-item-booking input[name="register_password"]').val();
-				data.passwordCheck=$('.cbs-main-list-item-booking input[name="register_password_check"]').val();
+			// 	data.registerUser=$('.cbs-register input[name="register_user"]').val();
+			// 	data.username=$('.cbs-main-list-item-booking input[name="register_username"]').val();
+			// 	data.password=$('.cbs-main-list-item-booking input[name="register_password"]').val();
+			// 	data.passwordCheck=$('.cbs-main-list-item-booking input[name="register_password_check"]').val();
 				
-				data.paymentType=$('.cbs-main-list-item-booking select[name="payment_type"]').val();
+			// 	data.paymentType=$('.cbs-main-list-item-booking select[name="payment_type"]').val();
 				
-				$self.post(data,$self.createBookingResponse);
+			// 	$self.post(data,$self.createBookingResponse);
 				
-				return(false);
-			});
+			// 	return(false);
+			// });
 			
 			$this.on('click','.cbs-calendar-header-arrow-left',function(e)
 			{
@@ -740,21 +740,22 @@
             
 			var data={};
 			
-			data.action='cbs_create_calendar';
-			
 			data.step=step;
-			data.locationId=$option.locationId;
-
-			data.packageId=$self.getSelectedPackageList();
-			data.serviceId=$self.getSelectedServiceList();
-			data.vehicleId=$self.getSelectedVehicleList();
-			
+			data.locationId=$("#location_id").val();
 			data.startDate=$self.getValueFromClass($this.find('.cbs-calendar .cbs-calendar-subheader th.cbs-active'),'cbs-date-id-');
 			
-			$self.post(data,function(response)
-			{
-				$self.createCalendarResponse(response);
-			});					
+			$.ajax({
+				type: 'get',
+				url: appUrl + '/home/getCalendar',
+				data: data,
+				success: (res) => {
+					$("#calendar").html(res);
+					$self.calculateCalendarColumnWidth();
+				},
+				error: (err) => {
+					console.log(err);
+				}
+			})				
 		};
 		
 		/**********************************************************************/

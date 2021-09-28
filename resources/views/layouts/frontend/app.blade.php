@@ -7,25 +7,34 @@
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Favicon -->
-        {{-- <link href="img/favicon.ico" rel="icon"> --}}
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> 
         
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        {{-- <link href="{{asset('assets/frontend/lib/bootstrap/bootstrap.min.css')}}" rel="stylesheet"> --}}
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="{{asset('assets/frontend/lib/flaticon/font/flaticon.css')}}" rel="stylesheet">
         <link href="{{asset('assets/frontend/lib/animate/animate.min.css')}}" rel="stylesheet">
         <link href="{{asset('assets/frontend/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/frontend/lib/timeslots/mark-your-calendar.css')}}" rel="stylesheet">
 
         <!-- Template Stylesheet -->
         <link href="{{asset('assets/frontend/css/style.css')}}" rel="stylesheet">
         <link href="{{asset('assets/frontend/css/booking.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/frontend/css/custom.css')}}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{asset('icon.css')}}">
 
+        {{-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> --}}
+        <script src="{{asset('assets/frontend/lib/jQuery/jQuery-2.1.4.min.js')}}"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="{{asset('assets/frontend/lib/easing/easing.min.js')}}"></script>
+        <script src="{{asset('assets/backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
+        <script src="{{asset('assets/frontend/lib/counterup/counterup.min.js')}}"></script>
+        <script src="{{asset('assets/frontend/lib/timeslots/mark-your-calendar.js')}}"></script>
+        <script src="{{asset('assets/frontend/lib/momentjs/moment.js')}}"></script>
         
     </head>
 
@@ -38,7 +47,6 @@
                         <div class="logo">
                             <a href="index.html">
                                 <h1>Auto<span>Gavanni</span></h1>
-                                <!-- <img src="img/logo.jpg" alt="Logo"> -->
                             </a>
                         </div>
                     </div>
@@ -175,20 +183,23 @@
         <div id="loader" class="show">
             <div class="loader"></div>
         </div>
-
+        <script>
+            var appUrl = '{{ env('APP_URL') }}';
+            $(function() {
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+            })
+        </script>       
         <!-- JavaScript Libraries -->
-        {{-- <script src="{{asset('assets/frontend/lib/jQuery/jQuery-2.1.4.min.js')}}"></script>
-        <script src="{{asset('assets/frontend/lib/bootstrap/bootstrap.min.js')}}"></script> --}}
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="{{asset('assets/frontend/lib/easing/easing.min.js')}}"></script>
-        <script src="{{asset('assets/frontend/lib/counterup/counterup.min.js')}}"></script>
         @yield('vendor_js')
         <!-- Contact Javascript File -->
         
         <!-- Template Javascript -->
         <script src="{{asset('assets/frontend/js/main.js')}}"></script>
-        {{-- <script src="{{asset('assets/frontend/js/booking.js')}}"></script> --}}
+        <script src="{{asset('assets/frontend/js/jquery.cbs-plugin.js')}}"></script>
         <!-- Page Javascript -->
         @yield('page_js')
         <!-- End Page Javascript -->

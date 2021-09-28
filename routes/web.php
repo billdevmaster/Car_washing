@@ -25,16 +25,20 @@ Route::post('/backend/signin', 'Auth\Backend\AuthController@signin')->name('back
 Route::post('/backend/signup', 'Auth\Backend\AuthController@signup')->name('backend.signup');
 Route::get('/backend/signout', 'Auth\Backend\AuthController@signout')->name('backend.signout');
 
-
 // frontend
 Route::get('/', 'Frontend\HomePageController@index')->name('index');
+Route::post('/home/storeBooking', 'Frontend\HomePageController@storeBooking')->name('booking.store');
+Route::get('/home/getCalendar', 'Frontend\HomePageController@getCalendar')->name('home.getCalendar');
 
 // backend
 Route::group(['middleware' => 'auth'], function(){
     Route::group(['middleware'=>'isadmin'], function() {
         Route::get('/admin', 'Backend\AdminController@index')->name('admin');
+        Route::get('/admin/getCalendar', 'Backend\AdminController@getCalendar')->name('admin.getCalendar');
+        Route::get('/admin/editOrder', 'Backend\AdminController@editOrder')->name('admin.editOrder');
+        Route::post('/admin/updateOrder', 'Backend\AdminController@updateOrder')->name('admin.updateOrder');
         // vehicle route
-        Route::get('/admin/vehicles', 'Backend\AdminVehicleController@index')->name('admin.vehicles');;
+        Route::get('/admin/vehicles', 'Backend\AdminVehicleController@index')->name('admin.vehicles');
         Route::post('/admin/vehicles/save', 'Backend\AdminVehicleController@save')->name('admin.vehicles.save');
         Route::get('/admin/vehicles/get_list', 'Backend\AdminVehicleController@get_list');
         // end vehicle route

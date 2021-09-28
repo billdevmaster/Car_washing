@@ -1,6 +1,10 @@
 (function ($) {
     "use strict";
-    
+    $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
     // loader
     var loader = function () {
         setTimeout(function () {
@@ -59,7 +63,6 @@
         delay: 10,
         time: 2000
     });
-
     
 })(jQuery);
 
