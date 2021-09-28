@@ -42,7 +42,7 @@
                 <ul class="cbs-list-reset cbs-state-to-hidden cbs-date-list">
                   @foreach ($slots['slots'] as $time)
                     <li>
-                      <a href="#" data-nsfw-filter-status="swf" data-value="{{ $slots['fulldate'] }}{{ $time }}">{{ $time }}</a>
+                      <a href="#" data-nsfw-filter-status="swf" data-value="{{ $slots['fulldate'] }}{{ $time }}">{{ substr($time, 0, 5) }}</a>
                     </li>
                   @endforeach
                 </ul>

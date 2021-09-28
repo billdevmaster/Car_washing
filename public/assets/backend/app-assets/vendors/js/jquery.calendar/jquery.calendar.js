@@ -43,13 +43,13 @@
 
 		// Date Masks
 		maskmonthlabel			: 'l',
-		maskeventlabel			: 'g:i A',
+		maskeventlabel			: 'G:i',
 		maskeventlabeldelimiter : '', // &ndash;
 		maskeventlabelend 		: '', // g:i A
 		maskdatelabel			: 'D, jS',
 		masktimelabel			: {
-			'00'	: 'g:i <\\sp\\a\\n>A<\/\\sp\\a\\n>',
-			'noon'	: '\\N\\O\\O\\N'
+			'00'	: 'G:i <\\sp\\a\\n><\/\\sp\\a\\n>',
+			'noon'	: '12:00'
 		},
 
 		// Either false, or an array of resources.

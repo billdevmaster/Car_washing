@@ -141,6 +141,7 @@
 				{
 					var index=selected.parents('td:first').index();
 					var date=$this.find('.cbs-calendar-subheader th:eq('+index+')').attr('data-date-full');
+					// check already
 
 					$this.find('.cbs-booking-summary-date h5 span:first').html(date);
 					$this.find('.cbs-booking-summary-time h5 span:first').html(selected.text());

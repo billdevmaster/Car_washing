@@ -116,6 +116,8 @@ class HomePageController extends Controller
         $step = $request->step;
         $start_date = $request->startDate;
         $slots_data = $this->getTimeSlots(substr($start_date, 0, 2), substr($start_date, 2, 2), substr($start_date, 4, 4), $step, $step);
-        return view('frontend.partials.calendar', compact("slots_data"))->render();
+        $end_date = date("Y-m-d", strtotime($start_date. ' + ' . $step . ' days'));
+        $orders = Orders::whereBetween("date", [$start_date, $end_date])->get();
+        return view('frontend.partials.calendar', compact("slots_data", "orders"))->render();
     }
 }
