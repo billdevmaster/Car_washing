@@ -83,13 +83,13 @@
                         <label for="first-name">Wensday</label>
                     </div>
                     <div class="col-sm-4">
-                        <input type="time" class="form-control" name="Wen_start" id="Wen_start" placeholder="Start time"  value="{{ $location->Wen_start }}"/>
+                        <input type="time" class="form-control" name="Wed_start" id="Wed_start" placeholder="Start time"  value="{{ $location->Wed_start }}"/>
                     </div>
                     <div class="col-sm-1" style="align-items: center; display: flex;">
                         <i data-feather='minus'></i>
                     </div>
                     <div class="col-sm-4">
-                        <input type="time" class="form-control" name="Wen_end" id="Wen_end" placeholder="End time"  value="{{ $location->Wen_end }}"/>
+                        <input type="time" class="form-control" name="Wed_end" id="Wed_end" placeholder="End time"  value="{{ $location->Wed_end }}"/>
                     </div>
                 </div>
                 <div class="form-group row">
