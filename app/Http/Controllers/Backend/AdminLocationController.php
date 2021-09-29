@@ -53,8 +53,8 @@ class AdminLocationController extends Controller
         $location->Mon_end = $request->Mon_end;
         $location->Tue_start = $request->Tue_start;
         $location->Tue_end = $request->Tue_end;
-        $location->Wen_start = $request->Wen_start;
-        $location->Wen_end = $request->Wen_end;
+        $location->Wed_start = $request->Wen_start;
+        $location->Wed_end = $request->Wen_end;
         $location->Thu_start = $request->Thu_start;
         $location->Thu_end = $request->Thu_end;
         $location->Fri_start = $request->Fri_start;
