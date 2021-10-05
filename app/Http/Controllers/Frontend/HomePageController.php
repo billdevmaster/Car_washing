@@ -20,13 +20,14 @@ class HomePageController extends Controller
         $location_pesuboxs = $this->getLocationPesuboxs();
 
         $slots_data = $this->getTimeSlots(date("d"), date("m"), date("Y"), 0, 7);
+        $usedtime = "none";
 
         // $date_range = array(
         //     'start' => strtotime("today"),
         //     'end' => strtotime("+6 day", strtotime("today")),
         // );
 
-        return view("frontend.home", compact("location", "location_services", "location_vehicles", "slots_data", "location_pesuboxs"));
+        return view("frontend.home", compact("location", "location_services", "location_vehicles", "slots_data", "usedtime", "location_pesuboxs"));
     }
 
     public function storeBooking(Request $request) {
@@ -65,26 +66,38 @@ class HomePageController extends Controller
     }
 
     public function getCurrentLocation() {
-        return Locations::find(2);
+        return Locations::find(1);
     }
 
     public function getLocationServices() {
         $location = $this->getCurrentLocation();
+        if ($location == null) {
+            return null;
+        }
         return LocationServices::leftJoin('services', 'services.id', '=', 'location_services.service_id')->where("location_id", $location->id)->get();
     }
 
     public function getLocationVehicles() {
         $location = $this->getCurrentLocation();
+        if ($location == null) {
+            return null;
+        }
         return LocationVehicles::leftJoin('vehicles', 'vehicles.id', '=', 'location_vehicles.vehicle_id')->where("location_id", $location->id)->get();
     }
 
     public function getLocationPesuboxs() {
         $location = $this->getCurrentLocation();
+        if ($location == null) {
+            return null;
+        }
         return LocationPesuboxs::where("location_id", $location->id)->where("is_delete", 'N')->where("status", 1)->get();
     }
 
     public function getTimeSlots($day_first, $month, $year, $step, $length) {
         $location = $this->getCurrentLocation();
+        if ($location == null) {
+            return null;
+        }
         
         for ($x = $step; $x < $step + 7; $x++)
         {
@@ -114,10 +127,34 @@ class HomePageController extends Controller
 
     public function getCalendar(Request $request) {
         $step = $request->step;
-        $start_date = $request->startDate;
-        $slots_data = $this->getTimeSlots(substr($start_date, 0, 2), substr($start_date, 2, 2), substr($start_date, 4, 4), $step, $step);
-        $end_date = date("Y-m-d", strtotime($start_date. ' + ' . $step . ' days'));
-        $orders = Orders::whereBetween("date", [$start_date, $end_date])->get();
-        return view('frontend.partials.calendar', compact("slots_data", "orders"))->render();
+        $start_date = substr($request->startDate, 4, 4) . "-" . substr($request->startDate, 2, 2) . "-" . substr($request->startDate, 0, 2);
+        
+        $slots_data = $this->getTimeSlots(substr($request->startDate, 0, 2), substr($request->startDate, 2, 2), substr($request->startDate, 4, 4), $step, $step);
+        if ($step > 0) {
+            $start_date = date("Y-m-d", strtotime($start_date . "+" . $step . ' days'));
+        } else {
+            $start_date = date("Y-m-d", strtotime($start_date . "-" . -1 * $step . ' days'));
+        }
+        $end_date = date("Y-m-d", strtotime($start_date. ' + ' . 7 . ' days'));
+        $orders = Orders::whereBetween("date", [$start_date , $end_date])->where("pesubox_id", $request->pesubox_id)->get();
+        $date_ranges = [];
+        foreach($orders as $order) {
+            $start_time = strtotime($order->date . " " . $order->time);
+            $end_time = strtotime($order->date . " " . $order->time) + $order->duration * 60;
+            $date_ranges[] = [$start_time, $end_time];
+        }
+        $usedtime = [];
+        foreach($slots_data as $data) {
+            $last_time = strtotime(substr($data['fulldate'], 4, 4) . "-" . substr($data['fulldate'], 2, 2) . "-" . substr($data['fulldate'], 0, 2) . " " . $data['slots'][count($data['slots']) - 1]);
+            foreach($data['slots'] as $slot) {
+                $time = strtotime(substr($data['fulldate'], 4, 4) . "-" . substr($data['fulldate'], 2, 2) . "-" . substr($data['fulldate'], 0, 2) . " " . $slot);
+                foreach($date_ranges as $range) {
+                    if (($time >= $range[0] && $time < $range[1]) || ($time + $request->service_duration * 60 > $range[0] && $time + $request->service_duration * 60 < $range[1]) || $time + $request->service_duration * 60 > $last_time + 30 * 60) {
+                        $usedtime[] = $time;
+                    }
+                }
+            }
+        }
+        return view('frontend.partials.calendar', compact("slots_data", "orders", "usedtime"))->render();
     }
 }

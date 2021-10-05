@@ -10,7 +10,6 @@
         var pesuboxs = @json($pesuboxs);
         var data = @json($data);
         var resources = {};
-        console.log(data);
         pesuboxs.map(box => {
             resources[box.id] = box.name;
         })

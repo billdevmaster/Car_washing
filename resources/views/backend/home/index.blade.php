@@ -77,6 +77,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-primary" onclick="getOrder(0)">add booking</button>
+                </div>
             </div>
         </form>
         
@@ -132,7 +135,7 @@
         $.ajax({
             type: 'get',
             url: appUrl + "/admin/editOrder",
-            data: {id: uid},
+            data: {id: uid, location_id: $("#location").val()},
             success: (res) => {
                 $("#order_modal").html(res);
                 $("#order_modal").modal("show");

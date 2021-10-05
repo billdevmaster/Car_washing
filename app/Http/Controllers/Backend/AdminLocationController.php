@@ -150,7 +150,7 @@ class AdminLocationController extends Controller
     }
 
     public function getLocationUsers(Request $request) {
-        $users = User::where("is_delete", 'N')->get();
+        $users = User::get();
         $location_id = $request->id;
         $location_users = LocationUsers::leftJoin('users', 'users.id', '=', 'location_users.user_id')->where("location_users.location_id", $request->id)->get();
         

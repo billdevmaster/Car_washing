@@ -264,6 +264,36 @@
 				
 			// 	return(false);
 			// });
+
+			$this.on("click", ".cbs-service-list .cbs-button", function (e) {
+				e.preventDefault();
+				var currServiceId = $("#selected-service-value").val();
+				if ($(this).hasClass("active"))
+					$(this).removeClass("active");
+				else
+					$(this).addClass("active");
+				var price = 0;
+				var duration = 0;
+				// calculate the duration.
+				$(".cbs-form").find(".cbs-service-list li a.cbs-button.active").each(function() {
+					duration += $(this).data("service-duration");
+					price += $(this).data("service-price");
+				});
+				
+				$('.cbs-booking-summary-service-duration').html(duration);
+				$('.cbs-booking-summary-price-value').html(price);
+				$self.createCalendar(0);
+			});
+
+			$this.on("click", ".cbs-pesubox-list .cbs-button", function (e) {
+				e.preventDefault();
+				$(this).parent().parent().parent().find(".cbs-button.active").removeClass("active");
+				$(this).addClass("active")
+				var name = $(this).data("pesubox-name");
+				$('.cbs-booking-summary-pesubox-value').html(name);
+				$("[name=pesubox_id]").val($(this).data("pesubox-id"));
+				$self.createCalendar(0);
+			});
 			
 			$this.on('click','.cbs-calendar-header-arrow-left',function(e)
 			{
@@ -737,26 +767,36 @@
 		
 		this.createCalendar=function(step)
 		{
-            if($this.find('.cbs-main-list-item-calendar').length!==1) return;
-            
-			var data={};
-			
-			data.step=step;
-			data.locationId=$("#location_id").val();
-			data.startDate=$self.getValueFromClass($this.find('.cbs-calendar .cbs-calendar-subheader th.cbs-active'),'cbs-date-id-');
-			
-			$.ajax({
-				type: 'get',
-				url: appUrl + '/home/getCalendar',
-				data: data,
-				success: (res) => {
-					$("#calendar").html(res);
-					$self.calculateCalendarColumnWidth();
-				},
-				error: (err) => {
-					console.log(err);
-				}
-			})				
+			console.log($('.cbs-booking-summary-service-duration').html());
+			console.log($("[name=pesubox_id]").val());
+			if ($('.cbs-booking-summary-service-duration').html() != '0' && $("[name=pesubox_id]").val() != 0) {
+				if($this.find('.cbs-main-list-item-calendar').length!==1) return;
+				
+				var data={};
+				
+				data.step=step;
+				data.locationId = $("#location_id").val();
+				data.startDate = $self.getValueFromClass($this.find('.cbs-calendar .cbs-calendar-subheader th.cbs-active'),'cbs-date-id-');
+				data.pesubox_id = $("[name=pesubox_id]").val();
+				data.service_id = [];
+				$(".cbs-form").find(".cbs-service-list li a.cbs-button.active").each(function() {
+					data.service_id.push($(this).data("service-id"));
+				});
+				data.service_duration = $('.cbs-booking-summary-service-duration').html() * 1;
+
+				$.ajax({
+					type: 'get',
+					url: appUrl + '/home/getCalendar',
+					data: data,
+					success: (res) => {
+						$("#calendar").html(res);
+						$self.calculateCalendarColumnWidth();
+					},
+					error: (err) => {
+						console.log(err);
+					}
+				})				
+			}
 		};
 		
 		/**********************************************************************/
@@ -1156,19 +1196,21 @@
 		this.setButtonSelected=function(object,group,unchecked,multiple)
 		{
 			object=$(object);
-			
-			if(!unchecked)
-			{
-				if(object.hasClass('cbs-state-selected')) return;
+			if (object.hasClass("disable")) {
+				alert("please select service and pesubox")
+			} else {
+				if(!unchecked)
+				{
+					if(object.hasClass('cbs-state-selected')) return;
+				}
+				
+				if(!multiple)
+				{
+					if(group===null) group=object.siblings();
+					group.removeClass('cbs-state-selected');
+				}
+				object.toggleClass('cbs-state-selected');
 			}
-			
-			if(!multiple)
-			{
-				if(group===null) group=object.siblings();
-				group.removeClass('cbs-state-selected');
-			}
-			
-			object.toggleClass('cbs-state-selected');
 		};
 		
 		/**********************************************************************/

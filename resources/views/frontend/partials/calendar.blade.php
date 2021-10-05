@@ -40,9 +40,19 @@
             <td style="display: table-cell;">
               <div>
                 <ul class="cbs-list-reset cbs-state-to-hidden cbs-date-list">
-                  @foreach ($slots['slots'] as $time)
-                    <li>
-                      <a href="#" data-nsfw-filter-status="swf" data-value="{{ $slots['fulldate'] }}{{ $time }}">{{ substr($time, 0, 5) }}</a>
+                  @foreach ($slots['slots'] as $slot)
+                    <?php 
+                      $time = strtotime(substr($slots['fulldate'], 4, 4) . "-" . substr($slots['fulldate'], 2, 2) . "-" . substr($slots['fulldate'], 0, 2) . " " . $slot);
+                      
+                    ?>
+                    <li class="@if ($usedtime == 'none')
+                      disable
+                      @elseif (in_array($time, $usedtime))
+                      disable
+                      @else
+                      
+                      @endif">
+                      <a href="#" data-nsfw-filter-status="swf" data-value="{{ $slots['fulldate'] }}{{ $slot }}" >{{ substr($slot, 0, 5) }}</a>
                     </li>
                   @endforeach
                 </ul>

@@ -23,3 +23,9 @@
   background: #1ABC9C;
   color: white;
 }
+
+#calendar table tr.cbs-calendar-data td li.disable a {
+  background-color: #e36565;
+  color: white;
+  cursor: no-drop;
+}

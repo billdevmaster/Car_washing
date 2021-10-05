@@ -17,8 +17,8 @@
     }
   });
   $(function() {
-
     $(".location-edit .services-wrapper .location-service").change(function() {
+        
       $.ajax({
           type: 'post',
           url: appUrl + '/admin/locations/saveLocationService',

@@ -28,29 +28,33 @@
                                                                 <ul>
                                                                 </ul>
                                                             </div>
-                                                            <ul class="cbs-main-list cbs-clear-fix cbs-list-reset">
-                                                                <!-- Vehicle -->
-                                                                <li class="cbs-main-list-item cbs-main-list-item-vehicle-list cbs-clear-fix cbs-scroll-to-next-step">
-                                                                    @include('frontend.partials.select-vehicle')
-                                                                </li>
-                                                                  <!-- Service -->
-                                                                <li class="cbs-main-list-item cbs-main-list-item-service-list cbs-clear-fix">
-                                                                    @include('frontend.partials.select-service')
-                                                                </li>
-                                                                {{-- pesubox --}}
-                                                                <li class="cbs-main-list-item cbs-main-list-item-service-list cbs-clear-fix">
-                                                                    @include('frontend.partials.select-pesubox')
-                                                                </li>
-                                                                <!-- Date and time -->
-                                                                <li class="cbs-main-list-item cbs-main-list-item-calendar cbs-clear-fix cbs-scroll-to-next-step" id="calendar">
-                                                                    @include('frontend.partials.calendar')
-                                                                </li>
-                                                                <!-- Booking summary -->
-                                                                <li class="cbs-main-list-item cbs-main-list-item-booking cbs-clear-fix">
-                                                                    @include('frontend.partials.booking-summary')
-                                                                </li>
-                                                            </ul>
-                                                            <input type="hidden" name="location_id" id="location_id" value="{{ $location->id }}">
+                                                            @if ($location != null)
+                                                                <ul class="cbs-main-list cbs-clear-fix cbs-list-reset">
+                                                                    <!-- Vehicle -->
+                                                                    <li class="cbs-main-list-item cbs-main-list-item-vehicle-list cbs-clear-fix cbs-scroll-to-next-step">
+                                                                        @include('frontend.partials.select-vehicle')
+                                                                    </li>
+                                                                    <!-- Service -->
+                                                                    <li class="cbs-main-list-item cbs-main-list-item-service-list cbs-clear-fix">
+                                                                        @include('frontend.partials.select-service')
+                                                                    </li>
+                                                                    {{-- pesubox --}}
+                                                                    <li class="cbs-main-list-item cbs-main-list-item-service-list cbs-clear-fix">
+                                                                        @include('frontend.partials.select-pesubox')
+                                                                    </li>
+                                                                    <!-- Date and time -->
+                                                                    <li class="cbs-main-list-item cbs-main-list-item-calendar cbs-clear-fix cbs-scroll-to-next-step" id="calendar">
+                                                                        @include('frontend.partials.calendar')
+                                                                    </li>
+                                                                    <!-- Booking summary -->
+                                                                    <li class="cbs-main-list-item cbs-main-list-item-booking cbs-clear-fix">
+                                                                        @include('frontend.partials.booking-summary')
+                                                                    </li>
+                                                                </ul>
+                                                                <input type="hidden" name="location_id" id="location_id" value="{{ $location->id }}">
+                                                            @else
+                                                                <h1 style="text-align: center; font-size: 22px;">There is no location.</h1>
+                                                            @endif
                                                         </form>
                                                     </div>
   
@@ -83,36 +87,7 @@
         $("#selected-vehicle-value").val($(this).data("vehicle-id"));
     });
 
-    $(".cbs-service-list").on("click", ".cbs-button", function (e) {
-        e.preventDefault();
-        var currServiceId = $("#selected-service-value").val();
-        if ($(this).hasClass("active"))
-            $(this).removeClass("active");
-        else
-            $(this).addClass("active");
-        var price = 0;
-        var duration = 0;
-        // calculate the duration.
-        $(".cbs-form").find(".cbs-service-list li a.cbs-button.active").each(function() {
-            duration += $(this).data("service-duration");
-            price += $(this).data("service-price");
-        });
-        
-        $('.cbs-booking-summary-service-duration').html(duration);
-        $('.cbs-booking-summary-price-value').html(price);
-    });
-
-    $(".cbs-pesubox-list").on("click", ".cbs-button", function (e) {
-        e.preventDefault();
-        $(this).parent().parent().parent().find(".cbs-button.active").removeClass("active");
-        $(this).addClass("active")
-        var name = $(this).data("pesubox-name");
-        $('.cbs-booking-summary-pesubox-value').html(name);
-        $("[name=pesubox_id]").val($(this).data("pesubox-id"))
-    });
-
     $(".cbs-form").submit(function(e) {
-        
         var data = {};
         data.location_id = $(this).find("#location_id").val();
         data.first_name = $(this).find("[name=first_name]").val();
@@ -133,7 +108,6 @@
         data.duration = $(this).find(".cbs-booking-summary-service-duration").text();
         data.price = $(this).find(".cbs-booking-summary-price-value").text();
         data.date = $(this).find(".cbs-date-list .cbs-state-selected a").data("value");
-
 
         $.ajax({
             type: 'post',

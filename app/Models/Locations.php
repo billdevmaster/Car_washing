@@ -16,7 +16,7 @@ class Locations extends Model
         'Mon_end',
         'Tue_start',
         'Tue_end',
-        'Wed_start',
+        'Wed_start',        
         'Wed_end',
         'Thu_start',
         'Thu_end',
