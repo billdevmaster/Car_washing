@@ -18,7 +18,6 @@ class HomePageController extends Controller
 {
     //
     public function index(Request $request) {
-        var_dump($request['Bookings']);
         if ($request['Bookings'] != NULL) {
             $booking = new Bookings();
             $booking->location_id = $request->location_id;
@@ -38,7 +37,8 @@ class HomePageController extends Controller
             $booking->duration = $request['duration'];
             $booking->started_at = $booking->date . " " . $booking->time;
             $booking->save();
-            return redirect()->route('index', ["office" => $request->location_id]);
+            var_dump("oka");exit;
+            // return redirect()->route('index', ["office" => $request->location_id]);
         }
         $location_id = $request->office ? $request->office : 1;
         $location = $this->getCurrentLocation($location_id);
