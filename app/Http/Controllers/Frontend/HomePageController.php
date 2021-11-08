@@ -19,6 +19,7 @@ class HomePageController extends Controller
     //
     public function index(Request $request) {
         if ($request['Bookings'] != NULL) {
+            var_dump("okay");exit;
             $booking = new Bookings();
             $booking->location_id = $request->location_id;
             $booking->email = $request['Bookings']['email'];
