@@ -18,6 +18,7 @@ class HomePageController extends Controller
 {
     //
     public function index(Request $request) {
+        echo $request->location_id;
         if ($request->Bookings != NULL) {
             $booking = new Bookings();
             $booking->location_id = $request->location_id;
