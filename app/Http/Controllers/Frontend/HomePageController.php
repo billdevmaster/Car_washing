@@ -18,7 +18,7 @@ class HomePageController extends Controller
 {
     //
     public function index(Request $request) {
-        var_dump("okay");exit;
+        var_dump($request['Bookings']);
         if ($request['Bookings'] != NULL) {
             $booking = new Bookings();
             $booking->location_id = $request->location_id;
