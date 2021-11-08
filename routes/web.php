@@ -27,8 +27,10 @@ Route::get('/backend/signout', 'Auth\Backend\AuthController@signout')->name('bac
 
 // frontend
 Route::get('/', 'Frontend\HomePageController@index')->name('index');
-Route::post('/home/storeBooking', 'Frontend\HomePageController@storeBooking')->name('booking.store');
+Route::post('/', 'Frontend\HomePageController@index')->name('order');
 Route::get('/home/getCalendar', 'Frontend\HomePageController@getCalendar')->name('home.getCalendar');
+Route::get('/home/booking', 'Frontend\HomePageController@booking')->name('home.booking');
+Route::get('/home/models', 'Frontend\HomePageController@models')->name('home.models');
 
 // backend
 Route::group(['middleware' => 'auth'], function(){
@@ -37,6 +39,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/admin/getCalendar', 'Backend\AdminController@getCalendar')->name('admin.getCalendar');
         Route::get('/admin/editOrder', 'Backend\AdminController@editOrder')->name('admin.editOrder');
         Route::post('/admin/updateOrder', 'Backend\AdminController@updateOrder')->name('admin.updateOrder');
+        Route::post('/admin/getModel', 'Backend\AdminController@getModel');
         // vehicle route
         Route::get('/admin/vehicles', 'Backend\AdminVehicleController@index')->name('admin.vehicles');
         Route::post('/admin/vehicles/save', 'Backend\AdminVehicleController@save')->name('admin.vehicles.save');

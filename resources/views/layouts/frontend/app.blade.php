@@ -10,36 +10,66 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Favicon -->
 
-        <!-- Google Font -->
+        {{-- <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> 
         
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{asset('icon.css')}}">
         <link href="{{asset('assets/frontend/lib/flaticon/font/flaticon.css')}}" rel="stylesheet">
         <link href="{{asset('assets/frontend/lib/animate/animate.min.css')}}" rel="stylesheet">
         <link href="{{asset('assets/frontend/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-        <link href="{{asset('assets/frontend/lib/timeslots/mark-your-calendar.css')}}" rel="stylesheet">
-
+        
+        
         <!-- Template Stylesheet -->
-        <link href="{{asset('assets/frontend/css/style.css')}}" rel="stylesheet">
-        <link href="{{asset('assets/frontend/css/booking.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/frontend/lib/timeslots/mark-your-calendar.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/frontend/css/booking.css')}}" rel="stylesheet"> --}}
+        
+        
         <link href="{{asset('assets/frontend/css/custom.css')}}" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{asset('icon.css')}}">
+        <link href="{{asset('assets/frontend/css/style.css')}}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/bootstrap-datetimepicker.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/bootstrapValidator.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/select2.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/broneeri.css') }}">
 
         {{-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> --}}
-        <script src="{{asset('assets/frontend/lib/jQuery/jQuery-2.1.4.min.js')}}"></script>
+        {{-- <script src="{{asset('assets/frontend/lib/jQuery/jQuery-2.1.4.min.js')}}"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
         <script src="{{asset('assets/frontend/lib/easing/easing.min.js')}}"></script>
         <script src="{{asset('assets/backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
-        <script src="{{asset('assets/frontend/lib/counterup/counterup.min.js')}}"></script>
         <script src="{{asset('assets/frontend/lib/timeslots/mark-your-calendar.js')}}"></script>
-        <script src="{{asset('assets/frontend/lib/momentjs/moment.js')}}"></script>
+        <script src="{{asset('assets/frontend/lib/momentjs/moment.js')}}"></script> --}}
+        <script type="text/javascript" async="" src="{{ asset('assets/frontend/js/ga.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/mustache.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.mustache.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/hammer.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.hammer.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/moment.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/moment-timezone.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/bootstrap.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/bootstrap-datetimepicker.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/bootstrapValidator.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/select2.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/modernizr.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/JsTrans.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/dictionary-5de77a5290.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/polyfills.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/momentDate.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/index.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/events.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/fixedHeader.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/frontend/js/localStorage.js') }}"></script>
+        <script src="{{asset('assets/frontend/lib/counterup/counterup.min.js')}}"></script>
         
     </head>
 
     <body>
-        <!-- Top Bar Start -->
+        {{-- <!-- Top Bar Start -->
         <div class="top-bar">
             <div class="container">
                 <div class="row align-items-center">
@@ -113,14 +143,14 @@
                     </div>
                 </nav>
             </div>
-        </div>
+        </div> --}}
         <!-- Nav Bar End -->
 
         @yield('content')
 
 
         <!-- Footer Start -->
-        <div class="footer">
+        {{-- <div class="footer">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
@@ -173,11 +203,11 @@
             <div class="container copyright">
                 <p>&copy; <a href="#">Your Site Name</a>, All Right Reserved. Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
             </div>
-        </div>
+        </div> --}}
         <!-- Footer End -->
         
         <!-- Back to top button -->
-        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        {{-- <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a> --}}
         
         <!-- Pre Loader -->
         <div id="loader" class="show">

@@ -9,92 +9,112 @@ use App\Models\LocationServices;
 use App\Models\LocationVehicles;
 use App\Models\LocationPesuboxs;
 use App\Models\Orders;
+use App\Models\Bookings;
+use App\Models\Mark;
+use App\Models\MarkModel;
+// use Illuminate\Support\Facades\Input;
 
 class HomePageController extends Controller
 {
     //
-    public function index() {
-        $location = $this->getCurrentLocation();
-        $location_services = $this->getLocationServices();
-        $location_vehicles = $this->getLocationVehicles();
-        $location_pesuboxs = $this->getLocationPesuboxs();
+    public function index(Request $request) {
+        if ($request['Bookings'] != NULL) {
+            $booking = new Bookings();
+            $booking->location_id = $request->location_id;
+            $booking->email = $request['Bookings']['email'];
+            $booking->phone = $request['Bookings']['phone'];
+            $booking->driver = $request['Bookings']['driver'];
+            $booking->number = $request['Vehicles']['number'];
+            $booking->summary = $request['Bookings']['summary'];
+            $booking->mark_id = $request['Makes']['id'];
+            $booking->model_id = $request['Vehicles']['model_id'];
+            $booking->is_delete = 'N';
+            $booking->service_id = implode(",", $request->BookingService['service_id']);
+            $booking->pesubox_id = $request['BookingResources']['resource_id'];
+            $booking->vehicle_id = $request['vehicle_id'];
+            $booking->date = substr($request['Bookings']['started_at'], 6, 4) . "-" . substr($request['Bookings']['started_at'], 3, 2) . "-" . substr($request['Bookings']['started_at'], 0, 2);
+            $booking->time = substr($request['Bookings']['started_at'], 11, 5) . ":00";
+            $booking->duration = $request['duration'];
+            $booking->started_at = $booking->date . " " . $booking->time;
+            $booking->save();
+            return redirect()->route('index', ["office" => $request->location_id]);
+        }
+        $location_id = $request->office ? $request->office : 1;
+        $location = $this->getCurrentLocation($location_id);
+        $location_services = $this->getLocationServices($location_id);
+        $location_marks = Mark::get();
+        $location_mark_models = MarkModel::get();
+        $location_vehicles = $this->getLocationVehicles($location_id);
+        // $location_pesuboxs = $this->getLocationPesuboxs($location_id);
 
-        $slots_data = $this->getTimeSlots(date("d"), date("m"), date("Y"), 0, 7);
+        $slots_data = $this->getTimeSlots(date("d"), date("m"), date("Y"), 0, 7, $location_id);
         $usedtime = "none";
+        $office = $location_id;
 
         // $date_range = array(
         //     'start' => strtotime("today"),
         //     'end' => strtotime("+6 day", strtotime("today")),
         // );
 
-        return view("frontend.home", compact("location", "location_services", "location_vehicles", "slots_data", "usedtime", "location_pesuboxs"));
+        return view("frontend.dashboard", compact("office", "location_services", "location_marks", "location_mark_models", "location_id", "location_vehicles"));
     }
 
     public function storeBooking(Request $request) {
-        $validated = $request->validate([
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
-            'company_name' => 'required|max:255',
-            'email' => 'required|email|max:255',
-            'phonenumber' => 'required|max:255',
-            'vehicle_make_model' => 'required|max:255',
-            'message' => 'required|max:255',
-            'vehicle_id' => 'required',
-            'service_id' => 'required',
-            'pesubox_id' => 'required',
-            'date' => 'required',
-        ]);
         
-        $order = new Orders();
-        $order->location_id = $request->location_id;
-        $order->first_name = $request->first_name;
-        $order->last_name = $request->last_name;
-        $order->company_name = $request->company_name;
-        $order->email = $request->email;
-        $order->phone = $request->phonenumber;
-        $order->model = $request->vehicle_make_model;
-        $order->message = $request->message;
-        $order->is_delete = 'N';
-        $order->service_id = implode(",", $request->service_id);
-        $order->pesubox_id = $request->pesubox_id;
-        $order->vehicle_id = $request->vehicle_id;
-        $order->duration = $request->duration;
-        $order->date = substr($request->date, 4, 4) . "-" . substr($request->date, 2, 2) . "-" . substr($request->date, 0, 2);
-        $order->time = substr($request->date, 8, 8);
-        $order->save();
         return response(json_encode(['success' => true]));
     }
 
-    public function getCurrentLocation() {
-        return Locations::find(1);
+    public function getCurrentLocation($location_id) {
+        return Locations::find($location_id);
     }
 
-    public function getLocationServices() {
-        $location = $this->getCurrentLocation();
+    public function getLocationServices($location_id) {
+        $location = $this->getCurrentLocation($location_id);
         if ($location == null) {
             return null;
         }
         return LocationServices::leftJoin('services', 'services.id', '=', 'location_services.service_id')->where("location_id", $location->id)->get();
     }
 
-    public function getLocationVehicles() {
-        $location = $this->getCurrentLocation();
+    public function getLocationVehicles($location_id) {
+        $location = $this->getCurrentLocation($location_id);
         if ($location == null) {
             return null;
         }
         return LocationVehicles::leftJoin('vehicles', 'vehicles.id', '=', 'location_vehicles.vehicle_id')->where("location_id", $location->id)->get();
     }
 
-    public function getLocationPesuboxs() {
-        $location = $this->getCurrentLocation();
+    public function getLocationPesuboxs($location_id, $date) {
+        $data = [];
+        $location = $this->getCurrentLocation($location_id);
         if ($location == null) {
             return null;
         }
-        return LocationPesuboxs::where("location_id", $location->id)->where("is_delete", 'N')->where("status", 1)->get();
+        $pesuboxes = LocationPesuboxs::where("location_id", $location->id)->where("is_delete", 'N')->where("status", 1)->get();
+        foreach($pesuboxes as $box) {
+            $info = [];
+            $info['name'] = $box->name;
+            $info['id'] = (string) $box->id;
+            $orders = Bookings::where('location_id', $location_id)->where("pesubox_id", $box->id)->where("date", $date)->where("is_delete", "N")->get();
+            if (count($orders) > 0) {
+                $info['bookings_slots'] = [];
+                foreach($orders as $order) {
+                    $order_info = [];
+                    $order_info['id'] = (string) $order->id;
+                    $order_info['slot_duration'] = $order->duration * 1 / 30;
+                    $time_start = explode(':', $order->time);
+                    $order_info['slot_start'] = ($time_start[0] * 1 * 2) + ($time_start[1] * 1 / 30);
+                    $order_info['slot_end'] = $order_info['slot_start'] + ($order->duration / 30);
+                    $info['bookings_slots'][] = $order_info;
+                }
+            }
+            $data[] = $info;
+        }
+        return $data;
     }
 
-    public function getTimeSlots($day_first, $month, $year, $step, $length) {
-        $location = $this->getCurrentLocation();
+    public function getTimeSlots($day_first, $month, $year, $step, $length, $location_id) {
+        $location = $this->getCurrentLocation($location_id);
         if ($location == null) {
             return null;
         }
@@ -136,7 +156,7 @@ class HomePageController extends Controller
             $start_date = date("Y-m-d", strtotime($start_date . "-" . -1 * $step . ' days'));
         }
         $end_date = date("Y-m-d", strtotime($start_date. ' + ' . 7 . ' days'));
-        $orders = Orders::whereBetween("date", [$start_date , $end_date])->where("pesubox_id", $request->pesubox_id)->get();
+        $orders = Bookings::whereBetween("date", [$start_date , $end_date])->where("pesubox_id", $request->pesubox_id)->get();
         $date_ranges = [];
         foreach($orders as $order) {
             $start_time = strtotime($order->date . " " . $order->time);
@@ -149,12 +169,45 @@ class HomePageController extends Controller
             foreach($data['slots'] as $slot) {
                 $time = strtotime(substr($data['fulldate'], 4, 4) . "-" . substr($data['fulldate'], 2, 2) . "-" . substr($data['fulldate'], 0, 2) . " " . $slot);
                 foreach($date_ranges as $range) {
-                    if (($time >= $range[0] && $time < $range[1]) || ($time + $request->service_duration * 60 > $range[0] && $time + $request->service_duration * 60 < $range[1]) || $time + $request->service_duration * 60 > $last_time + 30 * 60) {
+                    if (($time >= $range[0] && $time < $range[1]) || ($time + $request->service_duration * 60 > $range[0] && $time + $request->service_duration * 60 < $range[1]) || $time + $request->service_duration * 60 > $last_time + 30 * 60 || ($time <= $range[0]) && $time + $request->service_duration * 60 >= $range[1]) {
                         $usedtime[] = $time;
                     }
                 }
             }
         }
         return view('frontend.partials.calendar', compact("slots_data", "orders", "usedtime"))->render();
+    }
+
+    public function booking(Request $request) {
+        $ret_data = [];
+        $ret_data['office'] = [];
+        $ret_data['days'] = [];
+        $ret_data['office']['allow_brn_max_time'] = '0';
+        $ret_data['office']['allow_brn_min_time'] = '1';
+        $ret_data['office']['brn_min_time'] = '60';
+        $ret_data['office']['slot_length'] = '30';
+        $day = [];
+        $day['date'] = strtotime($request['start_date']) * 1;
+        $day['openTimes'] = $this->getLocationOpenTimes($request['office'], $request['start_date']);
+        $day['resources'] = $this->getLocationPesuboxs($request['office'], $request['start_date']);
+        $ret_data['days'][0] = $day;
+        return response(json_encode($ret_data));
+    }
+
+    public function getLocationOpenTimes($location_id, $date) {
+        $location = Locations::find($location_id);
+        $day = mktime(0, 0, 0, substr($date, 5, 2), substr($date, 8, 2), substr($date, 0, 4));
+        $time_start = explode(':', $location[date("D", $day) . '_start']);
+        $time_end = explode(':', $location[date("D", $day) . '_end']);
+        $open_time = [];
+        $open_time['id'] = (string) $location['id'];
+        $open_time['slot_start'] = (string) (($time_start[0] * 1 * 2) + ($time_start[1] * 1 / 30));
+        $open_time['slot_end'] = (string) (($time_end[0] * 1 * 2) + ($time_end[1] * 1 / 30));
+        return $open_time;
+    }
+
+    public function models (Request $request) {
+        $models = MarkModel::where("mark_id", $request->id)->get();
+        return response(json_encode($models));
     }
 }

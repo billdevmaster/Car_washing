@@ -84,16 +84,8 @@
                             </div>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="start_time">First Name</label>
-                            <input type="text" class="form-control" name="first_name" value="@if ($order != null) {{ $order->first_name }} @endif " />
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label for="start_time">Last Name</label>
-                            <input type="text" class="form-control" name="last_name" value="@if ($order != null) {{ $order->last_name }} @endif" />
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label for="start_time">Company Name</label>
-                            <input type="text" class="form-control" name="company_name" value="@if ($order != null) {{ $order->company_name }} @endif" />
+                            <label for="start_time">Nimi</label>
+                            <input type="text" class="form-control" name="driver" value="@if ($order != null) {{ $order->driver }} @endif" />
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="start_time">Email</label>
@@ -104,12 +96,32 @@
                             <input type="text" class="form-control" name="phone" value="@if ($order != null) {{ $order->phone }} @endif" />
                         </div>
                         <div class="col-md-6 form-group">
+                            <label for="start_time">Number</label>
+                            <input type="text" class="form-control" name="number" value="@if ($order != null) {{ $order->number }} @endif" />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="start_time">Vehicle Make</label>
+                            <select class="form-control mb-1" id="mark" name="mark_id">
+                                @foreach ($location_marks as $mark)
+                                    <option value={{ $mark->id }} @if ($order != null && $order->mark_id == $mark->id)
+                                        selected
+                                    @endif >{{ $mark->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group">
                             <label for="start_time">Vehicle Make model</label>
-                            <input type="text" class="form-control" name="model" value="@if ($order != null) {{ $order->model }} @endif" />
+                            <select class="form-control mb-1" id="model" name="model_id">
+                                @foreach ($location_mark_models as $model)
+                                    <option value={{ $model->id }} @if ($order != null && $order->model_id == $model->id)
+                                        selected
+                                    @endif >{{ $model->model }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="start_time">Message</label>
-                            <textarea type="text" class="form-control" name="message">@if ($order != null) {{ $order->message }} @endif</textarea>
+                            <textarea type="text" class="form-control" name="summary">@if ($order != null) {{ $order->summary }} @endif</textarea>
                         </div>
                     </div>
                 </div>
@@ -143,6 +155,21 @@
                     if (res.success) {
                         window.location.reload();
                     }
+                },
+                error: (err) => {
+                    console.log(err);
+                }
+            });
+        })
+
+        $("#mark").change(function() {
+            $.ajax({
+                type: "post",
+                url: appUrl + '/admin/getModel',
+                data: {mark_id: $(this).val()},
+                success: (res) => {
+                    console.log(res)
+                    $("#model").html(res);
                 },
                 error: (err) => {
                     console.log(err);
