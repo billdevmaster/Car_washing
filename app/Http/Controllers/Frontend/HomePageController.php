@@ -187,7 +187,7 @@ class HomePageController extends Controller
         $ret_data['office']['brn_min_time'] = '60';
         $ret_data['office']['slot_length'] = '30';
         $day = [];
-        $day['date'] = strtotime($request['start_date']) * 1;
+        $day['date'] = strtotime($request['start_date']) * 1 - 7200;
         $day['openTimes'] = $this->getLocationOpenTimes($request['office'], $request['start_date']);
         $day['resources'] = $this->getLocationPesuboxs($request['office'], $request['start_date']);
         $ret_data['days'][0] = $day;
