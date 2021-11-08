@@ -44,7 +44,7 @@
 			<div class="fixedClone" style="height: 58px;"></div>
 		</div>
 	</div>
-<form class="form-horizontal bv-form" role="form" id="yw0" action="{{ route('index') }}?office={{ $location_id }}" method="post" novalidate="novalidate"><button type="submit" class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>	<div class="tab-content">
+<form class="form-horizontal bv-form" role="form" id="yw0" action="{{ route('index') }}/?office={{ $location_id }}" method="post" novalidate="novalidate"><button type="submit" class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>	<div class="tab-content">
     @csrf
     <input type="hidden" name="location_id" value="{{ $location_id }}" />
     <input type="hidden" name="duration" value="0" id="duration"/>
