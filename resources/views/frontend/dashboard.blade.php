@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-12">
-			<h1>Zeppelini Autopesula</h1>
+			<h1>{{ $location->name }}</h1>
 		</div>
 	</div>
 	<div class="row">
@@ -22,7 +22,7 @@
 			<form id="dataFetcher" action="{{ route('home.booking') }}" method="get" class="">
 				<div class="row dateTimeHolder">
                     <div class="col-xs-12 col-xs-12 col-md-12" style="padding-left: 0">
-                        <button type="button" class="btn pull-left hidden-xs hidden-sm direction-btn" data-modify-dp="#datetimepicker" data-from="0" style="width: 240px; margin-right: 80px">Täna</button>
+                        <button type="button" class="btn pull-left hidden-xs hidden-sm direction-btn" data-modify-dp="#datetimepicker" data-from="0" style="width: 240px; margin-right: calc(50% - 409px);">Täna</button>
                         
                         <button type="button" class="btn prev-day disabled" data-picktime="false" data-modify-dp="#datetimepicker" data-days="-1"><i class="fa fa-angle-left"></i></button>
                         

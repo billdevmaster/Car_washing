@@ -56,7 +56,7 @@ class HomePageController extends Controller
         //     'end' => strtotime("+6 day", strtotime("today")),
         // );
 
-        return view("frontend.dashboard", compact("office", "location_services", "location_marks", "location_mark_models", "location_id", "location_vehicles"));
+        return view("frontend.dashboard", compact("office", "location", "location_services", "location_marks", "location_mark_models", "location_id", "location_vehicles"));
     }
 
     public function storeBooking(Request $request) {
