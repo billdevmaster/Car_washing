@@ -21,9 +21,11 @@
 		<div id="dataFetcherHolder" class="col-xs-12 col-md-12">
 			<form id="dataFetcher" action="{{ route('home.booking') }}" method="get" class="">
 				<div class="row dateTimeHolder">
-					<div class="col-xs-12 col-md-offset-3 col-xs-12 col-md-9">
-						<button type="button" class="btn prev-day disabled" data-picktime="false" data-modify-dp="#datetimepicker" data-days="-1"><i class="fa fa-angle-left"></i></button>
-
+                    <div class="col-xs-12 col-xs-12 col-md-12" style="padding-left: 0">
+                        <button type="button" class="btn pull-left hidden-xs hidden-sm direction-btn" data-modify-dp="#datetimepicker" data-from="0" style="width: 240px; margin-right: 80px">Täna</button>
+                        
+                        <button type="button" class="btn prev-day disabled" data-picktime="false" data-modify-dp="#datetimepicker" data-days="-1"><i class="fa fa-angle-left"></i></button>
+                        
 						<a href="{{ route('index') }}#" id="datetimepicker">
 							<span class="hidden-xs hidden-sm" data-date-format="dddd, DD.MMMM - YYYY">reede, 29.oktoober - 2021</span>
 							<span class="visible-xs-inline-block visible-sm-inline-block" data-date-format="dd, DD.MM.YYYY">R, 29.10.2021</span>
@@ -34,8 +36,7 @@
 
 						<button type="button" class="btn next-day" data-modify-dp="#datetimepicker" data-days="1"><i class="fa fa-angle-right"></i></button>
 
-						<button type="button" class="btn pull-right hidden-xs hidden-sm" data-modify-dp="#datetimepicker" data-from="1">Homme</button>
-						<button type="button" class="btn pull-right hidden-xs hidden-sm" data-modify-dp="#datetimepicker" data-from="0">Täna</button>
+						<button type="button" class="btn pull-right hidden-xs hidden-sm" data-modify-dp="#datetimepicker" data-from="1" style="width: 240px;">Homme</button>
 
 						<div class="clearfix"></div>
 					</div>
@@ -107,45 +108,52 @@
         </div>
     </div>
     <div class="tab-pane" id="step2" data-validate="#step1">
+        
         <div class="row">
             <div class="col-xs-12 col-sm-12 graybg">
                 <div class="dateInfo">
-                    <div class="month">Aeg: <span data-showvalue="[name=&#39;Bookings[started_at]&#39;]" data-function="moment" data-format="L"></span> <span style="margin-left:10px" data-showvalue="[name=&#39;Bookings[started_at]&#39;]" data-function="moment" data-format="LT"></span> - <span data-showvalue="[name=&#39;Bookings[ended_at]&#39;]" data-function="moment" data-format="LT"></span></div>
+                    <div class="month" style="font-size: 22px;">
+                        <div style="display: inline-block" class="title">Broneeritud aeg: </div>
+                        <div style="display: inline-block" class="time"><span data-showvalue="[name=&#39;Bookings[started_at]&#39;]" data-function="moment" data-format="L"></span> <span style="margin-left:10px" data-showvalue="[name=&#39;Bookings[started_at]&#39;]" data-function="moment" data-format="LT"></span> - <span data-showvalue="[name=&#39;Bookings[ended_at]&#39;]" data-function="moment" data-format="LT"></span></div>
+                    </div>
                 </div>
                 <div class="clearfix"></div>
             </div>
+            <div class="col-xs-12 col-sm-12">
+                <p>Sisesta broneeringu kinnituseks vajalikud andmed. Saadame broneeringu kinnituse Sinu sisestatud emaili aadressile.</p>
+            </div>
             <div class="col-xs-12 col-sm-6">
-                <div class="form-group  form-group-lg">
-                    <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_driver">Nimi</label>						
-                    <div class="col-xs-10 col-md-12">
+                <div class="form-group form-group-lg">
+                    {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_driver">Nimi</label>						 --}}
+                    <div class="col-xs-12 col-md-12">
                         <input name="Bookings[driver]" class="form-control" placeholder="Nimi" id="Bookings_driver" type="text" data-bv-field="Bookings[driver]">						<small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[driver]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
                     </div>
                 </div>
                 <div class="form-group  form-group-lg">
-                    <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_email">Email</label>						
-                    <div class="col-xs-10 col-md-12">
+                    {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_email">Email</label>						 --}}
+                    <div class="col-xs-12 col-md-12">
                         <input name="Bookings[email]" class="form-control" placeholder="Email" id="Bookings_email" type="text" data-bv-field="Bookings[email]">						<small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small><small class="help-block" data-bv-validator="emailAddress" data-bv-for="Bookings[email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a valid email address</small>
                     </div>
                 </div>
                 <div class="form-group  form-group-lg">
-                    <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_phone">Telefoni number</label>						
-                    <div class="col-xs-10 col-md-12">
+                    {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_phone">Telefoni number</label>						 --}}
+                    <div class="col-xs-12 col-md-12">
                         <input name="Bookings[phone]" class="form-control" placeholder="Telefoni number" id="Bookings_phone" type="text" data-bv-field="Bookings[phone]">						<small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[phone]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group  form-group-lg">
-                    <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_number">Number</label>						
-                    <div class="col-xs-10 col-md-12">
+                    {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_number">Number</label>						 --}}
+                    <div class="col-xs-12 col-md-12">
                         <input name="Vehicles[number]" class="form-control" placeholder="Auto number" id="Vehicles_number" type="text" maxlength="30" value="" data-bv-field="Vehicles[number]">						<small class="help-block" data-bv-validator="notEmpty" data-bv-for="Vehicles[number]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small><small class="help-block" data-bv-validator="stringLength" data-bv-for="Vehicles[number]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value with valid length</small>
                     </div>
                 </div>
-                <div class="form-group  form-group-lg col-xs-12 col-md-12">
-                    <label class="col-xs-12 control-label text-left control-label">Sõidukid:</label>
-                    <div class="input-holder selectContainer col-xs-12">
+                <div class="form-group  form-group-lg">
+                    {{-- <label class="col-xs-12 control-label text-left control-label">Sõidukid:</label> --}}
+                    <div class="input-holder selectContainer col-xs-12 col-md-12">
                         <select class="form-control col-xs-6" name="vehicle_id" required>
-                            <option value="">Muu mark</option>
+                            <option value="">Sõiduk</option>
                             @foreach ($location_vehicles as $vehicle)
                                 <option value="{{ $vehicle->id }}">{{ $vehicle->name }}</option>
                                 
@@ -155,30 +163,32 @@
                         <small class="help-block" data-bv-validator="notEmpty" data-bv-for="Makes[id]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
                     </div>
                 </div>
-                <div class="form-group  form-group-lg col-xs-6 col-md-6">
-                    <label class="col-xs-12 control-label text-left control-label">Mark:</label>
-                    <div class="input-holder selectContainer col-xs-12">
-                        <select class="form-control col-xs-6" name="Makes[id]" id="Makes_id" data-bv-field="Makes[id]">
-                            <option value="">Muu mark</option>
-                            @foreach ($location_marks as $mark)
-                                <option value="{{ $mark->id }}">{{ $mark->name }}</option>
+                <div class="row" style="display: flex; justify-content: space-between; margin: 0 -30px">
+                    <div class="form-group-lg col-xs-6 col-md-6">
+                        {{-- <label class="control-label text-left control-label col-xs-12 col-md-12">Mark:</label> --}}
+                        <div class="input-holder selectContainer col-xs-12 col-md-12">
+                            <select class="form-control col-xs-6" name="Makes[id]" id="Makes_id" data-bv-field="Makes[id]">
+                                <option value="">Mark</option>
+                                @foreach ($location_marks as $mark)
+                                    <option value="{{ $mark->id }}">{{ $mark->name }}</option>
+                                    
+                                @endforeach
                                 
-                            @endforeach
-                            
-                        </select>						
-                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="Makes[id]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
+                            </select>						
+                            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="Makes[id]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
+                        </div>
+                    </div>
+                    <div class="form-group-lg col-xs-6 col-md-6">
+                        {{-- <label class="ontrol-label text-left control-label col-xs-12 col-md-12">Mudel:</label> --}}
+                        <div class="input-holder selectContainer disabled col-xs-12 col-md-12">
+                            <select data-url="{{ route('home.models') }}?id=" class="form-control col-xs-6" disabled="disabled" name="Vehicles[model_id]" id="Vehicles_model_id" data-bv-field="Vehicles[model_id]">
+                                <option value="">Mudel</option>
+                            </select>						
+                            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="Vehicles[model_id]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group  form-group-lg col-xs-6 col-md-6">
-                    <label class="col-xs-12 ontrol-label text-left control-label">Mudel:</label>
-                    <div class="input-holder selectContainer col-xs-12 disabled">
-                        <select data-url="{{ route('home.models') }}?id=" class="form-control col-xs-6" disabled="disabled" name="Vehicles[model_id]" id="Vehicles_model_id" data-bv-field="Vehicles[model_id]">
-                            <option value="">Muu mudel</option>
-                        </select>						
-                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="Vehicles[model_id]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
-                    </div>
-                </div>
-                <div class="form-group  form-group-lg" style="clear:both; color: #5998b6">
+                <div class="form-group  form-group-lg" style="clear:both; color: #5998b6; display: none;">
                     <label class="control-label col-xs-12 col-md-12 text-left">&nbsp;</label>
                     <div class="input-holder" style="font-size: 20px;display: none;">
                         Hind kokku: <span class="priceHolder" style="color: #2f627a; font-weight: bold;" data-url="/public/servicePrices"></span> EUR
@@ -187,13 +197,13 @@
             </div>
             <div class="col-xs-12 col-sm-12">
                 <div class="form-group ">
-                    <label class="control-label col-xs-12 col-md-12 text-left hidden-xs hidden-sm">Kommentaarid:</label>
+                    {{-- <label class="control-label col-xs-12 col-md-12 text-left hidden-xs hidden-sm">Kommentaarid:</label> --}}
                     <div class="col-xs-12 col-md-12">
-                        <textarea name="Bookings[summary]" rows="2" class="form-control" placeholder="Kommentaar" id="Bookings_summary"></textarea>						</div>
+                        <textarea name="Bookings[summary]" rows="3" class="form-control" placeholder="Lisainfo" id="Bookings_summary" style="border-radius: 20px; padding: 20px; font-size: 20px"></textarea>						</div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12">
-                                    <button class="btn btn-success btn-lg pull-right" type="submit">Saada</button>
+                                    <button class="btn btn-success btn-lg pull-right" type="submit">BRONEERIN</button>
             </div>
             <div class="clearfix"></div>
         </div>

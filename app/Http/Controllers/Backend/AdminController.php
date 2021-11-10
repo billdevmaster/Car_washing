@@ -162,7 +162,10 @@ class AdminController extends Controller
         $location_services = LocationServices::leftJoin('services', 'services.id', '=', 'location_services.service_id')->where("location_id", $request->location_id)->get();
         $location_pesuboxs = LocationPesuboxs::where("location_id", $request->location_id)->where("is_delete", 'N')->where("status", 1)->get();
         $location_marks = Mark::get();
-        $location_mark_models = MarkModel::where("mark_id", $order->mark_id)->get();
+        $location_mark_models = [];
+        if ($order != null) {
+            $location_mark_models = MarkModel::where("mark_id", $order->mark_id)->get();
+        }
         return view('backend.home.components.modal', compact("order", "id", "location_id", "location_vehicles", "location_services", "location_pesuboxs", "location_marks", "location_mark_models"))->render();
     }
 

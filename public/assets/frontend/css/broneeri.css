@@ -242,10 +242,11 @@ h1 {
 }
 .input-lg,
 .form-group-lg .form-control {
-  border-radius: 0px;
+  border-radius: 20px;
+  margin: 15px 0;
 }
 .form-group {
-  margin-bottom: 10px;
+  margin: 15px 0;
 }
 .btn,
 .btn-lg,
@@ -254,12 +255,20 @@ h1 {
   border-radius: 0px;
 }
 .dateInfo {
-  margin-top: 15px;
+  padding: 15px 0;
   float: left;
   width: 100%;
   font-size: 16px;
   line-height: 22px;
   font-family: 'source_sans_prosemibold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+@media(min-width: 768px) {
+  .dateInfo .title {
+    margin-right: calc(50% - 278px);
+  }
+  .dateInfo .time {
+  
+  }
 }
 .dateInfo .end,
 .dateInfo .start {
@@ -267,8 +276,9 @@ h1 {
   margin-right: 15px;
 }
 .dateInfo span {
-  font-size: 22px;
-  color: #5998b6;
+  font-size: 18px;
+  font-weight: bold;
+  color: #4d4d4d;
 }
 .btn-success:hover,
 .btn-success:focus,
@@ -276,12 +286,12 @@ h1 {
 .btn-success:active,
 .btn-success.active,
 .open > .dropdown-toggle.btn-success {
-  background-color: #5998b6;
-  border-color: #5998b6;
+  background-color: #0b8590;
+  border-color: #0b8590;
 }
 .btn-success {
-  background-color: #82bcd7;
-  border-color: #82bcd7;
+  background-color: #0b8590;
+  border-color: #0b8590;
 }
 .bronResrouces {
   list-style-type: none;
@@ -390,7 +400,7 @@ h1 {
 .servicesHolder .navbar-default .navbar-collapse h4 {
   margin: 0 -15px;
   padding: 20px 15px;
-  background: #5998b6;
+  background: #0b8590;
   color: #fff;
   text-align: center;
   text-transform: uppercase;
@@ -611,26 +621,28 @@ h1 {
 .navTabsHolder {
   position: relative;
   margin-bottom: 10px;
-  background: #82bcd7;
+  background: #a4d5d9;
   z-index: 2;
+  padding: 0;
 }
 .navTabsHolder .nav-tabs {
   border: none;
 }
 .navTabsHolder .nav-tabs > li {
   margin-bottom: 0;
+  width: 50%;
   background: transparent;
-  -webkit-transform: skewX(165deg);
+  /* -webkit-transform: skewX(165deg);
   -ms-transform: skewX(165deg);
   -o-transform: skewX(165deg);
-  transform: skewX(165deg);
+  transform: skewX(165deg); */
   -webkit-transition: background 500ms ease-out;
   -moz-transition: background 500ms ease-out;
   -o-transition: background 500ms ease-out;
   transition: background 500ms ease-out;
 }
 .navTabsHolder .nav-tabs > li.active {
-  background: #5998b6;
+  background: #0b8590;
 }
 .navTabsHolder .nav-tabs > li > a,
 .navTabsHolder .nav-tabs > li > a:focus,
@@ -647,22 +659,18 @@ h1 {
   line-height: 32px;
   text-decoration: none;
   border: none;
-  -webkit-transform: skewX(-165deg);
-  -ms-transform: skewX(-165deg);
-  -o-transform: skewX(-165deg);
-  transform: skewX(-165deg);
 }
 .navTabsHolder .nav-tabs > li > a span {
   display: inline-block;
   width: 32px;
   height: 32px;
   margin-right: 10px;
-  border: 3px solid #9acde5;
+  border: 3px solid white;
   border-radius: 50%;
   line-height: 26px;
   font-size: 22px;
   text-align: center;
-  color: #9acde5;
+  color: white;
   font-family: 'source_sans_prosemibold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .servicesHolder + small {
@@ -727,7 +735,7 @@ h1 {
 }
 @media (min-width: 768px) {
   .resources .name {
-    background: #50a9d2;
+    background: #0b8590;
     padding: 5px;
     color: #fff;
     text-transform: uppercase;
@@ -832,7 +840,7 @@ h1 {
   .dateTimeHolder .btn.btn.prev-day {
     width: 26px;
     height: 26px;
-    background: #5d5d5d;
+    background: #0b8590;
     color: #fff;
     padding: 4px;
     font-size: 18px;
@@ -913,7 +921,6 @@ h1 {
     margin-bottom: 8px;
 }
 .input-holder{
-    padding: 0 16px;
     position: relative;
 }
 .select2-container .select2-choice{
