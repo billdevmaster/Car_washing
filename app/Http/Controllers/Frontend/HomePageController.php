@@ -44,7 +44,7 @@ class HomePageController extends Controller
                 'time'=>$request['Bookings']['started_at'] . "~" . $request['Bookings']['ended_at']
             );
    
-            Mail::send(['text'=>'mail'], $data, function($message) {
+            Mail::send(['text'=>'mail'], $data, function($message, $booking) {
                $message->to($booking->email, "billdev")->subject
                   ('Mydisan Car washing bookings');
                $message->from(env('MAIL_FROM_ADDRESS'),'Mydisan');
