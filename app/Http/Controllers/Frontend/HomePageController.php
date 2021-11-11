@@ -46,7 +46,7 @@ class HomePageController extends Controller
             );
    
             Mail::send(['text'=>'mail'], $data, function($message) {
-               $message->to($booking->email, "billdev")->subject
+               $message->to($data['booking']['email'], "billdev")->subject
                   ('Mydisan Car washing bookings');
                $message->from(env('MAIL_FROM_ADDRESS'),'Mydisan');
             });
