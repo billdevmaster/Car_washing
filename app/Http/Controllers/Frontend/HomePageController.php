@@ -41,10 +41,11 @@ class HomePageController extends Controller
             // send email
             $data = array(
                 'name'=>$booking->driver,
-                'time'=>$request['Bookings']['started_at'] . "~" . $request['Bookings']['ended_at']
+                'time'=>$request['Bookings']['started_at'] . "~" . $request['Bookings']['ended_at'],
+                'booking' => $booking
             );
    
-            Mail::send(['text'=>'mail'], $data, function($message, $booking) {
+            Mail::send(['text'=>'mail'], $data, function($message) {
                $message->to($booking->email, "billdev")->subject
                   ('Mydisan Car washing bookings');
                $message->from(env('MAIL_FROM_ADDRESS'),'Mydisan');
