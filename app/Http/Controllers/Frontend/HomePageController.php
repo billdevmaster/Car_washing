@@ -46,7 +46,7 @@ class HomePageController extends Controller
                 'booking' => $booking
             );
    
-            Mail::to($booking['email'])->send(new MydisanMail($booking));
+            Mail::to($booking->email)->send(new MydisanMail($booking));
             return redirect()->route('index', ["office" => $request->location_id]);
         }
         $location_id = $request->office ? $request->office : 1;
