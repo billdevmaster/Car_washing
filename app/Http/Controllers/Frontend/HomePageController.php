@@ -12,7 +12,8 @@ use App\Models\Orders;
 use App\Models\Bookings;
 use App\Models\Mark;
 use App\Models\MarkModel;
-use Mail;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MydisanMail;
 // use Illuminate\Support\Facades\Input;
 
 class HomePageController extends Controller
@@ -45,11 +46,7 @@ class HomePageController extends Controller
                 'booking' => $booking
             );
    
-            Mail::send(['text'=>'mail'], $data, function($message) {
-               $message->to($data['booking']['email'], "billdev")->subject
-                  ('Mydisan Car washing bookings');
-               $message->from(env('MAIL_FROM_ADDRESS'),'Mydisan');
-            });
+            Mail::to($booking['email'])->send(new MydisanMail($booking));
             return redirect()->route('index', ["office" => $request->location_id]);
         }
         $location_id = $request->office ? $request->office : 1;
