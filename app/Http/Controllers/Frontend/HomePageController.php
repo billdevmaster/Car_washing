@@ -12,6 +12,7 @@ use App\Models\Orders;
 use App\Models\Bookings;
 use App\Models\Mark;
 use App\Models\MarkModel;
+use Mail;
 // use Illuminate\Support\Facades\Input;
 
 class HomePageController extends Controller
@@ -37,6 +38,17 @@ class HomePageController extends Controller
             $booking->duration = $request['duration'];
             $booking->started_at = $booking->date . " " . $booking->time;
             $booking->save();
+            // send email
+            $data = array(
+                'name'=>$booking->driver,
+                'time'=>$request['Bookings']['started_at'] . "~" . $request['Bookings']['ended_at']
+            );
+   
+            Mail::send(['text'=>'mail'], $data, function($message) {
+               $message->to($request['Bookings']['email'], $request['Bookings']['driver'])->subject
+                  ('Mydisan Car washing bookings');
+               $message->from(env('MAIL_FROM_ADDRESS'),'Mydisan');
+            });
             return redirect()->route('index', ["office" => $request->location_id]);
         }
         $location_id = $request->office ? $request->office : 1;
