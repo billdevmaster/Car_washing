@@ -42,12 +42,13 @@ class AdminController extends Controller
             $item['color'] = "#dddddd";
             $item['resource'] = $order->pesubox_id;
             $item['title'] = "";
-            $item['note'] = "";
+            $item['notes'] = "asdf";
             $arr_service = explode(",", $order->service_id);
             foreach($arr_service as $service_id) {
                 $service = Services::find($service_id);
-                $item['note'] .= $service->name . ", ";
+                $item['notes'] .= $service->name . ", ";
             }
+            // $item['notes'] = "test";
             $data[] = (object)$item;
         }
         return view('backend.home.components.calendar', compact("start_date", "pesuboxs", "data", "year"))->render();
