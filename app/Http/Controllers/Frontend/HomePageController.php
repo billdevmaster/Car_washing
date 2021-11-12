@@ -53,7 +53,7 @@ class HomePageController extends Controller
             $arr_service = explode(",", $booking->service_id);
             foreach ($arr_service as $service_id) {
                 $service = Services::find($service_id);
-                $email_data['service_name'] .= $service->name;
+                $email_data['service_name'] .= $service->name . ", ";
             }
             $email_data['time'] = $request['Bookings']['started_at'];
             $mark = Mark::find($booking->mark_id);

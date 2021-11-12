@@ -9,6 +9,7 @@ use App\Models\LocationServices;
 use App\Models\LocationVehicles;
 use App\Models\LocationPesuboxs;
 use App\Models\Orders;
+use App\Models\Services;
 use App\Models\Bookings;
 use App\Models\Mark;
 use App\Models\MarkModel;
@@ -41,6 +42,12 @@ class AdminController extends Controller
             $item['color'] = "#dddddd";
             $item['resource'] = $order->pesubox_id;
             $item['title'] = "";
+            $item['note'] = "";
+            $arr_service = explode(",", $order->service_id);
+            foreach($arr_service as $service_id) {
+                $service = Services::find($service_id);
+                $item['note'] .= $service->name . ", ";
+            }
             $data[] = (object)$item;
         }
         return view('backend.home.components.calendar', compact("start_date", "pesuboxs", "data", "year"))->render();
