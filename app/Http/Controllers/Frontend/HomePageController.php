@@ -56,7 +56,7 @@ class HomePageController extends Controller
                 $email_data['service_name'] .= $service->name;
             }
             $email_data['time'] = $request['Bookings']['started_at'];
-            $mark = Mark::find($booking->$mark_id);
+            $mark = Mark::find($booking->mark_id);
             $email_data['mark'] = $model->name;
             $model = MarkModel::find($booking->model_id);
             $email_data['model'] = $model->model;
