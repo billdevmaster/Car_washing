@@ -45,8 +45,22 @@ class HomePageController extends Controller
                 'time'=>$request['Bookings']['started_at'] . "~" . $request['Bookings']['ended_at'],
                 'booking' => $booking
             );
-   
-            Mail::to($booking->email)->send(new MydisanMail($booking));
+            $email_data = [];
+            $location = Location::find($booking->location_id);
+            $email_data['location_name'] = $location->name;
+            $email_data['service_name'] = '';
+            $arr_service = explode(",", $booking->service_id);
+            foreach ($arr_service as $service_id) {
+                $service = Services::find($service_id);
+                $email_data['service_name'] .= $service->name;
+            }
+            $email_data['time'] = $request['Bookings']['started_at'];
+            $mark = Mark::find($booking->$mark_id);
+            $email_data['mark'] = $model->name;
+            $model = Model::find($booking->model_id);
+            $email_data['model'] = $model->model;
+            
+            Mail::to($booking->email)->send(new MydisanMail($email_data));
             return redirect()->route('index', ["office" => $request->location_id]);
         }
         $location_id = $request->office ? $request->office : 1;

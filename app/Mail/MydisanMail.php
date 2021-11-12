@@ -16,10 +16,10 @@ class MydisanMail extends Mailable
      *
      * @return void
      */
-    private $booking;
+    private $data;
     public function __construct($request)
     {
-        $this->booking = $request;
+        $this->data = $request;
     }
 
     /**
@@ -29,7 +29,7 @@ class MydisanMail extends Mailable
      */
     public function build()
     {
-        $booking = $this->booking;
-        return $this->view('frontend.components.mail', compact("booking"));
+        $data = $this->data;
+        return $this->view('frontend.components.mail', compact("data"));
     }
 }
