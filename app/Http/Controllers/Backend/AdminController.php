@@ -42,7 +42,7 @@ class AdminController extends Controller
             $item['color'] = "#dddddd";
             $item['resource'] = $order->pesubox_id;
             $item['title'] = "";
-            $item['notes'] = "asdf";
+            $item['notes'] = "";
             $arr_service = explode(",", $order->service_id);
             foreach($arr_service as $service_id) {
                 $service = Services::find($service_id);
