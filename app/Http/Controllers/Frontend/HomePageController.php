@@ -10,6 +10,7 @@ use App\Models\LocationVehicles;
 use App\Models\LocationPesuboxs;
 use App\Models\Orders;
 use App\Models\Bookings;
+use App\Models\Services;
 use App\Models\Mark;
 use App\Models\MarkModel;
 use Illuminate\Support\Facades\Mail;
@@ -46,7 +47,7 @@ class HomePageController extends Controller
                 'booking' => $booking
             );
             $email_data = [];
-            $location = Location::find($booking->location_id);
+            $location = Locations::find($booking->location_id);
             $email_data['location_name'] = $location->name;
             $email_data['service_name'] = '';
             $arr_service = explode(",", $booking->service_id);
@@ -57,7 +58,7 @@ class HomePageController extends Controller
             $email_data['time'] = $request['Bookings']['started_at'];
             $mark = Mark::find($booking->$mark_id);
             $email_data['mark'] = $model->name;
-            $model = Model::find($booking->model_id);
+            $model = MarkModel::find($booking->model_id);
             $email_data['model'] = $model->model;
             
             Mail::to($booking->email)->send(new MydisanMail($email_data));
