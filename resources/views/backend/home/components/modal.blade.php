@@ -59,7 +59,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-12 {{ $id == 0 ? 'hidden' : '' }}">
+                        <div class="col-md-12">
                             <label>Services</label>
                             <div class="form-group">
                                 <select class="select2 form-control" multiple="multiple" id="default-select-multi" name="service_id[]">
@@ -83,19 +83,19 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6 form-group {{ $id == 0 ? 'hidden' : '' }}">
+                        <div class="col-md-6 form-group">
                             <label for="start_time">Nimi</label>
                             <input type="text" class="form-control" name="driver" value="@if ($order != null) {{ $order->driver }} @endif" />
                         </div>
-                        <div class="col-md-6 form-group {{ $id == 0 ? 'hidden' : '' }}">
+                        <div class="col-md-6 form-group">
                             <label for="start_time">Email</label>
                             <input type="text" class="form-control" name="email" value="@if ($order != null) {{ $order->email }} @endif" />
                         </div>
-                        <div class="col-md-6 form-group {{ $id == 0 ? 'hidden' : '' }}">
+                        <div class="col-md-6 form-group">
                             <label for="start_time">Phone</label>
                             <input type="text" class="form-control" name="phone" value="@if ($order != null) {{ $order->phone }} @endif" />
                         </div>
-                        <div class="col-md-6 form-group {{ $id == 0 ? 'hidden' : '' }}">
+                        <div class="col-md-6 form-group">
                             <label for="start_time">Number</label>
                             <input type="text" class="form-control" name="number" value="@if ($order != null) {{ $order->number }} @endif" />
                         </div>
@@ -119,7 +119,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-12 form-group {{ $id == 0 ? 'hidden' : '' }}">
+                        <div class="col-md-12 form-group">
                             <label for="start_time">Message</label>
                             <textarea type="text" class="form-control" name="summary">@if ($order != null) {{ $order->summary }} @endif</textarea>
                         </div>
