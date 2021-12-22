@@ -57,13 +57,13 @@
                                 <div class="tab-pane active" id="general" aria-labelledby="general-tab" role="tabpanel">
                                     @include('backend.locations.components.general')
                                 </div>
-                                <div class="tab-pane active" id="services" aria-labelledby="services-tab" role="tabpanel">
+                                <div class="tab-pane" id="services" aria-labelledby="services-tab" role="tabpanel">
                                 </div>
-                                <div class="tab-pane active" id="vehicles" aria-labelledby="services-tab" role="tabpanel">
+                                <div class="tab-pane" id="vehicles" aria-labelledby="services-tab" role="tabpanel">
                                 </div>
-                                <div class="tab-pane active" id="pesubox" aria-labelledby="pesubox-tab" role="tabpanel">
+                                <div class="tab-pane" id="pesubox" aria-labelledby="pesubox-tab" role="tabpanel">
                                 </div>
-                                <div class="tab-pane active" id="user" aria-labelledby="user-tab" role="tabpanel">
+                                <div class="tab-pane" id="user" aria-labelledby="user-tab" role="tabpanel">
                                 </div>
                             </div>
                         </div>

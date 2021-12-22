@@ -45,8 +45,10 @@ class AdminController extends Controller
             $item['notes'] = "";
             $arr_service = explode(",", $order->service_id);
             foreach($arr_service as $service_id) {
-                $service = Services::find($service_id);
-                $item['notes'] .= $service->name . ", ";
+                if ($service_id != null) {
+                    $service = Services::find($service_id);
+                    $item['notes'] .= $service->name . ", ";
+                }
             }
             // $item['notes'] = "test";
             $data[] = (object)$item;
@@ -185,13 +187,38 @@ class AdminController extends Controller
             $order = new Bookings();
         }
         $order->location_id = $request->location_id;
-        $order->driver = $request->driver;
-        $order->email = $request->email;
-        $order->phone = $request->phone;
-        $order->number = $request->number;
-        $order->summary = $request->summary;
+        if ($request->driver != null) 
+            $order->driver = $request->driver;
+        else
+            $order->driver = '';
+
+        if ($request->email != null) 
+            $order->email = $request->email;
+        else
+            $order->email = '';
+
+        if ($request->phone != null) 
+            $order->phone = $request->phone;
+        else
+            $order->phone = '';
+
+        if ($request->number != null) 
+            $order->number = $request->number;
+        else
+            $order->number = '';
+
+        if ($request->summary != null) 
+            $order->summary = $request->summary;
+        else
+            $order->summary = '';
+        
         $order->is_delete = 'N';
-        $order->service_id = implode(",", $request->service_id);
+        if ($request->service_id != null) 
+            $order->service_id = implode(",", $request->service_id);
+        else 
+            $order->service_id = "";
+        
+        
         $order->pesubox_id = $request->pesubox_id;
         $order->vehicle_id = $request->vehicle_id;
         $order->mark_id = $request->mark_id;
