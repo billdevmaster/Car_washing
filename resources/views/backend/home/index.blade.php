@@ -16,8 +16,13 @@
     right: 20px;
     bottom: 10px;
     border: 1px solid #bbb;
-    height: 1066px;                              
+    height: 1066px;
 }
+@media(max-width: 768px) {
+    #calendar{ 
+        top: 340px;
+    }
+}                    
 .ui-cal-week .ui-cal-dateline, .ui-cal .ui-cal-resourceline {
     height: 35px;
 }
@@ -83,12 +88,12 @@
             </div>
         </form>
         
-        <div class="row">
-            <div class="col-sm-1">
+        <div class="row" style="display: flex; justify-content: space-between">
+            <div class="col-xs-1">
                 <a href="#" class="btn btn-prev"><i data-feather='arrow-left'></i></a>
             </div>
-            <div class="col-sm-10"></div>
-            <div class="col-sm-1">
+            <div class="col-xs-10">&nbsp;</div>
+            <div class="col-xs-1">
                 <a href="#" class="btn btn-next"><i data-feather='arrow-right'></i></a>
             </div>
         </div>

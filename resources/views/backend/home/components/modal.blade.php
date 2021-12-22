@@ -23,28 +23,28 @@
                             <select class="form-control mb-1" name="duration">
                                 <option value="30" @if ($order != null && $order->duration == 30)
                                     selected
-                                @endif>30</option>
+                                @endif>0.5H</option>
                                 <option value="60" @if ($order != null && $order->duration == 60)
                                     selected
-                                @endif>60</option>
+                                @endif>1H</option>
                                 <option value="90" @if ($order != null && $order->duration == 90)
                                     selected
-                                @endif>90</option>
+                                @endif>1.5H</option>
                                 <option value="120" @if ($order != null && $order->duration == 120)
                                     selected
-                                @endif>120</option>
+                                @endif>2H</option>
                                 <option value="150" @if ($order != null && $order->duration == 150)
                                     selected
-                                @endif>150</option>
+                                @endif>2.5H</option>
                                 <option value="180" @if ($order != null && $order->duration == 180)
                                     selected
-                                @endif>180</option>
+                                @endif>3H</option>
                                 <option value="210" @if ($order != null && $order->duration == 210)
                                     selected
-                                @endif>210</option>
+                                @endif>3.5H</option>
                                 <option value="240" @if ($order != null && $order->duration == 240)
                                     selected
-                                @endif>240</option>
+                                @endif>4H</option>
                             </select>
                         </div>
                         <div class="col-md-12">
