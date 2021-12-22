@@ -33,6 +33,7 @@ class AdminLocationController extends Controller
 
     public function get_list (Request $request) {
         $location_list = Locations::where("is_delete", "N")->get();
+        print($location_list);
         return Datatables::of($location_list)
             ->addIndexColumn()
             ->make(true);
