@@ -1,3 +1,14 @@
+    <style>
+        .order-form #duration button {
+            margin: 8px;
+            width: 75px;
+        }
+
+        .order-form #duration button.selected {
+            background-color: #0c838e;
+            color: white;
+        }
+    </style>
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,6 +21,8 @@
                 @csrf
                 <input type="hidden" name="id" value={{ $id }}>
                 <input type="hidden" name="location_id" value="{{ $location_id }}">
+                <input type="hidden" name="duration" value="0">
+                <input type="hidden" name="service_id" value="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 form-group">
@@ -19,33 +32,23 @@
                             @endif' name="datetime" />
                         </div>
                         <div class="col-md-6 form-group">
+                            <label for="end_time">End Time</label>
+                            <input type="text" id="end_time" class="form-control flatpickr-date-time" placeholder="YYYY-MM-DD HH:MM" value='@if ($order != null)
+                                {{ $end_time }}
+                            @endif' name="enddatetime" disabled/>
+                        </div>
+                        <div class="col-md-12 form-group" id="duration">
                             <label for="start_time">Duration</label>
-                            <select class="form-control mb-1" name="duration">
-                                <option value="30" @if ($order != null && $order->duration == 30)
-                                    selected
-                                @endif>0.5H</option>
-                                <option value="60" @if ($order != null && $order->duration == 60)
-                                    selected
-                                @endif>1H</option>
-                                <option value="90" @if ($order != null && $order->duration == 90)
-                                    selected
-                                @endif>1.5H</option>
-                                <option value="120" @if ($order != null && $order->duration == 120)
-                                    selected
-                                @endif>2H</option>
-                                <option value="150" @if ($order != null && $order->duration == 150)
-                                    selected
-                                @endif>2.5H</option>
-                                <option value="180" @if ($order != null && $order->duration == 180)
-                                    selected
-                                @endif>3H</option>
-                                <option value="210" @if ($order != null && $order->duration == 210)
-                                    selected
-                                @endif>3.5H</option>
-                                <option value="240" @if ($order != null && $order->duration == 240)
-                                    selected
-                                @endif>4H</option>
-                            </select>
+                            <div class="flex">
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 30) selected @endif" data-value="30">0.5H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 60) selected @endif" data-value="60">1H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 90) selected @endif" data-value="90">1.5H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 120) selected @endif" data-value="120">2H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 150) selected @endif" data-value="150">2.5H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 180) selected @endif" data-value="180">3H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 210) selected @endif" data-value="210">3.5H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 240) selected @endif" data-value="240">4H</button>
+                            </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
@@ -60,9 +63,19 @@
                             </div>
                         </div>
                         <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6 text-center">
+                                    <button type="button" class="btn btn-round" id="services">Services</button>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <button type="button" class="btn btn-round" id="pesuboxs">Pesuboxs</button>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="col-md-12">
                             <label>Services</label>
                             <div class="form-group">
-                                <select class="select2 form-control" multiple="multiple" id="default-select-multi" name="service_id[]">
+                                <select class="select2 form-control" multiple="multiple" id="service_id" name="service_id[]">
                                     @foreach ($location_services as $service)
                                         <option value={{ $service->id }} @if ($order != null && in_array($service->id, explode(",", $order->service_id)))
                                             selected
@@ -70,8 +83,8 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-md-12">
+                        </div> --}}
+                        {{-- <div class="col-md-12">
                             <div class="form-group">
                                 <label for="selectDefault">Pesubox</label>
                                 <select class="form-control mb-1" id="icon" name="pesubox_id">
@@ -82,7 +95,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-md-6 form-group">
                             <label for="start_time">Nimi</label>
                             <input type="text" class="form-control" name="driver" value="@if ($order != null) {{ $order->driver }} @endif" />
@@ -127,9 +140,67 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="submit" class="btn btn-primary">Save</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-red text-white" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
+        </div>
+    </div>
+    <div class="modal fade text-left" id="service_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel18" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Select Services</h4>
+                    <button type="button" class="close" onclick="closeServiceModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        @foreach ($location_services as $service)
+                            <div class="col-md-6">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="{{ $service->id }}" data-value="{{ $service->id }}"/>
+                                    <label class="custom-control-label" for="{{ $service->id }}">{{ $service->name }}</label>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade text-left" id="pesubox_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel18" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Select Pesubox</h4>
+                    <button type="button" class="close" onclick="closePesuboxModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        @foreach ($location_pesuboxs as $pesubox)
+                            <div class="col-md-6">
+                                <div class="custom-control custom-checkbox">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="inlineRadioOptions"
+                                        id="radio{{ $pesubox->id }}"
+                                        value="{{ $pesubox->id }}"
+                                        data-value="{{ $pesubox->id }}"
+                                    />
+                                    <label class="form-check-label" for="radio{{ $pesubox->id }}">{{ $pesubox->name }}</label>
+                                    {{-- <input type="radio" class="custom-control-input" id="{{ $pesubox->id }}" data-value="{{ $pesubox->id }}"/>
+                                    <label class="custom-control-label" for="{{ $pesubox->id }}">{{ $pesubox->name }}</label> --}}
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 <script>
@@ -142,10 +213,26 @@
 
         $(".order-form #submit").click(function() {
             var formdata = new FormData($(".order-form")[0]);
-            if (formdata.get("service_id")) {
+            var service_id = [];
+            // console.log(formdata.get("service_id"));
+            $("#service_modal input[type=checkbox]").each(function() {
+                console.log($(this).prop("checked"))
+                if ($(this).prop("checked")) {
+                    service_id.push($(this).data("value"))
+                }
+            })
+            formdata.set("service_id", service_id)
 
-            }
-            console.log(formdata.get("service_id"));
+            var pesubox_id = [];
+            $("#pesubox_modal input[type=radio]").each(function() {
+                console.log($(this).prop("checked"))
+                if ($(this).prop("checked")) {
+                    pesubox_id.push($(this).data("value"))
+                }
+            })
+            formdata.set("pesubox_id", pesubox_id)
+            // console.log(formdata.get("service_id"));
+            // return;
             $.ajax({
                 type: "post",
                 url: appUrl + '/admin/updateOrder',
@@ -155,8 +242,11 @@
                 contentType: false,
                 cache: false,
                 success: (res) => {
+                    console.log(res)
                     if (res.success) {
                         window.location.reload();
+                    } else {
+                        alert("Something is wrong");
                     }
                 },
                 error: (err) => {
@@ -179,5 +269,36 @@
                 }
             });
         })
-    })
+
+        $("#duration .item").click(function() {
+            $(".order-form [name=duration]").val($(this).data("value"));
+            $("#duration").find(".selected").removeClass("selected");
+            var d = new Date($("#start_time").val());
+            d.setMinutes(d.getMinutes() + $(".order-form [name=duration]").val());
+            $("#end_time").val(d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes())
+            $(this).addClass("selected");
+        })
+
+        $("#start_time").change(function() {
+            var d = new Date($(this).val());
+            d.setMinutes(d.getMinutes() + $(".order-form [name=duration]").val());
+            $("#end_time").val(d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes())
+        });
+
+        $("#services").click(function() {
+            $("#service_modal").modal("show");
+        });
+
+        $("#pesuboxs").click(function() {
+            $("#pesubox_modal").modal("show");
+        });
+    });
+
+    function closeServiceModal() {
+        $("#service_modal").modal("hide");
+    }
+
+    function closePesuboxModal() {
+        $("#pesubox_modal").modal("hide");
+    }
 </script>

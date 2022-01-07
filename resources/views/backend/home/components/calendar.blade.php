@@ -30,5 +30,11 @@
             events : //'http://staff.digitalfusion.co.nz.local/time/calendar/leave/'
             data
         });
+
+        $("#calendar .ui-cal-wrapper .ui-cal-date .ui-cal-time").click(function() {
+            var date = $(this).parent().attr("date");
+            var time = $(this).attr("time")
+            getOrder(0, date + " " + time);
+        })
     });
 </script>

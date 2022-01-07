@@ -13,6 +13,7 @@ use App\Models\Services;
 use App\Models\Bookings;
 use App\Models\Mark;
 use App\Models\MarkModel;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -173,15 +174,21 @@ class AdminController extends Controller
         $location_pesuboxs = LocationPesuboxs::where("location_id", $request->location_id)->where("is_delete", 'N')->where("status", 1)->get();
         $location_marks = Mark::get();
         $location_mark_models = [];
+        $end_time = "";
         if ($order != null) {
             $location_mark_models = MarkModel::where("mark_id", $order->mark_id)->get();
+            $time = Carbon::parse($order->date . " " . $order->time);
+            $end_time = $time->addMinutes($order->duration)->format('Y-m-d H:i:s');
         }
-        return view('backend.home.components.modal', compact("order", "id", "location_id", "location_vehicles", "location_services", "location_pesuboxs", "location_marks", "location_mark_models"))->render();
+
+        // $end_time = $time->format('Y-m-d H:i');
+        return view('backend.home.components.modal', compact("order", "id", "location_id", "location_vehicles", "location_services", "location_pesuboxs", "location_marks", "location_mark_models", "end_time"))->render();
     }
 
     public function updateOrder(Request $request) {
         // $service_id = []
         // $request->service_id
+        print($request); return;
         $order = Bookings::find($request->id);
         if ($order == null) {
             $order = new Bookings();
@@ -214,10 +221,9 @@ class AdminController extends Controller
         
         $order->is_delete = 'N';
         if ($request->service_id != null) 
-            $order->service_id = implode(",", $request->service_id);
+            $order->service_id = $request->service_id;
         else 
             $order->service_id = "";
-        
         
         $order->pesubox_id = $request->pesubox_id;
         $order->vehicle_id = $request->vehicle_id;

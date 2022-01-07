@@ -104,6 +104,7 @@
 {{-- @include('backend.home.components.modal') --}}
 <div class="modal fade text-left" id="order_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel18" aria-hidden="true">
 </div>
+
 <script>
     $(function() {
         
@@ -135,15 +136,23 @@
         $(".btn-next").click(function() {
             getCalendar($("#next_start_date").val());
         });
+
+        
     })
-    var getOrder = function(uid) {
+    var getOrder = function(uid, time=null) {
         $.ajax({
             type: 'get',
             url: appUrl + "/admin/editOrder",
             data: {id: uid, location_id: $("#location").val()},
             success: (res) => {
+                if (res.message) {
+                    return alert(res.message)
+                }
                 $("#order_modal").html(res);
                 $("#order_modal").modal("show");
+                if (time) {
+                    $("#start_time").val(time)
+                }
             },
             error: (err) => {
                 console.log(err);

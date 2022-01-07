@@ -6,7 +6,7 @@
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });
-
+  appUrl = "";
   const router = {
     getVehicle: appUrl + "/admin/vehicles/get_list",
     getService: appUrl + "/admin/services/get_list",
