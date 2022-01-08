@@ -149,6 +149,7 @@ class HomePageController extends Controller
             $next_day = mktime(0, 0, 0, $month, $day_first + $x, $year);
             $time_start = explode(':', $location[date("D", $next_day) . '_start']);
             $time_end = explode(':', $location[date("D", $next_day) . '_end']);
+            var_dump($time_start);return;
             if (count($time_start) == 0 || count($time_end) == 0) {
                 return null;
             }
