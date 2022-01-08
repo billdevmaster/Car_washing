@@ -226,6 +226,9 @@ class HomePageController extends Controller
         $day = mktime(0, 0, 0, substr($date, 5, 2), substr($date, 8, 2), substr($date, 0, 4));
         $time_start = explode(':', $location[date("D", $day) . '_start']);
         $time_end = explode(':', $location[date("D", $day) . '_end']);
+        if (!$time_start || !$time_end) {
+            return null;
+        }
         $open_time = [];
         $open_time['id'] = (string) $location['id'];
         $open_time['slot_start'] = (string) (($time_start[0] * 1 * 2) + ($time_start[1] * 1 / 30));
