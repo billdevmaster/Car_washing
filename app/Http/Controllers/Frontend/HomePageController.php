@@ -149,7 +149,9 @@ class HomePageController extends Controller
             $next_day = mktime(0, 0, 0, $month, $day_first + $x, $year);
             $time_start = explode(':', $location[date("D", $next_day) . '_start']);
             $time_end = explode(':', $location[date("D", $next_day) . '_end']);
-            
+            if (!$time_start || $time_end) {
+                return null;
+            }
             $slot_start = mktime($time_start[0], intval($time_start[1]), $time_start[2], date("m"), date("d"), date("y"));
             $slot_end = mktime($time_end[0], intval($time_end[1]), $time_end[2], date("m"), date("d"), date("y"));
 
