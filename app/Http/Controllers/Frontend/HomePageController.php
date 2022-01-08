@@ -149,7 +149,7 @@ class HomePageController extends Controller
             $next_day = mktime(0, 0, 0, $month, $day_first + $x, $year);
             $time_start = explode(':', $location[date("D", $next_day) . '_start']);
             $time_end = explode(':', $location[date("D", $next_day) . '_end']);
-            if (!$time_start || $time_end) {
+            if (count($time_start) == 0 || count($time_end) == 0) {
                 return null;
             }
             $slot_start = mktime($time_start[0], intval($time_start[1]), $time_start[2], date("m"), date("d"), date("y"));
@@ -226,7 +226,7 @@ class HomePageController extends Controller
         $day = mktime(0, 0, 0, substr($date, 5, 2), substr($date, 8, 2), substr($date, 0, 4));
         $time_start = explode(':', $location[date("D", $day) . '_start']);
         $time_end = explode(':', $location[date("D", $day) . '_end']);
-        if (!$time_start || !$time_end) {
+        if (count($time_start) == 0 || count($time_end) == 0) {
             return null;
         }
         $open_time = [];
