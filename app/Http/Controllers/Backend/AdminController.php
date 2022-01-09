@@ -188,7 +188,6 @@ class AdminController extends Controller
     public function updateOrder(Request $request) {
         // $service_id = []
         // $request->service_id
-        print($request); return;
         $order = Bookings::find($request->id);
         if ($order == null) {
             $order = new Bookings();
