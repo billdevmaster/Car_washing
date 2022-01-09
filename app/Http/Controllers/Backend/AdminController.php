@@ -44,6 +44,15 @@ class AdminController extends Controller
             $item['resource'] = $order->pesubox_id;
             $item['title'] = "";
             $item['notes'] = "";
+            $mark = Mark::find($order->mark_id);
+            if ($mark) {
+                $item['notes'] .= $mark->name;
+            }
+            $mark_model = MarkModel::find($order->model_id);
+            if ($mark_model) {
+                $item['notes'] .= " (" . $mark_model->model . ") ";
+            }
+            
             $arr_service = explode(",", $order->service_id);
             foreach($arr_service as $service_id) {
                 if ($service_id != null) {
