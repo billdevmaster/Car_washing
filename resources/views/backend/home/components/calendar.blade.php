@@ -33,8 +33,9 @@
 
         $("#calendar .ui-cal-wrapper .ui-cal-date .ui-cal-time").click(function() {
             var date = $(this).parent().attr("date");
-            var time = $(this).attr("time")
-            getOrder(0, date + " " + time);
+            var time = $(this).attr("time");
+            var pesubox = $(this).parent().attr("resource");
+            getOrder(0, date + " " + time, pesubox);
         })
     });
 </script>

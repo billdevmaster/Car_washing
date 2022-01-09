@@ -145,7 +145,7 @@
 
         
     })
-    var getOrder = function(uid, time=null) {
+    var getOrder = function(uid, time=null, pesubox=null) {
         $.ajax({
             type: 'get',
             url: appUrl + "/admin/editOrder",
@@ -158,6 +158,13 @@
                 $("#order_modal").modal("show");
                 if (time) {
                     $("#start_time").val(time)
+                }
+                if (pesubox) {
+                    $("#pesubox_modal input[type=radio]").each(function() {
+                        if ($(this).data("value") == pesubox) {
+                            $(this).prop("checked", true);
+                        }
+                    })
                 }
             },
             error: (err) => {
