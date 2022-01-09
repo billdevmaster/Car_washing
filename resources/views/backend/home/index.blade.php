@@ -9,6 +9,12 @@
 <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/plugins/forms/pickers/form-pickadate.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/vendors/css/forms/select/select2.min.css')}}">
 <style>
+
+#order_modal {
+    overflow-x: hidden; 
+    overflow-y: auto;
+}
+
 #calendar{
     position: absolute;
     top: 250px;
@@ -102,7 +108,7 @@
     </div>
 </div>
 {{-- @include('backend.home.components.modal') --}}
-<div class="modal fade text-left" id="order_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel18" aria-hidden="true">
+<div class="modal fade text-left" id="order_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel18" aria-hidden="true" style="overflow-x: hidden; overflow-y: auto;">
 </div>
 
 <script>

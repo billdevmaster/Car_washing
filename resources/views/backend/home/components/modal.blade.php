@@ -140,6 +140,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="submit" class="btn btn-primary">Save</button>
+                    @if ($order != null)
+                    <button type="button" id="delete" class="btn btn-primary" data-id="{{ $order->id }}">Delete</button>
+                    @endif
                     <button type="button" class="btn btn-red text-white" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
@@ -282,7 +285,7 @@
         $("#start_time").change(function() {
             var d = new Date($(this).val());
             d.setMinutes(d.getMinutes() + $(".order-form [name=duration]").val());
-            $("#end_time").val(d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes())
+            $("#end_time").val(d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes())
         });
 
         $("#services").click(function() {
@@ -292,6 +295,26 @@
         $("#pesuboxs").click(function() {
             $("#pesubox_modal").modal("show");
         });
+
+        $("#delete").click(function() {
+            $.ajax({
+                type: "post",
+                url: appUrl + '/admin/deleteOrder',
+                data: {id: $(this).data("id")},
+                success: (res) => {
+                    console.log(res)
+                    res = JSON.parse(res);
+                    if (res.success) {
+                        window.location.reload();
+                    } else {
+                        alert("Something is wrong");
+                    }
+                },
+                error: (err) => {
+                    console.log(err);
+                }
+            });
+        })
     });
 
     function closeServiceModal() {

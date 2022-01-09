@@ -236,6 +236,13 @@ class AdminController extends Controller
         $order->save();
         return response(json_encode(['success' => true]));
     }
+
+    public function deleteOrder(Request $request) {
+        $order = Bookings::find($request->id);
+        $order->is_delete = 'Y';
+        $order->save();
+        return response(json_encode(['success' => true]));
+    }
  
     public function getModel(Request $request) {
         $location_mark_models = MarkModel::where("mark_id", $request['mark_id'])->get();
