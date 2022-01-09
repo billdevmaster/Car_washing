@@ -217,6 +217,11 @@
         $(".order-form #submit").click(function() {
             var formdata = new FormData($(".order-form")[0]);
             var service_id = [];
+
+            if ($("#start_time").val() == "") {
+                return alert("Please select the time")
+            }
+
             // console.log(formdata.get("service_id"));
             $("#service_modal input[type=checkbox]").each(function() {
                 console.log($(this).prop("checked"))
@@ -224,6 +229,9 @@
                     service_id.push($(this).data("value"))
                 }
             })
+            if (service_id.length == 0) {
+                return alert("Please select the service")
+            }
             formdata.set("service_id", service_id)
 
             var pesubox_id = [];
@@ -233,6 +241,9 @@
                     pesubox_id.push($(this).data("value"))
                 }
             })
+            if (pesubox_id.length == 0) {
+                return alert("Please select the Pesubox")
+            }
             formdata.set("pesubox_id", pesubox_id)
             // console.log(formdata.get("service_id"));
             // return;
