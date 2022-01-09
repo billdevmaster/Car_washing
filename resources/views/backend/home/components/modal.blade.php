@@ -162,7 +162,10 @@
                         @foreach ($location_services as $service)
                             <div class="col-md-6">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="{{ $service->id }}" data-value="{{ $service->id }}"/>
+                                    <input type="checkbox" class="custom-control-input" id="{{ $service->id }}" data-value="{{ $service->id }}" @if ($order != null && in_array($service->id, explode(",", $order->service_id)))
+                                        checked
+                                    @endif 
+                                    >
                                     <label class="custom-control-label" for="{{ $service->id }}">{{ $service->name }}</label>
                                 </div>
                             </div>
