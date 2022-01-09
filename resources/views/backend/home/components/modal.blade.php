@@ -238,9 +238,9 @@
                     service_id.push($(this).data("value"))
                 }
             })
-            if (service_id.length == 0) {
-                return alert("Please select the service")
-            }
+            // if (service_id.length == 0) {
+            //     return alert("Please select the service")
+            // }
             formdata.set("service_id", service_id)
 
             var pesubox_id = [];
