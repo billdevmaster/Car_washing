@@ -52,7 +52,7 @@ class AdminController extends Controller
             if ($mark_model) {
                 $item['notes'] .= " (" . $mark_model->model . ") ";
             }
-            
+            $item['notes'] .= "\n";
             $arr_service = explode(",", $order->service_id);
             foreach($arr_service as $service_id) {
                 if ($service_id != null) {
