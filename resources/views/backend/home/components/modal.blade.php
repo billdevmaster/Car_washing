@@ -21,7 +21,7 @@
                 @csrf
                 <input type="hidden" name="id" value={{ $id }}>
                 <input type="hidden" name="location_id" value="{{ $location_id }}">
-                <input type="hidden" name="duration" value="0">
+                <input type="hidden" name="duration" value="30">
                 <input type="hidden" name="service_id" value="">
                 <div class="container">
                     <div class="row">
@@ -40,7 +40,7 @@
                         <div class="col-md-12 form-group" id="duration">
                             <label for="start_time">Duration</label>
                             <div class="flex">
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 30) selected @endif" data-value="30">0.5H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 30) selected @else selected @endif" data-value="30">0.5H</button>
                                 <button type="button" class="btn btn-default item @if($order != null && $order->duration == 60) selected @endif" data-value="60">1H</button>
                                 <button type="button" class="btn btn-default item @if($order != null && $order->duration == 90) selected @endif" data-value="90">1.5H</button>
                                 <button type="button" class="btn btn-default item @if($order != null && $order->duration == 120) selected @endif" data-value="120">2H</button>
@@ -169,6 +169,9 @@
                         @endforeach
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="closeServiceModal()">Save</button>
+                </div>
             </div>
         </div>
     </div>
@@ -202,6 +205,9 @@
                             </div>
                         @endforeach
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="closePesuboxModal()">Save</button>
                 </div>
             </div>
         </div>
@@ -289,7 +295,7 @@
             $("#duration").find(".selected").removeClass("selected");
             var d = new Date($("#start_time").val());
             d.setMinutes(d.getMinutes() + $(".order-form [name=duration]").val());
-            $("#end_time").val(d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes())
+            $("#end_time").val(d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes())
             $(this).addClass("selected");
         })
 
