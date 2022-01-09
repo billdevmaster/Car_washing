@@ -200,6 +200,9 @@
                                         id="radio{{ $pesubox->id }}"
                                         value="{{ $pesubox->id }}"
                                         data-value="{{ $pesubox->id }}"
+                                        @if ($order != null && $order->pesubox_id == $pesubox->id)
+                                            checked
+                                        @endif
                                     />
                                     <label class="form-check-label" for="radio{{ $pesubox->id }}">{{ $pesubox->name }}</label>
                                     {{-- <input type="radio" class="custom-control-input" id="{{ $pesubox->id }}" data-value="{{ $pesubox->id }}"/>
