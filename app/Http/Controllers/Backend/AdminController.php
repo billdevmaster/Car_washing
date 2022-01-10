@@ -191,7 +191,17 @@ class AdminController extends Controller
         }
 
         // $end_time = $time->format('Y-m-d H:i');
-        return view('backend.home.components.modal', compact("order", "id", "location_id", "location_vehicles", "location_services", "location_pesuboxs", "location_marks", "location_mark_models", "end_time"))->render();
+        $location = Locations::find($location_id);
+        $location_lasttimes = json_encode([
+            1 => $location->Mon_end,
+            2 => $location->Tue_end,
+            3 => $location->Wed_end,
+            4 => $location->Thu_end,
+            5 => $location->Fri_end,
+            6 => $location->Sat_end,
+            0 => $location->Sun_end,
+        ]);
+        return view('backend.home.components.modal', compact("order", "id", "location_lasttimes", "location_id", "location_vehicles", "location_services", "location_pesuboxs", "location_marks", "location_mark_models", "end_time"))->render();
     }
 
     public function updateOrder(Request $request) {

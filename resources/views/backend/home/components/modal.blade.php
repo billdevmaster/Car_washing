@@ -47,7 +47,7 @@
                                 <button type="button" class="btn btn-default item @if($order != null && $order->duration == 150) selected @endif" data-value="150">2.5H</button>
                                 <button type="button" class="btn btn-default item @if($order != null && $order->duration == 180) selected @endif" data-value="180">3H</button>
                                 <button type="button" class="btn btn-default item @if($order != null && $order->duration == 210) selected @endif" data-value="210">3.5H</button>
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 240) selected @endif" data-value="240">4H</button>
+                                <button type="button" class="btn btn-default item" data-value="max">Max</button>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -219,6 +219,7 @@
         </div>
     </div>
 <script>
+    var location_lasttimes = <?php echo $location_lasttimes; ?>;
     $(function() {
         $("#start_time").flatpickr({
             enableTime: true
@@ -297,9 +298,15 @@
         })
 
         $("#duration .item").click(function() {
-            $(".order-form [name=duration]").val($(this).data("value"));
             $("#duration").find(".selected").removeClass("selected");
             var d = new Date($("#start_time").val());
+            if ($(this).data("value") != 'max') {
+                $(".order-form [name=duration]").val($(this).data("value"));
+            } else {
+                var last_time = new Date(d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + location_lasttimes[d.getDay()]);
+                var difference = Math.floor((last_time - d) / 1000 / 60);
+                $(".order-form [name=duration]").val(difference);
+            }
             d.setMinutes(d.getMinutes() + $(".order-form [name=duration]").val());
             $("#end_time").val(d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes())
             $(this).addClass("selected");
