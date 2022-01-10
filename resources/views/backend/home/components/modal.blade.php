@@ -305,7 +305,7 @@
             } else {
                 var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + location_lasttimes[d.getDay()]);
                 var diff = last_time - d;
-                // var difference = Math.floor(diff / 1000 / 60);
+                var difference = Math.floor(diff / 1000 / 60);
                 $(".order-form [name=duration]").val(100);
             }
             d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
