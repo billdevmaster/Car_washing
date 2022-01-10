@@ -17,7 +17,7 @@
 
 #calendar{
     position: absolute;
-    top: 250px;
+    top: 275px;
     left: 20px;
     right: 20px;
     bottom: 10px;
@@ -72,7 +72,7 @@
         </div>
     </div>
     <div class="content-body">
-        <form class="form form-horizontal">
+        <form class="form form-horizontal" style="margin-bottom: 15px;">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group row">
@@ -93,17 +93,18 @@
                 </div>
             </div>
         </form>
-        
-        <div class="row" style="display: flex; justify-content: space-between">
-            <div class="col-xs-1">
-                <a href="#" class="btn btn-prev"><i data-feather='arrow-left'></i></a>
+        <div class="container">
+            <div class="row" style="display: flex; justify-content: space-between">
+                <div class="col-xs-1" style="position: relative; z-index: 1">
+                    <a href="#" class="btn btn-prev btn-primary text-white"><i data-feather='arrow-left'></i></a>
+                </div>
+                <div class="col-xs-10">&nbsp;</div>
+                <div class="col-xs-1" style="position: relative; z-index: 1">
+                    <a href="#" class="btn btn-next btn-primary text-white"><i data-feather='arrow-right'></i></a>
+                </div>
             </div>
-            <div class="col-xs-10">&nbsp;</div>
-            <div class="col-xs-1">
-                <a href="#" class="btn btn-next"><i data-feather='arrow-right'></i></a>
+            <div id="orders">
             </div>
-        </div>
-        <div id="orders">
         </div>
     </div>
 </div>

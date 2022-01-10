@@ -119,7 +119,7 @@ class AdminLocationController extends Controller
 
     public function getLocationPesuboxs(Request $request) {
         $location_id = $request->id;
-        $location_pesuboxs = LocationPesuboxs::where("location_id", $request->id)->get();
+        $location_pesuboxs = LocationPesuboxs::where("location_id", $request->id)->where("is_delete", 'N')->get();
         
         return view('backend.locations.components.pesuboxs', compact("location_id", "location_pesuboxs"))->render();
     }
@@ -138,6 +138,13 @@ class AdminLocationController extends Controller
         $location_pesubox->name = $request->name;
         $location_pesubox->description = $request->description;
         $location_pesubox->location_id = $request->location_id;
+        $location_pesubox->save();
+        return response(json_encode(['success' => true]));
+    }
+
+    public function deleteLocationPesubox(Request $request) {
+        $location_pesubox = LocationPesuboxs::find($request->id);
+        $location_pesubox->is_delete = 'Y';
         $location_pesubox->save();
         return response(json_encode(['success' => true]));
     }
@@ -180,4 +187,6 @@ class AdminLocationController extends Controller
         $location_user = LocationUsers::find($request->id);
         return response(json_encode(['success' => true, "data" => $location_user]));
     }
+
+    
 }

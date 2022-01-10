@@ -41,7 +41,7 @@
                           <i data-feather="edit-2" class="mr-50"></i>
                           <span>Edit</span>
                         </a>
-                        <a class="dropdown-item" href="javascript:void(0);">
+                        <a class="dropdown-item" href="javascript:void(0);" onclick="deletePesubox({{ $location_pesubox->id }})">
                           <i data-feather="trash" class="mr-50"></i>
                           <span>Delete</span>
                         </a>
@@ -191,8 +191,31 @@
       })
     });
   });
+
   function addNewPesubox () {
     $("#location_pesubox_id").val(0);
+  }
+
+  function deletePesubox(id) {
+    $.ajax({
+      type: 'post',
+      url: appUrl + '/admin/locations/deleteLocationPesubox',
+      data: {id: id},
+      success: (res) => {
+        window.location.reload();
+      },
+      error: () => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          customClass: {
+          confirmButton: 'btn btn-primary'
+          },
+          buttonsStyling: false
+        });
+      }
+    })
   }
 </script>
           
