@@ -299,16 +299,18 @@
 
         $("#duration .item").click(function() {
             $("#duration").find(".selected").removeClass("selected");
-            var d = new Date($("#start_time").val());
+            var d = new Date($("#start_time").val() + ":00");
             if ($(this).data("value") != 'max') {
                 $(".order-form [name=duration]").val($(this).data("value"));
             } else {
                 var last_time = new Date(d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + location_lasttimes[d.getDay()]);
+
                 var difference = Math.floor((last_time - d) / 1000 / 60);
+                console.log(difference)
                 $(".order-form [name=duration]").val(difference);
             }
-            d.setMinutes(d.getMinutes() + $(".order-form [name=duration]").val());
-            $("#end_time").val(d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes())
+            d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
+            $("#end_time").val(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + String(d.getHours()).padStart(2, '0') + ":" + String(d.getMinutes()).padStart(2, '0'))
             $(this).addClass("selected");
         })
 
