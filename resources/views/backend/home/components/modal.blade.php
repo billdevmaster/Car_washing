@@ -304,9 +304,8 @@
                 $(".order-form [name=duration]").val($(this).data("value"));
             } else {
                 var last_time = new Date(d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + location_lasttimes[d.getDay()]);
-
-                var difference = Math.floor((last_time - d) / 1000 / 60);
-                console.log(difference)
+                var diff = last_time - d;
+                var difference = Math.floor(diff / 1000 / 60);
                 $(".order-form [name=duration]").val(difference);
             }
             d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
