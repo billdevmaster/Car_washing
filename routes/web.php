@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/admin/getCalendar', 'Backend\AdminController@getCalendar')->name('admin.getCalendar');
         Route::get('/admin/editOrder', 'Backend\AdminController@editOrder')->name('admin.editOrder');
         Route::post('/admin/updateOrder', 'Backend\AdminController@updateOrder')->name('admin.updateOrder');
+        Route::post('/admin/getDayEndTime', 'Backend\AdminController@getDayEndTime')->name('admin.getDayEndTime');
         Route::post('/admin/deleteOrder', 'Backend\AdminController@deleteOrder')->name('admin.deleteOrder');
         Route::post('/admin/getModel', 'Backend\AdminController@getModel');
         // vehicle route

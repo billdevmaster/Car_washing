@@ -304,17 +304,35 @@
             var d = new Date($("#start_time").val());
             if ($(this).data("value") != '600') {
                 $(".order-form [name=duration]").val($(this).data("value"));
+                d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
+                $("#end_time").val(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + String(d.getHours()).padStart(2, '0') + ":" + String(d.getMinutes()).padStart(2, '0'))
+                $(this).addClass("selected");
             } else {
-                var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + location_lasttimes_array[d.getDay()]);
-                alert(d)
-                alert(d.getDay())
-                var diff = last_time - d;
-                var difference = Math.floor(diff / 1000 / 60);
-                $(".order-form [name=duration]").val(difference);
+                if ($("#start_time").val() == "") {
+                    return alert("please select the start date");
+                }
+                $.ajax({
+                    type: "post",
+                    url: appUrl + '/admin/getDayEndTime',
+                    data: {date: $("#start_time").val(),location_id: $("input[name=location_id]").val()},
+                    success: (res) => {
+                        res = JSON.parse(res)
+                        var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + res.endtime);
+                        // alert(d)
+                        // alert(d.getDay())
+                        var diff = last_time - d;
+                        var difference = Math.floor(diff / 1000 / 60);
+                        $(".order-form [name=duration]").val(difference);
+                        d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
+                        $("#end_time").val(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + String(d.getHours()).padStart(2, '0') + ":" + String(d.getMinutes()).padStart(2, '0'))
+                        $(this).addClass("selected");
+                    },
+                    error: (err) => {
+                        console.log(err);
+                    }
+                });
             }
-            d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
-            $("#end_time").val(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + String(d.getHours()).padStart(2, '0') + ":" + String(d.getMinutes()).padStart(2, '0'))
-            $(this).addClass("selected");
+            
         })
 
         $("#start_time").change(function() {

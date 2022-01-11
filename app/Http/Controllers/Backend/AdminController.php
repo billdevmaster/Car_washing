@@ -276,4 +276,11 @@ class AdminController extends Controller
         $location_mark_models = MarkModel::where("mark_id", $request['mark_id'])->get();
         return view('backend.home.components.model', compact("location_mark_models"))->render();
     }
+
+    public function getDayEndTime(Request $request) {
+        $day = mktime(0, 0, 0, substr($request->date, 5, 2), substr($request->date, 8, 2), substr($request->date, 0, 4));
+        $location = Locations::find($request->location_id);
+        $time_end = $location[date("D", $day) . '_end'];
+        return response(json_encode(['endtime' => $time_end]));
+    }
 }
