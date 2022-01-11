@@ -319,8 +319,8 @@
                         res = JSON.parse(res)
                         var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + res.endtime);
                         // alert(d)
-                        // alert(d.getDay())
                         var diff = last_time - d;
+                        alert(diff)
                         var difference = Math.floor(diff / 1000 / 60);
                         $(".order-form [name=duration]").val(difference);
                         d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
