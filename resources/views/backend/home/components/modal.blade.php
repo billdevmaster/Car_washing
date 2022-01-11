@@ -301,13 +301,14 @@
 
         $("#duration .item").click(function() {
             $("#duration").find(".selected").removeClass("selected");
-            if (navigator.userAgent.toLowerCase().indexOf("iphone") ==-1) 
+            if (navigator.userAgent.toLowerCase().indexOf("iphone") ==-1) {
                 var d = new Date($("#start_time").val());
-            else
+            } else {
                 var t = $("#start_time").val().split(/[- :]/);
                 // Apply each element to the Date function
                 var actiondate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
                 var d = new Date(actiondate);
+            }
             if ($(this).data("value") != '600') {
                 $(".order-form [name=duration]").val($(this).data("value"));
                 d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
@@ -323,7 +324,15 @@
                     data: {date: $("#start_time").val(),location_id: $("input[name=location_id]").val()},
                     success: (res) => {
                         res = JSON.parse(res)
-                        var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + res.endtime);
+                        if (navigator.userAgent.toLowerCase().indexOf("iphone") ==-1) {
+                            var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + res.endtime);
+                        } else {
+                            var strtime = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + res.endtime;
+                            var t = strtime.split(/[- :]/);
+                            // Apply each element to the Date function
+                            var actiondate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+                            var last_time = new Date(actiondate);
+                        }
                         // alert(d)
                         alert(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + res.endtime)
                         alert(last_time)
