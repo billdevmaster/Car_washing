@@ -301,12 +301,12 @@
 
         $("#duration .item").click(function() {
             $("#duration").find(".selected").removeClass("selected");
-            var d = new Date($("#start_time").val() + ":00");
+            var d = new Date($("#start_time").val());
             if ($(this).data("value") != '600') {
                 $(".order-form [name=duration]").val($(this).data("value"));
             } else {
                 var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + location_lasttimes_array[d.getDay()]);
-                alert(location_lasttimes_array[0])
+                alert(d)
                 alert(d.getDay())
                 var diff = last_time - d;
                 var difference = Math.floor(diff / 1000 / 60);
