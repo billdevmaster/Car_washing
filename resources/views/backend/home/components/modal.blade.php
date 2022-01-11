@@ -324,23 +324,8 @@
                     data: {date: $("#start_time").val(),location_id: $("input[name=location_id]").val()},
                     success: (res) => {
                         res = JSON.parse(res)
-                        if (navigator.userAgent.toLowerCase().indexOf("iphone") ==-1) {
-                            var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + res.endtime);
-                        } else {
-                            var strtime = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + res.endtime;
-                            var t = strtime.split(/[- :]/);
-                            // Apply each element to the Date function
-                            var actiondate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
-                            var last_time = new Date(actiondate);
-                        }
-                        // alert(d)
-                        alert(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + res.endtime)
-                        alert(last_time)
-                        var diff = last_time - d;
-                        var difference = Math.floor(diff / 1000 / 60);
-                        $(".order-form [name=duration]").val(difference);
-                        d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
-                        $("#end_time").val(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + String(d.getHours()).padStart(2, '0') + ":" + String(d.getMinutes()).padStart(2, '0'))
+                        $(".order-form [name=duration]").val(res.difference);
+                        $("#end_time").val(res.end_time)
                         $(this).addClass("selected");
                     },
                     error: (err) => {

@@ -281,6 +281,10 @@ class AdminController extends Controller
         $day = mktime(0, 0, 0, substr($request->date, 5, 2), substr($request->date, 8, 2), substr($request->date, 0, 4));
         $location = Locations::find($request->location_id);
         $time_end = $location[date("D", $day) . '_end'];
-        return response(json_encode(['endtime' => $time_end]));
+        $from_time = strtotime($request->date);
+        $to_time = strtotime(substr($request->date, 0, 10) . " " . $time_end);
+        $difference = round(abs($to_time - $from_time) / 60,2);
+        
+        return response(json_encode(['difference' => $difference, "end_time" => substr($request->date, 0, 10) . " " . $time_end]));
     }
 }
