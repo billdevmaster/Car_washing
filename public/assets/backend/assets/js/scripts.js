@@ -13,6 +13,7 @@
     removeService: appUrl + "/admin/services/remove",
     getLocation: appUrl + "/admin/locations/get_list",
     editLocation: appUrl + "/admin/locations/edit",
+    removeLocation: appUrl + "/admin/locations/delete",
     saveLocationGeneral: appUrl + "/admin/locations/save_general",
     getLocationServices: appUrl + "/admin/locations/getLocationServices",
     getLocationVehicles: appUrl + "/admin/locations/getLocationVehicles",
@@ -188,14 +189,7 @@
             type: 'post',
             data: {id: $("#service_modal #id").val()},
             success: (res) => {
-              Swal.fire({
-                icon: 'success',
-                title: 'Deleted!',
-                text: 'Your file has been deleted.',
-                customClass: {
-                  confirmButton: 'btn btn-success'
-                }
-              });
+              window.location.reload();
             },
             error: () => {
               Swal.fire({
@@ -259,7 +253,7 @@
                       '<a class="dropdown-item" href="' + router.editLocation + '?id=' + full['id'] + '">' +
                       feather.icons['save'].toSvg({ class: 'font-small-4 mr-50' }) +
                       'Edit</a>' +
-                      '<a class="dropdown-item delete-service" >' +
+                      '<a class="dropdown-item delete-location" data-id="' + full['id'] + '" >' +
                       feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) +
                       'Delete</a>' +
                   '</div>' +
@@ -321,6 +315,44 @@
       })
     })
   }
+
+  locationTable.on("click", "tr .delete-location", function() {
+    var id = $(this).data("id");
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      customClass: {
+        confirmButton: 'btn btn-primary',
+        cancelButton: 'btn btn-outline-danger ml-1'
+      },
+      buttonsStyling: false,
+    }).then(function (result) {
+      if (result.value) {
+        $.ajax({
+          url: router.removeLocation,
+          type: 'post',
+          data: {id: id},
+          success: (res) => {
+            window.location.reload();
+          },
+          error: () => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+              customClass: {
+                confirmButton: 'btn btn-primary'
+              },
+              buttonsStyling: false
+            });
+          }
+        })
+      }
+    });
+  })
 
   // location service
   $(".location-edit #services-tab").click(function () {

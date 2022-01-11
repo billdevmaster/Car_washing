@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/admin/locations/save', 'Backend\AdminLocationController@save')->name('admin.locations.save');
         Route::post('/admin/locations/save_general', 'Backend\AdminLocationController@save_general')->name('admin.locations.save_general');
         Route::get('/admin/locations/edit/', 'Backend\AdminLocationController@edit')->name('admin.locations.edit');
+        Route::post('/admin/locations/delete/', 'Backend\AdminLocationController@delete')->name('admin.locations.delete');
         Route::get('/admin/locations/get_list', 'Backend\AdminLocationController@get_list');
         Route::get('/admin/locations/getLocationServices', 'Backend\AdminLocationController@getLocationServices');
         Route::post('/admin/locations/saveLocationService', 'Backend\AdminLocationController@saveLocationService');

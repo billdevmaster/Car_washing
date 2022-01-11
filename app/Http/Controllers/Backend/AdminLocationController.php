@@ -45,6 +45,13 @@ class AdminLocationController extends Controller
         return view('backend.locations.edit', compact("location", "menu", "id"));
     }
 
+    public function delete(Request $request) {
+        $location = Locations::find($request->id);
+        $location->is_delete = 'Y';
+        $location->save();
+        return response(json_encode(['success' => true]));
+    }
+
     public function save_general(Request $request) {
         $location = Locations::find($request->id);
         $location->name = $request->name;

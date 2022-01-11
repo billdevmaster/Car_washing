@@ -43,7 +43,7 @@ class AdminServiceController extends Controller
     }
 
     public function get_list() {
-        $service_list = Services::get();
+        $service_list = Services::where("is_delete", 'N')->get();
         return Datatables::of($service_list)
             ->addIndexColumn()
             ->make(true);
