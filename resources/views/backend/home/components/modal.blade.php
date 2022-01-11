@@ -319,7 +319,7 @@
                         res = JSON.parse(res)
                         var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + res.endtime);
                         // alert(d)
-                        alert(res.endtime)
+                        alert(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + res.endtime)
                         alert(last_time)
                         var diff = last_time - d;
                         var difference = Math.floor(diff / 1000 / 60);
