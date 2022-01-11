@@ -220,6 +220,7 @@
     </div>
 <script>
     var location_lasttimes = <?php echo $location_lasttimes; ?>;
+    // var location_starttimes = <?php echo $location_starttimes; ?>;
     $(function() {
         $("#start_time").flatpickr({
             enableTime: true
@@ -306,7 +307,7 @@
                 var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + location_lasttimes[d.getDay()]);
                 var diff = last_time - d;
                 var difference = Math.floor(diff / 1000 / 60);
-                $(".order-form [name=duration]").val(difference + "");
+                $(".order-form [name=duration]").val(difference);
             }
             d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
             $("#end_time").val(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + String(d.getHours()).padStart(2, '0') + ":" + String(d.getMinutes()).padStart(2, '0'))

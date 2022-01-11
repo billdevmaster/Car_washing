@@ -201,7 +201,16 @@ class AdminController extends Controller
             6 => $location->Sat_end,
             0 => $location->Sun_end,
         ]);
-        return view('backend.home.components.modal', compact("order", "id", "location_lasttimes", "location_id", "location_vehicles", "location_services", "location_pesuboxs", "location_marks", "location_mark_models", "end_time"))->render();
+        // $location_starttimes = json_encode([
+        //     1 => $location->Mon_start,
+        //     2 => $location->Tue_start,
+        //     3 => $location->Wed_start,
+        //     4 => $location->Thu_start,
+        //     5 => $location->Fri_start,
+        //     6 => $location->Sat_start,
+        //     0 => $location->Sun_start,
+        // ]);
+        return view('backend.home.components.modal', compact("order", "id", "location_lasttimes", "location_starttimes", "location_id", "location_vehicles", "location_services", "location_pesuboxs", "location_marks", "location_mark_models", "end_time"))->render();
     }
 
     public function updateOrder(Request $request) {
