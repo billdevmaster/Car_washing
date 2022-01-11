@@ -47,7 +47,7 @@
                                 <button type="button" class="btn btn-default item @if($order != null && $order->duration == 150) selected @endif" data-value="150">2.5H</button>
                                 <button type="button" class="btn btn-default item @if($order != null && $order->duration == 180) selected @endif" data-value="180">3H</button>
                                 <button type="button" class="btn btn-default item @if($order != null && $order->duration == 210) selected @endif" data-value="210">3.5H</button>
-                                <button type="button" class="btn btn-default item" data-value="max">Max</button>
+                                <button type="button" class="btn btn-default item" data-value="600">Max</button>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -300,16 +300,16 @@
         $("#duration .item").click(function() {
             $("#duration").find(".selected").removeClass("selected");
             var d = new Date($("#start_time").val() + ":00");
-            if ($(this).data("value") != 'max') {
+            if ($(this).data("value") != '600') {
                 $(".order-form [name=duration]").val($(this).data("value"));
             } else {
                 var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + location_lasttimes[d.getDay()]);
                 var diff = last_time - d;
                 var difference = Math.floor(diff / 1000 / 60);
-                console.log(difference)
-                $(".order-form [name=duration]").val(difference);
+                alert(difference)
+                $(".order-form [name=duration]").val("12sd");
             }
-            d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val());
+            d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
             $("#end_time").val(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + String(d.getHours()).padStart(2, '0') + ":" + String(d.getMinutes()).padStart(2, '0'))
             $(this).addClass("selected");
         })

@@ -256,12 +256,12 @@ class AdminController extends Controller
         $order->vehicle_id = $request->vehicle_id;
         $order->mark_id = $request->mark_id;
         $order->model_id = $request->model_id;
-        // $order->duration = $request->duration;
+        $order->duration = $request->duration;
         $order->started_at = $request->datetime;
         $order->date = substr($request->datetime, 0, 10);
         $order->time = substr($request->datetime, 10, 5) . ":00";
         // var_dump($request->datetime);exit;
-        // $order->save();
+        $order->save();
         return response(json_encode(['success' => true]));
     }
 
