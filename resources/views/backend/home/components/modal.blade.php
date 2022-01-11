@@ -220,7 +220,6 @@
     </div>
 <script>
     var location_lasttimes = <?php echo $location_lasttimes; ?>;
-    // var location_starttimes = <?php echo $location_starttimes; ?>;
     $(function() {
         $("#start_time").flatpickr({
             enableTime: true
