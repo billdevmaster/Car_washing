@@ -222,7 +222,6 @@
     var location_lasttimes = '{{ $location_lasttimes }}';
     location_lasttimes = location_lasttimes.replace(/&quot;/g, '"');
     location_lasttimes_array = JSON.parse(location_lasttimes);
-    alert(location_lasttimes_array)
     $(function() {
         $("#start_time").flatpickr({
             enableTime: true
@@ -307,8 +306,9 @@
                 $(".order-form [name=duration]").val($(this).data("value"));
             } else {
                 var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + location_lasttimes_array[d.getDay()]);
+                alert(location_lasttimes_array[0])
+                alert(d.getDay())
                 var diff = last_time - d;
-                alert(diff)
                 var difference = Math.floor(diff / 1000 / 60);
                 $(".order-form [name=duration]").val(difference);
             }
