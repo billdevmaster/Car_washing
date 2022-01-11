@@ -300,12 +300,14 @@
         })
 
         $("#duration .item").click(function() {
-            if (navigator.userAgent.toLowerCase().indexOf("iphone") ==-1) 
-                alert("android")
-            else
-                alert("iphone")
             $("#duration").find(".selected").removeClass("selected");
-            var d = new Date($("#start_time").val());
+            if (navigator.userAgent.toLowerCase().indexOf("iphone") ==-1) 
+                var d = new Date($("#start_time").val());
+            else
+                var t = $("#start_time").val().split(/[- :]/);
+                // Apply each element to the Date function
+                var actiondate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+                var d = new Date(actiondate);
             if ($(this).data("value") != '600') {
                 $(".order-form [name=duration]").val($(this).data("value"));
                 d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
