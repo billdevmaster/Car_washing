@@ -300,6 +300,10 @@
         })
 
         $("#duration .item").click(function() {
+            if (navigator.userAgent.toLowerCase().indexOf("iphone") ==-1) 
+                alert("android")
+            else
+                alert("iphone")
             $("#duration").find(".selected").removeClass("selected");
             var d = new Date($("#start_time").val());
             if ($(this).data("value") != '600') {
