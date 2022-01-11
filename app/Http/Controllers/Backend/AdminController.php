@@ -193,13 +193,13 @@ class AdminController extends Controller
         // $end_time = $time->format('Y-m-d H:i');
         $location = Locations::find($location_id);
         $location_lasttimes = json_encode([
-            1 => $location->Mon_end,
-            2 => $location->Tue_end,
-            3 => $location->Wed_end,
-            4 => $location->Thu_end,
-            5 => $location->Fri_end,
-            6 => $location->Sat_end,
-            0 => $location->Sun_end,
+            "1" => $location->Mon_end,
+            "2" => $location->Tue_end,
+            "3" => $location->Wed_end,
+            "4" => $location->Thu_end,
+            "5" => $location->Fri_end,
+            "6" => $location->Sat_end,
+            "0" => $location->Sun_end,
         ]);
         // $location_starttimes = json_encode([
         //     1 => $location->Mon_start,

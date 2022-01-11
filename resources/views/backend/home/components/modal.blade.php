@@ -219,7 +219,9 @@
         </div>
     </div>
 <script>
-    var location_lasttimes = <?php echo $location_lasttimes; ?>;
+    var location_lasttimes = '{{ $location_lasttimes }}';
+    location_lasttimes = location_lasttimes.replace(/&quot;/g, '"');
+    location_lasttimes_array = JSON.parse(location_lasttimes)
     $(function() {
         $("#start_time").flatpickr({
             enableTime: true
@@ -303,9 +305,7 @@
             if ($(this).data("value") != '600') {
                 $(".order-form [name=duration]").val($(this).data("value"));
             } else {
-                var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + location_lasttimes[d.getDay()]);
-                alert(d.getDay())
-                alert(location_lasttimes)
+                var last_time = new Date(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + location_lasttimes_array[d.getDay()]);
                 var diff = last_time - d;
                 var difference = Math.floor(diff / 1000 / 60);
                 $(".order-form [name=duration]").val(difference);
