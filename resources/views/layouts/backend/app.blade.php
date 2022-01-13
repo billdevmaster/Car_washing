@@ -156,7 +156,7 @@
     <!-- END: Footer-->
 
     <script>
-        var appUrl = '{{ env('APP_URL') }}';
+        var appUrl = "https://autogavanni.ee/Car_washing/public";
     </script>
 
     <!-- BEGIN: Vendor JS-->
