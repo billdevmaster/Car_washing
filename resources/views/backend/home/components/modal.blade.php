@@ -21,7 +21,9 @@
                 @csrf
                 <input type="hidden" name="id" value={{ $id }}>
                 <input type="hidden" name="location_id" value="{{ $location_id }}">
-                <input type="hidden" name="duration" value="30">
+                <input type="hidden" name="duration" value="@if ($order != null)
+                {{ $order->duration }}
+            @else 30 @endif">
                 <input type="hidden" name="service_id" value="">
                 <div class="container">
                     <div class="row">
