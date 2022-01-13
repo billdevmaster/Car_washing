@@ -51,6 +51,10 @@
     z-index: 1 !important;
 }
 
+.ui-cal-week .ui-cal-time {
+    border-top: 1px solid #d1d3d8;
+}
+
 </style>
 @endsection
 
