@@ -98,7 +98,7 @@ class HomePageController extends Controller
         if ($location == null) {
             return null;
         }
-        return LocationServices::leftJoin('services', 'services.id', '=', 'location_services.service_id')->where("location_id", $location->id)->get();
+        return LocationServices::leftJoin('services', 'services.id', '=', 'location_services.service_id')->where("location_id", $location->id)->where("services.is_delete", 'N')->get();
     }
 
     public function getLocationVehicles($location_id) {
@@ -183,7 +183,7 @@ class HomePageController extends Controller
             $start_date = date("Y-m-d", strtotime($start_date . "-" . -1 * $step . ' days'));
         }
         $end_date = date("Y-m-d", strtotime($start_date. ' + ' . 7 . ' days'));
-        $orders = Bookings::whereBetween("date", [$start_date , $end_date])->where("pesubox_id", $request->pesubox_id)->get();
+        $orders = Bookings::whereBetween("date", [$start_date , $end_date])->where("pesubox_id", $request->pesubox_id)->where("is_delete", "N")->get();
         $date_ranges = [];
         foreach($orders as $order) {
             $start_time = strtotime($order->date . " " . $order->time);

@@ -162,7 +162,7 @@
                         @foreach ($location_services as $service)
                             <div class="col-md-6">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="{{ $service->id }}" data-value="{{ $service->id }}" @if ($order != null && in_array($service->id, explode(",", $order->service_id)))
+                                    <input type="checkbox" class="custom-control-input" id="{{ $service->id }}" data-duration="{{ $service->duration }}" data-value="{{ $service->id }}" @if ($order != null && in_array($service->id, explode(",", $order->service_id)))
                                         checked
                                     @endif 
                                     >
@@ -239,7 +239,6 @@
 
             // console.log(formdata.get("service_id"));
             $("#service_modal input[type=checkbox]").each(function() {
-                console.log($(this).prop("checked"))
                 if ($(this).prop("checked")) {
                     service_id.push($(this).data("value"))
                 }
@@ -251,7 +250,6 @@
 
             var pesubox_id = [];
             $("#pesubox_modal input[type=radio]").each(function() {
-                console.log($(this).prop("checked"))
                 if ($(this).prop("checked")) {
                     pesubox_id.push($(this).data("value"))
                 }
@@ -368,6 +366,25 @@
                     console.log(err);
                 }
             });
+        });
+
+        $("#service_modal").find("input[type=checkbox]").change(function() {
+            var duration = 0;
+            $("#service_modal input[type=checkbox]").each(function() {
+                if ($(this).prop("checked")) {
+                    duration += ($(this).data("duration") / 30) != Math.floor($(this).data("duration") / 30) ? ((Math.floor($(this).data("duration") / 30) + 1) * 30) : $(this).data("duration");
+                }
+            })
+            $("#duration").find("button.selected").removeClass("selected");
+            $("#duration").find("button").each(function() {
+                if ($(this).data("value") == duration) {
+                    $(this).addClass("selected");
+                }
+            });
+            $(".order-form [name=duration]").val(duration);
+            var d = new Date($("#start_time").val());
+            d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
+            $("#end_time").val(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + String(d.getHours()).padStart(2, '0') + ":" + String(d.getMinutes()).padStart(2, '0'))
         })
     });
 

@@ -276,7 +276,7 @@
 				var duration = 0;
 				// calculate the duration.
 				$(".cbs-form").find(".cbs-service-list li a.cbs-button.active").each(function() {
-					duration += $(this).data("service-duration");
+					duration += Math.floor($(this).data("service-duration") / 30) != $(this).data("service-duration") / 30 ? ((Math.floor($(this).data("service-duration") / 30) + 1) * 30) : $(this).data("service-duration");
 					price += $(this).data("service-price");
 				});
 				
