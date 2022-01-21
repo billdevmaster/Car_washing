@@ -234,12 +234,20 @@ class AdminController extends Controller
                     $query->where("started_at", "<", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . ($request->duration - 1) . ' minutes')));
                     $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration - 1 MINUTE)"), ">", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . $request->duration . ' minutes')));
                 });
-
+                $query1->orwhere(function($query) use($request)
+                {
+                    $query->where("started_at", ">", $request->datetime);
+                    $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration MINUTE)"), "<", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . $request->duration . ' minutes')));
+                });
             })
             ->first();
+
+        // var_dump($request->datetime);
+        // var_dump(date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . $request->duration . ' minutes')));
+        // var_dump($order_already);
+        // return;
         if ($order_already != null) {
-            var_dump(date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . ($request->duration + 1) . ' minutes')));
-            return response(json_encode(['success' => false, 'message' => "your booking time is already booked"]));
+            return response(json_encode(['success' => false, "message" => "Your booking time was already booked"]));
         }
         $order->location_id = $request->location_id;
         if ($request->driver != null) 
