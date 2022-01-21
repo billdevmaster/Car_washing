@@ -285,7 +285,6 @@
                 contentType: false,
                 cache: false,
                 success: (res) => {
-                    console.log(res)
                     if (res.success) {
                         window.location.reload();
                     } else {
