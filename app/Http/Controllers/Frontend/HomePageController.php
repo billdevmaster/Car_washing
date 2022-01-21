@@ -39,7 +39,11 @@ class HomePageController extends Controller
                     $query->where("started_at", "<", date("Y-m-d H:i:s", strtotime($datetime. ' + ' . ($request['duration'] - 1) . ' minutes')));
                     $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration - 1 MINUTE)"), ">", date("Y-m-d H:i:s", strtotime($datetime. ' + ' . $request['duration'] . ' minutes')));
                 });
-
+                $query1->orwhere(function($query) use($datetime, $request)
+                {
+                    $query->where("started_at", ">", $datetime);
+                    $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration MINUTE)"), "<", date("Y-m-d H:i:s", strtotime($datetime. ' + ' . $request['duration'] . ' minutes')));
+                });
             })
             ->first();
             if ($order_already != null) {
