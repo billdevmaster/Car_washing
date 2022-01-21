@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 use App\Models\Locations;
 use App\Models\LocationServices;
 use App\Models\LocationVehicles;
@@ -219,6 +220,26 @@ class AdminController extends Controller
         $order = Bookings::find($request->id);
         if ($order == null) {
             $order = new Bookings();
+        } 
+        // check start time in database already.
+        $order_already = Bookings::where("location_id", $request->location_id)->where('pesubox_id', $request->pesubox_id)->where("is_delete", "N")
+            ->where(function($query1) use($request) {
+                $query1->where(function($query) use($request)
+                {
+                    $query->where("started_at", "<=", $request->datetime);
+                    $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration - 1 MINUTE)"), ">", $request->datetime);
+                });
+                $query1->orwhere(function($query) use($request)
+                {
+                    $query->where("started_at", "<", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . ($request->duration - 1) . ' minutes')));
+                    $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration - 1 MINUTE)"), ">", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . $request->duration . ' minutes')));
+                });
+
+            })
+            ->first();
+        if ($order_already != null) {
+            var_dump(date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . ($request->duration + 1) . ' minutes')));
+            return response(json_encode(['success' => false, 'message' => "your booking time is already booked"]));
         }
         $order->location_id = $request->location_id;
         if ($request->driver != null) 
@@ -259,7 +280,7 @@ class AdminController extends Controller
         $order->duration = $request->duration;
         $order->started_at = $request->datetime;
         $order->date = substr($request->datetime, 0, 10);
-        $order->time = substr($request->datetime, 10, 5) . ":00";
+        $order->time = substr($request->datetime, 11, 5) . ":00";
         // var_dump($request->datetime);exit;
         $order->save();
         return response(json_encode(['success' => true]));

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 use App\Models\Locations;
 use App\Models\LocationServices;
 use App\Models\LocationVehicles;
@@ -23,6 +24,27 @@ class HomePageController extends Controller
     public function index(Request $request) {
         if ($request->Bookings != NULL) {
             $booking = new Bookings();
+            // check start time in database already.
+            $datetime = substr($request['Bookings']['started_at'], 6, 4) . "-" . substr($request['Bookings']['started_at'], 3, 2) . "-" . substr($request['Bookings']['started_at'], 0, 2) . " " . substr($request['Bookings']['started_at'], 11, 5) . ":00";
+            
+            $order_already = Bookings::where('location_id', $request->location_id)->where('pesubox_id', $request['BookingResources']['resource_id'])->where("is_delete", "N")
+            ->where(function($query1) use($datetime, $request) {
+                $query1->where(function($query) use($datetime, $request)
+                {
+                    $query->where("started_at", "<=", $datetime);
+                    $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration - 1 MINUTE)"), ">", $datetime);
+                });
+                $query1->orwhere(function($query) use($datetime, $request)
+                {
+                    $query->where("started_at", "<", date("Y-m-d H:i:s", strtotime($datetime. ' + ' . ($request['duration'] - 1) . ' minutes')));
+                    $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration - 1 MINUTE)"), ">", date("Y-m-d H:i:s", strtotime($datetime. ' + ' . $request['duration'] . ' minutes')));
+                });
+
+            })
+            ->first();
+            if ($order_already != null) {
+                return redirect()->route('errorBooking', ["message" => "Your booking time is already booked"]);
+            }
             $booking->location_id = $request->location_id;
             $booking->email = $request['Bookings']['email'];
             $booking->phone = $request['Bookings']['phone'];
@@ -239,5 +261,10 @@ class HomePageController extends Controller
     public function models (Request $request) {
         $models = MarkModel::where("mark_id", $request->id)->get();
         return response(json_encode($models));
+    }
+
+    public function errorBooking(Request $request) {
+        $message = $request['message'];
+        return view("frontend.errorBooking", compact("message"));
     }
 }

@@ -31,6 +31,7 @@ Route::post('/', 'Frontend\HomePageController@index')->name('order');
 Route::get('/home/getCalendar', 'Frontend\HomePageController@getCalendar')->name('home.getCalendar');
 Route::get('/home/booking', 'Frontend\HomePageController@booking')->name('home.booking');
 Route::get('/home/models', 'Frontend\HomePageController@models')->name('home.models');
+Route::get('/errorBooking', 'Frontend\HomePageController@errorBooking')->name('errorBooking');
 
 // backend
 Route::group(['middleware' => 'auth'], function(){

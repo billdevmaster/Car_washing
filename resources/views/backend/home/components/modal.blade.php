@@ -68,9 +68,23 @@
                             <div class="row">
                                 <div class="col-md-6 text-center">
                                     <button type="button" class="btn btn-round" id="services">Services</button>
+                                    <ul class='list-style text-left' style="margin-top: 10px">
+                                        @foreach ($location_services as $service)
+                                            @if ($order != null && in_array($service->id, explode(",", $order->service_id)))
+                                                <li>{{ $service->name }}</li>
+                                            @endif 
+                                        @endforeach
+                                    </ul>
                                 </div>
                                 <div class="col-md-6 text-center">
                                     <button type="button" class="btn btn-round" id="pesuboxs">Pesuboxs</button>
+                                    <ul class='list-style text-left' style="margin-top: 10px">
+                                        @foreach ($location_pesuboxs as $pesubox)
+                                            @if ($order != null && $order->pesubox_id == $pesubox->id)
+                                                <li>{{ $pesubox->name }}</li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -275,7 +289,11 @@
                     if (res.success) {
                         window.location.reload();
                     } else {
-                        alert("Something is wrong");
+                        if (res.message) {
+                            alert(res.message);
+                        } else {
+                            alert('Something is Wrong');
+                        }
                     }
                 },
                 error: (err) => {

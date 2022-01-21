@@ -20,7 +20,7 @@
             allowselect		: true,
             // allowremove		: true,
             // allownotesedit	: true,
-            daytimestart    : '07:30:00',
+            daytimestart    : '08:00:00',
             startdate       : '{{ $start_date }}',
             daystodisplay   : 3,
             eventselect : function( uid ){
