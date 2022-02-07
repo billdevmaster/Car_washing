@@ -76,6 +76,9 @@ class HomePageController extends Controller
             $location = Locations::find($booking->location_id);
             $email_data['location_name'] = $location->name;
             $email_data['service_name'] = '';
+            $email_data['e_post'] = $booking->email;
+            $email_data['telephone'] = $booking->phone;
+            $email_data['summary'] = $booking->summary;
             $arr_service = explode(",", $booking->service_id);
             foreach ($arr_service as $service_id) {
                 $service = Services::find($service_id);

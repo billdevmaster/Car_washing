@@ -14,9 +14,9 @@
     <p>Valitud teenused: {{ $data['service_name'] }}</p>
     <p>{{ $data['mark'] }} : {{ $data['model'] }}</p>
     <p>
-        E-post: info@mydisain.com<br/>
-        Telefon: 5105308<br/>
-        Märkused: test bronn<br/><br/>
+        E-post: {{ $data['e_post'] }}<br/>
+        Telefon: {{ $data['telephone'] }}<br/>
+        Märkused: {{ $data['summary'] }}<br/><br/>
     </p>
     <p>
         Kui leiate, et Te ei saa broneeritud ajal kohale ilmuda, siis<br/>
