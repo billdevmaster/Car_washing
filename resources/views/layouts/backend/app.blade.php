@@ -156,7 +156,7 @@
     <!-- END: Footer-->
 
     <script>
-        var appUrl = "https://bookid.ee/bron/public/public";
+        var appUrl = "https://bookid.ee/bron/public";
     </script>
 
     <!-- BEGIN: Vendor JS-->
