@@ -156,7 +156,7 @@
     <!-- END: Footer-->
 
     <script>
-        var appUrl = "https://autogavanni.ee/Car_washing/public";
+        var appUrl = "https://bookid.ee/bron/public/public";
     </script>
 
     <!-- BEGIN: Vendor JS-->
