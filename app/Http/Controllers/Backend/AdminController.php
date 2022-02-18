@@ -246,7 +246,7 @@ class AdminController extends Controller
         // var_dump(date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . $request->duration . ' minutes')));
         // var_dump($order_already);
         // return;
-        if ($order_already != null) {
+        if ($order == null && $order_already != null) {
             return response(json_encode(['success' => false, "message" => "Your booking time was already booked"]));
         }
         $order->location_id = $request->location_id;
