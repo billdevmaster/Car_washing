@@ -226,33 +226,53 @@ class AdminController extends Controller
         $order = Bookings::find($request->id);
         if ($order == null) {
             $order = new Bookings();
-        } 
-        // check start time in database already.
-        $order_already = Bookings::where("location_id", $request->location_id)->where('pesubox_id', $request->pesubox_id)->where("is_delete", "N")
-            ->where(function($query1) use($request) {
-                $query1->where(function($query) use($request)
-                {
-                    $query->where("started_at", "<=", $request->datetime);
-                    $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration - 1 MINUTE)"), ">", $request->datetime);
-                });
-                $query1->orwhere(function($query) use($request)
-                {
-                    $query->where("started_at", "<", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . ($request->duration - 1) . ' minutes')));
-                    $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration - 1 MINUTE)"), ">", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . $request->duration . ' minutes')));
-                });
-                $query1->orwhere(function($query) use($request)
-                {
-                    $query->where("started_at", ">", $request->datetime);
-                    $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration MINUTE)"), "<", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . $request->duration . ' minutes')));
-                });
-            })
-            ->first();
+            // check start time in database already.
+            $order_already = Bookings::where("location_id", $request->location_id)->where('pesubox_id', $request->pesubox_id)->where("is_delete", "N")
+                ->where(function($query1) use($request) {
+                    $query1->where(function($query) use($request)
+                    {
+                        $query->where("started_at", "<=", $request->datetime);
+                        $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration - 1 MINUTE)"), ">", $request->datetime);
+                    });
+                    $query1->orwhere(function($query) use($request)
+                    {
+                        $query->where("started_at", "<", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . ($request->duration - 1) . ' minutes')));
+                        $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration - 1 MINUTE)"), ">", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . $request->duration . ' minutes')));
+                    });
+                    $query1->orwhere(function($query) use($request)
+                    {
+                        $query->where("started_at", ">", $request->datetime);
+                        $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration MINUTE)"), "<", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . $request->duration . ' minutes')));
+                    });
+                })
+                ->first();
+        } else {
+            $order_already = Bookings::where("location_id", $request->location_id)->where('pesubox_id', $request->pesubox_id)->where("is_delete", "N")
+                ->where(function($query1) use($request) {
+                    $query1->where(function($query) use($request)
+                    {
+                        $query->where("started_at", "<=", $request->datetime);
+                        $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration - 1 MINUTE)"), ">", $request->datetime);
+                    });
+                    $query1->orwhere(function($query) use($request)
+                    {
+                        $query->where("started_at", "<", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . ($request->duration - 1) . ' minutes')));
+                        $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration - 1 MINUTE)"), ">", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . $request->duration . ' minutes')));
+                    });
+                    $query1->orwhere(function($query) use($request)
+                    {
+                        $query->where("started_at", ">", $request->datetime);
+                        $query->where(DB::raw("DATE_ADD(started_at, INTERVAL duration MINUTE)"), "<", date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . $request->duration . ' minutes')));
+                    });
+                })
+                ->where("id", "!=", $request->id)->first();
+        }
 
         // var_dump($request->datetime);
         // var_dump(date("Y-m-d H:i:s", strtotime($request->datetime. ' + ' . $request->duration . ' minutes')));
         // var_dump($order_already);
         // return;
-        if ($order == null && $order_already != null) {
+        if ($order_already != null) {
             return response(json_encode(['success' => false, "message" => "Your booking time was already booked"]));
         }
         $order->location_id = $request->location_id;
