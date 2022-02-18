@@ -202,6 +202,12 @@ class AdminController extends Controller
             "6" => $location->Sat_end,
             "0" => $location->Sun_end,
         ]);
+        $order_service_ids = explode(",", $order->service_id);
+        $order_services = [];
+        foreach($order_service_ids as $service_id) {
+            $service = Services::find($service_id);
+            array_push($order_services, $service);
+        }
         // $location_starttimes = json_encode([
         //     1 => $location->Mon_start,
         //     2 => $location->Tue_start,
@@ -211,7 +217,7 @@ class AdminController extends Controller
         //     6 => $location->Sat_start,
         //     0 => $location->Sun_start,
         // ]);
-        return view('backend.home.components.modal', compact("order", "id", "location_lasttimes", "location_id", "location_vehicles", "location_services", "location_pesuboxs", "location_marks", "location_mark_models", "end_time"))->render();
+        return view('backend.home.components.modal', compact("order", "id", "location_lasttimes", "location_id", "location_vehicles", "location_services", "location_pesuboxs", "location_marks", "location_mark_models", "end_time", "order_services"))->render();
     }
 
     public function updateOrder(Request $request) {

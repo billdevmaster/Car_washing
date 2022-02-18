@@ -68,20 +68,20 @@
                             <div class="row">
                                 <div class="col-md-6 text-center">
                                     <button type="button" class="btn btn-round" id="services">Services</button>
-                                    <ul class='list-style text-left' style="margin-top: 10px">
-                                        @foreach ($location_services as $service)
-                                            @if ($order != null && in_array($service->id, explode(",", $order->service_id)))
-                                                <li>{{ $service->name }}</li>
-                                            @endif 
+                                    <p class="text-left" style="margin-top: 10px">Selected Services</p>
+                                    <ul class='list-group text-left' style="margin-bottom: 20px" id="order_services">
+                                        @foreach ($order_services as $service)
+                                            <li class="list-group-item draggable" data-id="{{ $service->id }}"><span class="handle mr-50">+</span>{{ $service->name }}</li>
                                         @endforeach
                                     </ul>
                                 </div>
                                 <div class="col-md-6 text-center">
                                     <button type="button" class="btn btn-round" id="pesuboxs">Pesuboxs</button>
-                                    <ul class='list-style text-left' style="margin-top: 10px">
+                                    <p class="text-left" style="margin-top: 10px">Selected Pesubox</p>
+                                    <ul class='list-group text-left' style="margin-bottom: 20px">
                                         @foreach ($location_pesuboxs as $pesubox)
                                             @if ($order != null && $order->pesubox_id == $pesubox->id)
-                                                <li>{{ $pesubox->name }}</li>
+                                                <li class="list-group-item">{{ $pesubox->name }}</li>
                                             @endif
                                         @endforeach
                                     </ul>
@@ -157,9 +157,9 @@
                 <div class="modal-footer">
                     <button type="button" id="submit" class="btn btn-primary">Save</button>
                     @if ($order != null)
-                    <button type="button" id="delete" class="btn btn-primary" data-id="{{ $order->id }}">Delete</button>
+                    <button type="button" id="delete" class="btn btn-red text-white" data-id="{{ $order->id }}">Delete</button>
                     @endif
-                    <button type="button" class="btn btn-red text-white" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success text-white" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -178,7 +178,7 @@
                         @foreach ($location_services as $service)
                             <div class="col-md-6">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="{{ $service->id }}" data-duration="{{ $service->duration }}" data-value="{{ $service->id }}" @if ($order != null && in_array($service->id, explode(",", $order->service_id)))
+                                    <input type="checkbox" class="custom-control-input" id="{{ $service->id }}" data-duration="{{ $service->duration }}" data-value="{{ $service->id }}" data-name="{{ $service->name }}" @if ($order != null && in_array($service->id, explode(",", $order->service_id)))
                                         checked
                                     @endif 
                                     >
@@ -234,14 +234,19 @@
             </div>
         </div>
     </div>
+
+    
 <script>
     var location_lasttimes = '{{ $location_lasttimes }}';
     location_lasttimes = location_lasttimes.replace(/&quot;/g, '"');
     location_lasttimes_array = JSON.parse(location_lasttimes);
+    services_array = [];
     $(function() {
         $("#start_time").flatpickr({
             enableTime: true
         });
+
+        dragula([document.getElementById('order_services')]);
 
         $('.select2').select2();
 
@@ -254,10 +259,8 @@
             }
 
             // console.log(formdata.get("service_id"));
-            $("#service_modal input[type=checkbox]").each(function() {
-                if ($(this).prop("checked")) {
-                    service_id.push($(this).data("value"))
-                }
+            $("#order_services li").each(function() {
+                service_id.push($(this).data("id"))
             })
             // if (service_id.length == 0) {
             //     return alert("Please select the service")
@@ -274,8 +277,6 @@
                 return alert("Please select the Pesubox")
             }
             formdata.set("pesubox_id", pesubox_id)
-            // console.log(formdata.get("service_id"));
-            // return;
             $.ajax({
                 type: "post",
                 url: appUrl + '/admin/updateOrder',
@@ -389,11 +390,14 @@
 
         $("#service_modal").find("input[type=checkbox]").change(function() {
             var duration = 0;
+            var html = "";
             $("#service_modal input[type=checkbox]").each(function() {
                 if ($(this).prop("checked")) {
                     duration += ($(this).data("duration") / 30) != Math.floor($(this).data("duration") / 30) ? ((Math.floor($(this).data("duration") / 30) + 1) * 30) : $(this).data("duration");
+                    html += '<li class="list-group-item draggable" data-id="' + $(this).data("value") + '"><span class="handle mr-50">+</span>' + $(this).data("name") + '</li>';
                 }
             })
+            $("#order_services").html(html);
             $("#duration").find("button.selected").removeClass("selected");
             $("#duration").find("button").each(function() {
                 if ($(this).data("value") == duration) {
@@ -403,7 +407,10 @@
             $(".order-form [name=duration]").val(duration);
             var d = new Date($("#start_time").val());
             d.setMinutes(d.getMinutes() * 1 + $(".order-form [name=duration]").val() * 1);
-            $("#end_time").val(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + String(d.getHours()).padStart(2, '0') + ":" + String(d.getMinutes()).padStart(2, '0'))
+            $("#end_time").val(d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0') + " " + String(d.getHours()).padStart(2, '0') + ":" + String(d.getMinutes()).padStart(2, '0'));
+
+            // remake location services list
+
         })
     });
 

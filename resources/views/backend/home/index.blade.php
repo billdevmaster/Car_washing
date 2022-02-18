@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/plugins/forms/pickers/form-flat-pickr.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/plugins/forms/pickers/form-pickadate.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/plugins/extensions/ext-component-drag-drop.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/vendors/css/forms/select/select2.min.css')}}">
 <style>
 
@@ -188,4 +189,6 @@
 <script src="{{asset('assets/backend/app-assets/vendors/js/pickers/pickadate/legacy.js')}}"></script>
 <script src="{{asset('assets/backend/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js')}}"></script>
 <script src="{{asset('assets/backend/app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
+<script src="{{asset('assets/backend/app-assets/vendors/js/extensions/dragula.min.js')}}"></script>
+<script src="{{asset('assets/backend/app-assets/js/scripts/extensions/ext-component-drag-drop.min.js')}}"></script>
 @endsection
