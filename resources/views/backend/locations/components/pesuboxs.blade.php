@@ -164,7 +164,7 @@
         contentType: false,
         cache: false,
         success: (res) => {
-          $("#edit_pesubox_modal .close").trigger("click");
+          $("#edit_pesubox_modal").modal("hide");
           $.ajax({
             type: 'get',
             url: appUrl + "/admin/locations/getLocationPesuboxs",
