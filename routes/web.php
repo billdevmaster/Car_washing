@@ -65,6 +65,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/admin/locations/get_list', 'Backend\AdminLocationController@get_list');
         Route::get('/admin/locations/getLocationServices', 'Backend\AdminLocationController@getLocationServices');
         Route::post('/admin/locations/saveLocationService', 'Backend\AdminLocationController@saveLocationService');
+        Route::post('/admin/locations/saveLocationServiceOrder', 'Backend\AdminLocationController@saveLocationServiceOrder');
         Route::get('/admin/locations/getLocationVehicles', 'Backend\AdminLocationController@getLocationVehicles');
         Route::post('/admin/locations/saveLocationVehicle', 'Backend\AdminLocationController@saveLocationVehicle');
         Route::get('/admin/locations/getLocationPesuboxs', 'Backend\AdminLocationController@getLocationPesuboxs');

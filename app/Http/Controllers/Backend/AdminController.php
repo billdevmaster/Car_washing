@@ -202,11 +202,13 @@ class AdminController extends Controller
             "6" => $location->Sat_end,
             "0" => $location->Sun_end,
         ]);
-        $order_service_ids = explode(",", $order->service_id);
         $order_services = [];
-        foreach($order_service_ids as $service_id) {
-            $service = Services::find($service_id);
-            array_push($order_services, $service);
+        if ($order) {
+            $order_service_ids = explode(",", $order->service_id);
+            foreach($order_service_ids as $service_id) {
+                $service = Services::find($service_id);
+                array_push($order_services, $service);
+            }
         }
         // $location_starttimes = json_encode([
         //     1 => $location->Mon_start,

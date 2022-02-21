@@ -81,12 +81,14 @@ class AdminLocationController extends Controller
     public function getLocationServices(Request $request) {
         $services = Services::where("is_delete", "N")->get();
         $location_id = $request->id;
-        $location_services = LocationServices::where("location_id", $request->id)->get();
+        $location_services = LocationServices::leftJoin('services', 'services.id', '=', 'location_services.service_id')->where("location_id", $request->id)->get();
+        $location_service_id_array = [];
         $location_service_array = [];
         foreach($location_services as $location_service) {
-            array_push($location_service_array, $location_service->service_id);
+            array_push($location_service_id_array, $location_service->service_id);
+            array_push($location_service_array, array("id" => $location_service->service_id, "name" => $location_service->name));
         }
-        return view('backend.locations.components.services', compact("services", "location_id", "location_service_array"))->render();
+        return view('backend.locations.components.services', compact("services", "location_id", "location_service_array", "location_service_id_array"))->render();
     }
 
     public function saveLocationService(Request $request) {
@@ -97,6 +99,18 @@ class AdminLocationController extends Controller
             $location_service->save();
         } else {
             $location_service = LocationServices::where("location_id", $request->location_id)->where("service_id", $request->service_id)->delete();
+        }
+        return response(json_encode(['success' => true]));
+    }
+
+    public function saveLocationServiceOrder(Request $request) {
+        $service_ids = $request->service_ids;
+        $location_service = LocationServices::where("location_id", $request->location_id)->delete();
+        foreach($service_ids as $service_id) {
+            $location_service = new LocationServices();
+            $location_service->location_id = $request->location_id;
+            $location_service->service_id = $service_id;
+            $location_service->save();
         }
         return response(json_encode(['success' => true]));
     }
