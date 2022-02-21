@@ -25,7 +25,7 @@
     <p>
         linki:
     </p>
-    <a href="https://nano-zen.com/booking/time/cancel?token=fafd862a0cda204b98b392ec2bcc9737">https://nano-zen.com/booking/time/cancel?token=fafd862a0cda204b98b392ec2bcc9737</a>
+    <a href="{{ env('APP_URL') }}/cancelBooking?id={{ $data['book_id'] }}"></a>
     <br/><br/>
     <p>Täname!</p>
 </body>

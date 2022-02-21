@@ -89,6 +89,7 @@ class HomePageController extends Controller
             $email_data['mark'] = $mark->name;
             $model = MarkModel::find($booking->model_id);
             $email_data['model'] = $model->model;
+            $email_data['book_id'] = $booking->id;
             
             Mail::to($booking->email)->send(new MydisanMail($email_data));
             return redirect()->route('index', ["office" => $request->location_id]);
@@ -273,5 +274,22 @@ class HomePageController extends Controller
     public function errorBooking(Request $request) {
         $message = $request['message'];
         return view("frontend.errorBooking", compact("message"));
+    }
+
+    public function cancelBookingView(Request $request) {
+        
+        $book_id = $request->id;
+        return view("frontend.cancelBooking", compact("book_id"));
+    }
+
+    public function cancelBooking(Request $request) {
+        if (!$request->input('agree')) {
+            return back()->withErrors(["message" => "Please Check Agree"]);
+        } else {
+            $booking = Bookings::find($request->input("id"));
+            $booking->is_delete = 'Y';
+            $booking->save();
+            return redirect("/");
+        }
     }
 }
