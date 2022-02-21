@@ -81,7 +81,7 @@ class AdminLocationController extends Controller
     public function getLocationServices(Request $request) {
         $services = Services::where("is_delete", "N")->get();
         $location_id = $request->id;
-        $location_services = LocationServices::leftJoin('services', 'services.id', '=', 'location_services.service_id')->where("location_id", $request->id)->get();
+        $location_services = LocationServices::leftJoin('services', 'services.id', '=', 'location_services.service_id')->where("services.is_delete", "N")->where("location_id", $request->id)->get();
         $location_service_id_array = [];
         $location_service_array = [];
         foreach($location_services as $location_service) {
