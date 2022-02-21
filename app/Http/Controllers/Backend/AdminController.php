@@ -181,7 +181,7 @@ class AdminController extends Controller
 
         $location_vehicles = LocationVehicles::leftJoin('vehicles', 'vehicles.id', '=', 'location_vehicles.vehicle_id')->where("location_id", $request->location_id)->get();
         $location_services = LocationServices::leftJoin('services', 'services.id', '=', 'location_services.service_id')->where("location_id", $request->location_id)->where("services.is_delete", "N")->get();
-        $location_pesuboxs = LocationPesuboxs::where("location_id", $request->location_id)->where("is_delete", 'N')->where("status", 1)->get();
+        $location_pesuboxs = LocationPesuboxs::where("location_id", $request->location_id)->where("is_delete", 'N')->get();
         $location_marks = Mark::get();
         $location_mark_models = [];
         $end_time = "";
