@@ -25,7 +25,7 @@
     <p>
         linki:
     </p>
-    <a href="{{ env('APP_URL') }}/cancelBooking?id={{ $data['book_id'] }}"></a>
+    <a href="{{ env('APP_URL') }}/cancelBooking?id={{ $data['book_id'] }}">{{ env('APP_URL') }}/cancelBooking?id={{ $data['book_id'] }}</a>
     <br/><br/>
     <p>Täname!</p>
 </body>
