@@ -15,7 +15,7 @@ use App\Models\Services;
 use App\Models\Mark;
 use App\Models\MarkModel;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\MydisanMail;
+use App\Mail\BookIdMail;
 // use Illuminate\Support\Facades\Input;
 
 class HomePageController extends Controller
@@ -91,7 +91,7 @@ class HomePageController extends Controller
             $email_data['model'] = $model->model;
             $email_data['book_id'] = $booking->id;
             
-            Mail::to($booking->email)->send(new MydisanMail($email_data));
+            Mail::to($booking->email)->send(new BookIdMail($email_data));
             return redirect()->route('index', ["office" => $request->location_id]);
         }
         $location_id = $request->office ? $request->office : 1;
