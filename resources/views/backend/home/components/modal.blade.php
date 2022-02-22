@@ -77,6 +77,7 @@
                                         @endif
                                     </ul>
                                 </div>
+                                
                                 <div class="col-md-6 text-center">
                                     <button type="button" class="btn btn-round" id="pesuboxs">Pesuboxs</button>
                                     <p class="text-left" style="margin-top: 10px">Selected Pesubox</p>
