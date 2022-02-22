@@ -210,6 +210,7 @@ class AdminController extends Controller
                 array_push($order_services, $service);
             }
         }
+        print_r($order_services);
         // $location_starttimes = json_encode([
         //     1 => $location->Mon_start,
         //     2 => $location->Tue_start,
