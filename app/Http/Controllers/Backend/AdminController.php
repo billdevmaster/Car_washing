@@ -205,12 +205,13 @@ class AdminController extends Controller
         $order_services = [];
         if ($order) {
             $order_service_ids = explode(",", $order->service_id);
-            foreach($order_service_ids as $service_id) {
-                $service = Services::find($service_id);
-                array_push($order_services, $service);
+            if (count($order_service_ids) > 1) {
+                foreach($order_service_ids as $service_id) {
+                    $service = Services::find($service_id);
+                    array_push($order_services, $service);
+                }
             }
         }
-        print_r($order_services);
         // $location_starttimes = json_encode([
         //     1 => $location->Mon_start,
         //     2 => $location->Tue_start,
