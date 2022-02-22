@@ -68,12 +68,14 @@
                             <div class="row">
                                 <div class="col-md-6 text-center">
                                     <button type="button" class="btn btn-round" id="services">Services</button>
-                                    <p class="text-left" style="margin-top: 10px">Selected Services</p>
-                                    <ul class='list-group text-left' style="margin-bottom: 20px" id="order_services">
-                                        @foreach ($order_services as $service)
-                                            <li class="list-group-item draggable" data-id="{{ $service->id }}"><span class="handle mr-50">+</span>{{ $service->name }}</li>
-                                        @endforeach
-                                    </ul>
+                                    @if (count($order_services) > 0)
+                                        <p class="text-left" style="margin-top: 10px">Selected Services</p>
+                                        <ul class='list-group text-left' style="margin-bottom: 20px" id="order_services">
+                                            @foreach ($order_services as $service)
+                                                <li class="list-group-item draggable" data-id="{{ $service->id }}"><span class="handle mr-50">+</span>{{ $service->name }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 </div>
                                 <div class="col-md-6 text-center">
                                     <button type="button" class="btn btn-round" id="pesuboxs">Pesuboxs</button>
