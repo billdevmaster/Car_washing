@@ -4,16 +4,16 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header border-bottom">
-                    <h4 class="card-title">Pesulad</h4>
-                    <Button class="btn btn-primary waves-effect waves-float waves-light" data-toggle="modal" data-target="#location_modal" onclick="addNewLocation()">Lisa pesula</Button>
+                    <h4 class="card-title">Teenused</h4>
                 </div>
                 <div class="card-datatable col-12">
-                    <table class="table datatables-ajax" id="location_table">
+                    <table class="table datatables-ajax" id="clients_table">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th width="80%">Nimi</th>
-                                <th>Tegevused</th>
+                                <th>name</th>
+                                <th>email</th>
+                                <th>phone</th>
+                                <th>actions</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -25,8 +25,3 @@
     </div>
 </section>
 <!--/ Responsive Datatable -->
-<script>
-    function addNewLocation() {
-        $("#location_modal #id").val(0);
-    }
-</script>

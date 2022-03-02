@@ -2,17 +2,17 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title">Location Pesuboxs</h4>
-        <button class="btn btn-primary waves-effect waves-float waves-light" data-toggle="modal" data-target="#edit_pesubox_modal" onclick="addNewPesubox()">Create New Pesubox</button>
+        <h4 class="card-title">Pesula Pesuboxid</h4>
+        <button class="btn btn-primary waves-effect waves-float waves-light" data-toggle="modal" data-target="#edit_pesubox_modal" onclick="addNewPesubox()">Lisa Pesubox</button>
       </div>
       <div class="table-responsive">
         <table class="table table-hover" id="location_pesubox_table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Active</th>
-                <th>Actions</th>
+                <th>Nimi</th>
+                <th>Kirjeldus</th>
+                <th>Staatus</th>
+                <th>Tegevused</th>
               </tr>
             </thead>
             <tbody>
@@ -39,11 +39,11 @@
                       <div class="dropdown-menu">
                         <a class="dropdown-item edit-pesubox" href="javascript:void(0);" data-toggle="modal" data-target="#edit_pesubox_modal" data-id="{{ $location_pesubox->id }}">
                           <i data-feather="edit-2" class="mr-50"></i>
-                          <span>Edit</span>
+                          <span>Muuda</span>
                         </a>
                         <a class="dropdown-item" href="javascript:void(0);" onclick="deletePesubox({{ $location_pesubox->id }})">
                           <i data-feather="trash" class="mr-50"></i>
-                          <span>Delete</span>
+                          <span>Kustuta</span>
                         </a>
                       </div>
                     </div>
@@ -60,7 +60,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel18">Add New Pesubox</h4>
+              <h4 class="modal-title" id="myModalLabel18">Lisa uus Pesubox</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
@@ -71,19 +71,19 @@
               <input type="hidden" name="location_id" id="location_id" value="{{ $location_id }}">
               <div class="modal-body">
                   <div class="form-group">
-                      <label for="defaultInput">Name</label>
+                      <label for="defaultInput">Nimi</label>
                       <input class="form-control" type="text" placeholder="pesubox Name" name="name"  id="name"/>
                   </div>
               </div>
               <div class="modal-body">
                 <div class="form-group">
-                    <label for="defaultInput">Description</label>
+                    <label for="defaultInput">Kirjeldus</label>
                     <textarea class="form-control" type="text" placeholder="pesubox Name" name="description"  id="description"></textarea>
                 </div>
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" id="save_location_pesubox">Save</button>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary" id="save_location_pesubox">Salvesta</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Kustuta</button>
               </div>
           </form>
       </div>

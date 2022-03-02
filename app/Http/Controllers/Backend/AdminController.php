@@ -205,7 +205,7 @@ class AdminController extends Controller
         $order_services = [];
         if ($order) {
             $order_service_ids = explode(",", $order->service_id);
-            if (count($order_service_ids) > 1) {
+            if ($order_service_ids[0] != '') {
                 foreach($order_service_ids as $service_id) {
                     $service = Services::find($service_id);
                     array_push($order_services, $service);
@@ -339,7 +339,13 @@ class AdminController extends Controller
     public function getDayEndTime(Request $request) {
         $day = mktime(0, 0, 0, substr($request->date, 5, 2), substr($request->date, 8, 2), substr($request->date, 0, 4));
         $location = Locations::find($request->location_id);
-        $time_end = $location[date("D", $day) . '_end'];
+        $bookings = Bookings::where("date", substr($request->date, 0, 10))->where("pesubox_id", $request->pesubox_id)->where('is_delete', 'N')->orderBy('time', 'asc')->first();
+
+        if ($bookings != null) {
+            $time_end = $bookings['time'];
+        } else {
+            $time_end = $location[date("D", $day) . '_end'];
+        }
         $from_time = strtotime($request->date);
         $to_time = strtotime(substr($request->date, 0, 10) . " " . $time_end);
         $difference = round(abs($to_time - $from_time) / 60,2);

@@ -10,6 +10,7 @@
   const router = {
     getVehicle: appUrl + "/admin/vehicles/get_list",
     getService: appUrl + "/admin/services/get_list",
+    getClients: appUrl + "/admin/clients/get_list",
     removeService: appUrl + "/admin/services/remove",
     getLocation: appUrl + "/admin/locations/get_list",
     editLocation: appUrl + "/admin/locations/edit",
@@ -262,6 +263,70 @@
           },
         }
       ],
+    });
+  }
+
+  var ClientsTable = $('#clients_table');
+  if ( ClientsTable.length ) {
+    ClientsTable.DataTable({
+      processing: true,
+      serverSide: true,
+      language: {
+        sLengthMenu: 'Show _MENU_',
+        search: 'Search',
+        searchPlaceholder: 'Search..',
+        paginate: {
+            // remove previous & next text from pagination
+            previous: '&nbsp;',
+            next: '&nbsp;'
+        }
+      },
+      order:[2,'desc'],
+      ajax: router.getClients,
+      "lengthMenu": [[10, 50, 200, 1000000000], [10, 50, 200, "All"]],
+      "pageLength": 10,
+      columns: [
+        { data: 'driver', name: 'driver' },
+        { data: 'email', name: 'description' },
+        { data: 'phone', name: 'duration' },
+      ],
+      columnDefs: [
+        {
+          className: 'control',
+          orderable: false,
+          responsivePriority: 2,
+          targets: 0
+        },
+        {
+          // Actions
+          targets: 3,
+          title: 'Action',
+          orderable: false,
+          render: function (data, type, full, meta) {
+            return (
+              '<div class="btn-group">' +
+                  '<a class="btn btn-sm dropdown-toggle hide-arrow" data-toggle="dropdown">' +
+                      feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
+                  '</a>' +
+                  '<div class="dropdown-menu dropdown-menu-right">' +
+                      '<a class="dropdown-item edit-service" >' +
+                      feather.icons['save'].toSvg({ class: 'font-small-4 mr-50' }) +
+                      'Detail</a>' +
+                  '</div>' +
+              '</div>'
+            );
+          },
+        }
+      ],
+    });
+
+    var clientsData;
+
+    ClientsTable.on("click", 'tr', function() {
+      clientsData = ClientsTable.DataTable().row(this).data();
+      $("#service_modal #driver").val(clientsData.driver);
+      $("#service_modal #email").val(clientsData.email);
+      $("#service_modal #phone").val(clientsData.phone);
     });
   }
 

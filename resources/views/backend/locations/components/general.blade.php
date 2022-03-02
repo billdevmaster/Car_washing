@@ -2,11 +2,11 @@
     @csrf
     <input type="hidden" name="id" id="id" value={{ $location->id }}>
     <div class="form-group">
-        <label for="defaultInput">Name</label>
+        <label for="defaultInput">Nimi</label>
         <input class="form-control" type="text" placeholder="Location Name" name="name"  id="name" value="{{ $location->name }}"/>
     </div>
     <div class="form-group">
-        <label for="defaultInput">Address</label>
+        <label for="defaultInput">Aadress</label>
         <div class="row">
             <div class="col-4">
                 <input class="form-control" type="text" placeholder="Address" name="address"  id="address" value="{{ $location->address }}"/>
@@ -20,7 +20,7 @@
         </div>
     </div>
     {{-- <div class="form-group">
-        <label for="defaultInput">Description</label>
+        <label for="defaultInput">Kirjeldus</label>
         <div id="description_wrapper">
             <div id="description_container">
                 <div class="quill-toolbar">
@@ -61,12 +61,12 @@
         </div>
     </div> --}}
     <div class="form-group">
-        <label for="defaultInput">Start - End</label>
+        <label for="defaultInput">Algus - Lõpp</label>
         <div class="row">
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                        <label for="first-name">Monday</label>
+                        <label for="first-name">Esmaspäev</label>
                     </div>
                     <div class="col-sm-4">
                         <input type="time" class="form-control" name="Mon_start" id="Mon_start" placeholder="Start time"  value="{{ $location->Mon_start }}"/>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                        <label for="first-name">Wensday</label>
+                        <label for="first-name">Teisipäev</label>
                     </div>
                     <div class="col-sm-4">
                         <input type="time" class="form-control" name="Wed_start" id="Wed_start" placeholder="Start time"  value="{{ $location->Wed_start }}"/>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                        <label for="first-name">Tuesday</label>
+                        <label for="first-name">Kolmapäev</label>
                     </div>
                     <div class="col-sm-4">
                         <input type="time" class="form-control" name="Tue_start" id="Tue_start" placeholder="Start time"  value="{{ $location->Tue_start }}"/>
@@ -108,7 +108,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                        <label for="first-name">Thursday</label>
+                        <label for="first-name">Neljapäev</label>
                     </div>
                     <div class="col-sm-4">
                         <input type="time" class="form-control" name="Thu_start" id="Thu_start" placeholder="Start time"  value="{{ $location->Thu_start }}"/>
@@ -124,7 +124,7 @@
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                        <label for="first-name">Friday</label>
+                        <label for="first-name">Reede</label>
                     </div>
                     <div class="col-sm-4">
                         <input type="time" class="form-control" name="Fri_start" id="Fri_start" placeholder="Start time"  value="{{ $location->Fri_start }}"/>
@@ -138,7 +138,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                        <label for="first-name">Saturday</label>
+                        <label for="first-name">Laupäev</label>
                     </div>
                     <div class="col-sm-4">
                         <input type="time" class="form-control" name="Sat_start" id="Sat_start" placeholder="Start time"  value="{{ $location->Sat_start }}"/>
@@ -152,7 +152,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                        <label for="first-name">Sunday</label>
+                        <label for="first-name">Pühapäev</label>
                     </div>
                     <div class="col-sm-4">
                         <input type="time" class="form-control" name="Sun_start" id="Sun_start" placeholder="Start time"  value="{{ $location->Sun_start }}"/>
@@ -168,8 +168,8 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="defaultInput">Interval</label>
+        <label for="defaultInput">Intervall</label>
         <input class="form-control" type="text" placeholder="Interval" name="interval"  id="interval"  value="{{ $location->interval }}"/>
     </div>
-    <button type="button" class="btn btn-primary mr-1" id="submit">Submit</button>
+    <button type="button" class="btn btn-primary mr-1" id="submit">Salvesta</button>
 </form>

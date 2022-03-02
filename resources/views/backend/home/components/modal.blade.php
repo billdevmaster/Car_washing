@@ -12,7 +12,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel18">Add New Vehicle</h4>
+                <h4 class="modal-title" id="myModalLabel18">Lisa uus broneering</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -28,19 +28,19 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <label for="start_time">Start Time</label>
+                            <label for="start_time">Algus</label>
                             <input type="text" id="start_time" class="form-control flatpickr-date-time" placeholder="YYYY-MM-DD HH:MM" value='@if ($order != null)
                                 {{ $order->date . " " . $order->time }}
                             @endif' name="datetime" />
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="end_time">End Time</label>
+                            <label for="end_time">Lõpp</label>
                             <input type="text" id="end_time" class="form-control flatpickr-date-time" placeholder="YYYY-MM-DD HH:MM" value='@if ($order != null)
                                 {{ $end_time }}
                             @endif' name="enddatetime" disabled/>
                         </div>
                         <div class="col-md-12 form-group" id="duration">
-                            <label for="start_time">Duration</label>
+                            <label for="start_time">Kestvus</label>
                             <div class="flex">
                                 <button type="button" class="btn btn-default item @if($order != null && $order->duration == 30) selected @endif" data-value="30">0.5H</button>
                                 <button type="button" class="btn btn-default item @if($order != null && $order->duration == 60) selected @endif" data-value="60">1H</button>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="selectDefault">Vechiles</label>
+                                <label for="selectDefault">Sõiduk</label>
                                 <select class="form-control mb-1" id="icon" name="vehicle_id">
                                     @foreach ($location_vehicles as $vehicle)
                                         <option value={{ $vehicle->id }} @if ($order != null && $order->vehicle_id == $vehicle->id)
@@ -67,20 +67,18 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-6 text-center">
-                                    <button type="button" class="btn btn-round" id="services">Services</button>
-                                    <p class="text-left" style="margin-top: 10px">Selected Services</p>
+                                    <button type="button" class="btn btn-round" id="services">Teenused</button>
+                                    <p class="text-left" style="margin-top: 10px">Valitud teenused</p>
                                     <ul class='list-group text-left' style="margin-bottom: 20px" id="order_services">
-                                        @if (count($order_services) > 0)
-                                            @foreach ($order_services as $service)
-                                                <li class="list-group-item draggable" data-id="{{ $service->id }}"><span class="handle mr-50">+</span>{{ $service->name }}</li>
-                                            @endforeach
-                                        @endif
+                                        @foreach ($order_services as $service)
+                                            <li class="list-group-item draggable" data-id="{{ $service->id }}"><span class="handle mr-50">+</span>{{ $service->name }}</li>
+                                        @endforeach
                                     </ul>
                                 </div>
                                 
                                 <div class="col-md-6 text-center">
-                                    <button type="button" class="btn btn-round" id="pesuboxs">Pesuboxs</button>
-                                    <p class="text-left" style="margin-top: 10px">Selected Pesubox</p>
+                                    <button type="button" class="btn btn-round" id="pesuboxs">Pesubox</button>
+                                    <p class="text-left" style="margin-top: 10px">Valitud Pesubox</p>
                                     <ul class='list-group text-left' style="margin-bottom: 20px">
                                         @foreach ($location_pesuboxs as $pesubox)
                                             @if ($order != null && $order->pesubox_id == $pesubox->id)
@@ -92,7 +90,7 @@
                             </div>
                         </div>
                         {{-- <div class="col-md-12">
-                            <label>Services</label>
+                            <label>Teenused</label>
                             <div class="form-group">
                                 <select class="select2 form-control" multiple="multiple" id="service_id" name="service_id[]">
                                     @foreach ($location_services as $service)
@@ -124,7 +122,7 @@
                             <input type="text" class="form-control" name="email" value="@if ($order != null) {{ $order->email }} @endif" />
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="start_time">Phone</label>
+                            <label for="start_time">Telefon</label>
                             <input type="text" class="form-control" name="phone" value="@if ($order != null) {{ $order->phone }} @endif" />
                         </div>
                         <div class="col-md-6 form-group">
@@ -132,7 +130,7 @@
                             <input type="text" class="form-control" name="number" value="@if ($order != null) {{ $order->number }} @endif" />
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="start_time">Vehicle Make</label>
+                            <label for="start_time">Sõiduki Mark</label>
                             <select class="form-control mb-1" id="mark" name="mark_id">
                                 @foreach ($location_marks as $mark)
                                     <option value={{ $mark->id }} @if ($order != null && $order->mark_id == $mark->id)
@@ -142,7 +140,7 @@
                             </select>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="start_time">Vehicle Make model</label>
+                            <label for="start_time">Sõiduki Mudel</label>
                             <select class="form-control mb-1" id="model" name="model_id">
                                 @foreach ($location_mark_models as $model)
                                     <option value={{ $model->id }} @if ($order != null && $order->model_id == $model->id)
@@ -152,17 +150,17 @@
                             </select>
                         </div>
                         <div class="col-md-12 form-group">
-                            <label for="start_time">Message</label>
+                            <label for="start_time">Lisainfo</label>
                             <textarea type="text" class="form-control" name="summary">@if ($order != null) {{ $order->summary }} @endif</textarea>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="submit" class="btn btn-primary">Save</button>
+                    <button type="button" id="submit" class="btn btn-primary">Salvesta</button>
                     @if ($order != null)
-                    <button type="button" id="delete" class="btn btn-red text-white" data-id="{{ $order->id }}">Delete</button>
+                    <button type="button" id="delete" class="btn btn-red text-white" data-id="{{ $order->id }}">Kustuta</button>
                     @endif
-                    <button type="button" class="btn btn-success text-white" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success text-white" data-dismiss="modal">Tühista</button>
                 </div>
             </form>
         </div>
@@ -171,7 +169,7 @@
         <div class="modal-dialog modal-dialog-centered modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Select Services</h4>
+                    <h4 class="modal-title">Vali teenused</h4>
                     <button type="button" class="close" onclick="closeServiceModal()">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -192,7 +190,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="closeServiceModal()">Save</button>
+                    <button type="button" class="btn btn-primary" onclick="closeServiceModal()">Salvesta</button>
                 </div>
             </div>
         </div>
@@ -202,7 +200,7 @@
         <div class="modal-dialog modal-dialog-centered modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Select Pesubox</h4>
+                    <h4 class="modal-title">Vali Pesubox</h4>
                     <button type="button" class="close" onclick="closePesuboxModal()">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -232,7 +230,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="closePesuboxModal()">Save</button>
+                    <button type="button" class="btn btn-primary" onclick="closePesuboxModal()">Salvesta</button>
                 </div>
             </div>
         </div>
@@ -339,10 +337,19 @@
                 if ($("#start_time").val() == "") {
                     return alert("please select the start date");
                 }
+                var pesubox_id = [];
+                $("#pesubox_modal input[type=radio]").each(function() {
+                    if ($(this).prop("checked")) {
+                        pesubox_id.push($(this).data("value"))
+                    }
+                })
+                if (pesubox_id.length == 0) {
+                    return alert("Please select the Pesubox")
+                }
                 $.ajax({
                     type: "post",
                     url: appUrl + '/admin/getDayEndTime',
-                    data: {date: $("#start_time").val(),location_id: $("input[name=location_id]").val()},
+                    data: {date: $("#start_time").val(), location_id: $("input[name=location_id]").val(), pesubox_id: pesubox_id},
                     success: (res) => {
                         res = JSON.parse(res)
                         $(".order-form [name=duration]").val(res.difference);

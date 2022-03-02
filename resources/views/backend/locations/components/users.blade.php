@@ -2,16 +2,16 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Location Users</h4>
-          <button class="btn btn-primary waves-effect waves-float waves-light" data-toggle="modal" data-target="#edit_user_modal" onclick="addNewuser()">Add New User</button>
+          <h4 class="card-title">Kasutajad</h4>
+          <button class="btn btn-primary waves-effect waves-float waves-light" data-toggle="modal" data-target="#edit_user_modal" onclick="addNewuser()">Lisa kasutaja</button>
         </div>
         <div class="table-responsive">
           <table class="table table-hover" id="location_user_table">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Active</th>
-                  <th>Actions</th>
+                  <th>Nimi</th>
+                  <th>Aktiivne</th>
+                  <th>Tegevused</th>
                 </tr>
               </thead>
               <tbody>
@@ -35,11 +35,11 @@
                         <div class="dropdown-menu">
                           <a class="dropdown-item edit-user" href="javascript:void(0);" data-toggle="modal" data-target="#edit_user_modal" data-id="{{ $location_user->id }}">
                             <i data-feather="edit-2" class="mr-50"></i>
-                            <span>Edit</span>
+                            <span>Muuda</span>
                           </a>
                           <a class="dropdown-item" href="javascript:void(0);">
                             <i data-feather="trash" class="mr-50"></i>
-                            <span>Delete</span>
+                            <span>Kustuta</span>
                           </a>
                         </div>
                       </div>
@@ -56,7 +56,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel18">Add New User</h4>
+                <h4 class="modal-title" id="myModalLabel18">Lisa uus kasutaja</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -66,7 +66,7 @@
                 <input type="hidden" name="location_user_id" id="location_user_id">
                 <input type="hidden" name="location_id" id="location_id" value={{ $location_id }}>
                 <div class="form-group">
-                    <label for="user">User List</label>
+                    <label for="user">Kasutajad</label>
                     <select name="user_id" id="user_id" class="form-control">
                         @foreach ($users as $user)
                             <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -74,8 +74,8 @@
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="save_location_user">Save</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save_location_user">Salvesta</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Tühista</button>
                 </div>
             </form>
         </div>

@@ -65,13 +65,13 @@
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2 class="content-header-title float-left mb-0">Orders</h2>
-                    <div class="breadcrumb-wrapper">
+                    <h2 class="content-header-title float-left mb-0">Töölaud</h2>
+                    <!--<div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Order</a>
                             </li>
                         </ol>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@
                 <div class="col-md-6">
                     <div class="form-group row">
                         <div class="col-md-3 col-form-label">
-                            <label for="location">Locations</label>
+                            <label for="location">Pesulad</label>
                         </div>
                         <div class="col-md-9">
                             <select class="form-control" id="location">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-primary" onclick="getOrder(0)">add booking</button>
+                    <button type="button" class="btn btn-primary" onclick="getOrder(0)">Lisa broneering</button>
                 </div>
             </div>
         </form>
@@ -162,8 +162,14 @@
                 }
                 $("#order_modal").html(res);
                 $("#order_modal").modal("show");
-                if (time) {
+                if (time != null) {
                     $("#start_time").val(time)
+                } else if (uid == 0) {
+                    var today = new Date();
+                    var dd = String(today.getDate()).padStart(2, '0');
+                    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                    var yyyy = today.getFullYear();
+                    $("#start_time").val(yyyy + "-" + mm + "-" + dd + " 08:00:00")
                 }
                 if (pesubox) {
                     $("#pesubox_modal input[type=radio]").each(function() {
