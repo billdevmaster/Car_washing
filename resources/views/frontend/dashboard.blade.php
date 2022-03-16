@@ -1,5 +1,6 @@
 @extends('layouts.frontend.app')
 @section('content')
+@if ($location)
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-12">
@@ -238,4 +239,7 @@
 <script type="text/html" id="checkedService">
 	<li>[[name]]</li>
 </script>
+@else
+<h2> is no location here. </h2>
+@endif
 @endsection
