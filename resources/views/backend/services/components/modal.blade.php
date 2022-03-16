@@ -36,4 +36,8 @@
         </div>
     </div>
 </div>
-
+<script>
+    $(function() {
+        console.log("okay")
+    })
+</script>

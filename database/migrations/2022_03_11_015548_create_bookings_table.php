@@ -16,21 +16,20 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->integer('location_id');
-            $table->string("email");
-            $table->string("phone");
+            $table->string('email')->nullable();
+            $table->string("first_name")->nullable();
+            $table->string("last_name")->nullable();
+            $table->string("birth_date")->nullable();
+            $table->string('phone')->nullable();
+            $table->string("message")->nullable();
             $table->string("started_at");
-            $table->string("driver");
-            $table->string("number");
-            $table->string("summary");
-            $table->string("mark_id");
-            $table->string("model_id");
-            $table->char('is_delete');
-            $table->string("service_id");
-            $table->integer("pesubox_id");
-            $table->integer("vehicle_id");
-            $table->date('date');
-            $table->time('time');
+            $table->date("date");
+            $table->time("time");
             $table->integer("duration");
+            $table->char("is_delete")->default("N");
+            $table->string("type")->default("green");
+            $table->integer("service_id")->nullable();
+            $table->integer("pesubox_id")->nullable();
             $table->timestamps();
         });
     }

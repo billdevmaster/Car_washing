@@ -10,20 +10,19 @@ class Bookings extends Model
     use HasFactory;
     protected $fillable = [
         'location_id',
-        "email",
-        "phone",
+        'email',
+        "first_name",
+        "last_name",
+        "birth_date",
+        'phone',
+        "message",
         "started_at",
-        "driver",
-        "number",
-        "summary",
-        "mark_id",
-        "model_id",
-        'is_delete',
-        "service_id",
-        "pesubox_id",
-        "vehicle_id",
-        'date',
-        'time',
+        "date",
+        "time",
         "duration",
+        "is_delete",
+        "service_id",
+        "type",
+        "pesubox_id"
     ];
 }

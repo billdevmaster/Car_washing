@@ -63,6 +63,8 @@
         delay: 10,
         time: 2000
     });
+
+    $( "#Bookings_birthday" ).datetimepicker({pickTime:false,format:"YYYY-MM-DD"});
     
 })(jQuery);
 

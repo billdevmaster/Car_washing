@@ -45,7 +45,7 @@
 			<div class="fixedClone" style="height: 58px;"></div>
 		</div>
 	</div>
-<form class="form-horizontal bv-form" role="form" id="yw0" action="{{ route('index') }}/?office={{ $location_id }}" method="post" novalidate="novalidate"><button type="submit" class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>	<div class="tab-content">
+<form class="form-horizontal bv-form" role="form" id="yw0" action="{{ route('index') }}/?office={{ $location_id }}" method="post"><button type="submit" class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>	<div class="tab-content">
     @csrf
     <input type="hidden" name="location_id" value="{{ $location_id }}" />
     <input type="hidden" name="duration" value="0" id="duration"/>
@@ -76,6 +76,15 @@
                                         {{ $service->name }}<span class="pull-right">{{ $service->duration }}min</span>
                                     </label>
                                 </li>
+                                @endforeach
+                            </ul>
+                            <h3>Doctors</h3>
+                            <ul>
+                                @foreach ($location_pesuboxs as $pesubox)
+                                    <li style="display: flex">
+                                        <p style="font-weight: bold">{{ $pesubox->name }}&nbsp;: </p>
+                                        <p>&nbsp;&nbsp;{{ $pesubox->description }}</p>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -122,72 +131,36 @@
             <div class="col-xs-12 col-sm-12">
                 <p>Sisesta broneeringu kinnituseks vajalikud andmed. Saadame broneeringu kinnituse Sinu sisestatud emaili aadressile.</p>
             </div>
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-12">
                 <div class="form-group form-group-lg">
                     {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_driver">Nimi</label>						 --}}
-                    <div class="col-xs-12 col-md-12">
-                        <input name="Bookings[driver]" class="form-control" placeholder="Nimi" id="Bookings_driver" type="text" data-bv-field="Bookings[driver]">						<small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[driver]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
+                    <div class="col-xs-12 col-md-6">
+                        <input name="Bookings[first_name]" class="form-control" placeholder="Eesnimi" id="Bookings_first_name" type="text" data-bv-field="Bookings[first_name]">						<small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[first_name]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
+                    </div>
+                
+                    {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_driver">Nimi</label>						 --}}
+                    <div class="col-xs-12 col-md-6">
+                        <input name="Bookings[last_name]" class="form-control" placeholder="Convinced" id="Bookings_last_name" type="text" data-bv-field="Bookings[last_name]">						<small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[last_name]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
                     </div>
                 </div>
                 <div class="form-group  form-group-lg">
                     {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_email">Email</label>						 --}}
-                    <div class="col-xs-12 col-md-12">
+                    <div class="col-xs-12 col-md-6">
                         <input name="Bookings[email]" class="form-control" placeholder="Email" id="Bookings_email" type="text" data-bv-field="Bookings[email]">						<small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small><small class="help-block" data-bv-validator="emailAddress" data-bv-for="Bookings[email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a valid email address</small>
+                    </div>
+                    {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_phone">Telefoni number</label>						 --}}
+                    <div class="col-xs-12 col-md-6">
+                        <input name="Bookings[birthday]" class="form-control" placeholder="Sünnipäev" id="Bookings_birthday" type="text" data-bv-field="Bookings[birthday]"><small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[birthday]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
                     </div>
                 </div>
                 <div class="form-group  form-group-lg">
-                    {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_phone">Telefoni number</label>						 --}}
-                    <div class="col-xs-12 col-md-12">
-                        <input name="Bookings[phone]" class="form-control" placeholder="Telefoni number" id="Bookings_phone" type="text" data-bv-field="Bookings[phone]">						<small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[phone]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
+                    {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_email">Email</label>						 --}}
+                    <div class="col-xs-12 col-md-6">
+                        <input name="Bookings[phone]" class="form-control" placeholder="Sünnipäev" id="Bookings_phone" type="text" data-bv-field="Bookings[phone]"><small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[phone]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <div class="form-group  form-group-lg">
-                    {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_number">Number</label>						 --}}
-                    <div class="col-xs-12 col-md-12">
-                        <input name="Vehicles[number]" class="form-control" placeholder="Auto number" id="Vehicles_number" type="text" maxlength="30" value="" data-bv-field="Vehicles[number]">						<small class="help-block" data-bv-validator="notEmpty" data-bv-for="Vehicles[number]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small><small class="help-block" data-bv-validator="stringLength" data-bv-for="Vehicles[number]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value with valid length</small>
-                    </div>
-                </div>
-                <div class="form-group  form-group-lg">
-                    {{-- <label class="col-xs-12 control-label text-left control-label">Sõidukid:</label> --}}
-                    <div class="input-holder selectContainer col-xs-12 col-md-12">
-                        <select class="form-control col-xs-6" name="vehicle_id" required>
-                            <option value="">Sõiduk</option>
-                            @foreach ($location_vehicles as $vehicle)
-                                <option value="{{ $vehicle->id }}">{{ $vehicle->name }}</option>
-                                
-                            @endforeach
-                            
-                        </select>						
-                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="Makes[id]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
-                    </div>
-                </div>
-                <div class="row" style="display: flex; justify-content: space-between; margin: 0 -30px">
-                    <div class="form-group-lg col-xs-6 col-md-6">
-                        {{-- <label class="control-label text-left control-label col-xs-12 col-md-12">Mark:</label> --}}
-                        <div class="input-holder selectContainer col-xs-12 col-md-12">
-                            <select class="form-control col-xs-6" name="Makes[id]" id="Makes_id" data-bv-field="Makes[id]">
-                                <option value="">Mark</option>
-                                @foreach ($location_marks as $mark)
-                                    <option value="{{ $mark->id }}">{{ $mark->name }}</option>
-                                    
-                                @endforeach
-                                
-                            </select>						
-                            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="Makes[id]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
-                        </div>
-                    </div>
-                    <div class="form-group-lg col-xs-6 col-md-6">
-                        {{-- <label class="ontrol-label text-left control-label col-xs-12 col-md-12">Mudel:</label> --}}
-                        <div class="input-holder selectContainer disabled col-xs-12 col-md-12">
-                            <select data-url="{{ route('home.models') }}?id=" class="form-control col-xs-6" disabled="disabled" name="Vehicles[model_id]" id="Vehicles_model_id" data-bv-field="Vehicles[model_id]">
-                                <option value="">Mudel</option>
-                            </select>						
-                            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="Vehicles[model_id]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
-                        </div>
-                    </div>
-                </div>
                 <div class="form-group  form-group-lg" style="clear:both; color: #5998b6; display: none;">
                     <label class="control-label col-xs-12 col-md-12 text-left">&nbsp;</label>
                     <div class="input-holder" style="font-size: 20px;display: none;">
@@ -199,71 +172,15 @@
                 <div class="form-group ">
                     {{-- <label class="control-label col-xs-12 col-md-12 text-left hidden-xs hidden-sm">Kommentaarid:</label> --}}
                     <div class="col-xs-12 col-md-12">
-                        <textarea name="Bookings[summary]" rows="3" class="form-control" placeholder="Lisainfo" id="Bookings_summary" style="border-radius: 20px; padding: 20px; font-size: 20px"></textarea>						</div>
+                        <textarea name="Bookings[message]" rows="3" class="form-control" placeholder="Lisainfo" id="Bookings_message" style="border-radius: 20px; padding: 20px; font-size: 20px"></textarea>						</div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12">
-                                    <button class="btn btn-success btn-lg pull-right" type="submit">BRONEERIN</button>
+                <button class="btn btn-success btn-lg pull-right" type="submit">BRONEERIN</button>
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
-    {{-- <div class="tab-pane" id="step3" data-validate="#step2">
-        <div class="row">
-            <h3 class="text-center">Kinnita broneering!</h3>
-            <div class="col-xs-12 col-sm-12 graybg">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                        <div class="dateInfo">
-                            <div class="month">
-                            <p>Asukoht: <span>Zeppelini Autopesula</span></p>
-                            <p>Kuupäev: <span data-showvalue="[name=&#39;Bookings[started_at]&#39;]" data-function="moment" data-format="DD.MM.YYYY"></span></p>
-                            </div>
-                            <div class="start"><p>Algus: <span data-showvalue="[name=&#39;Bookings[started_at]&#39;]" data-function="moment" data-format="HH:mm"></span></p></div>
-                            <div class="end"><p>Lõpp: <span data-showvalue="[name=&#39;Bookings[ended_at]&#39;]" data-function="moment" data-format="HH:mm"></span></p></div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <h4>Teenused: </h4>
-                        <ul class="bronResrouces" data-showvalue="[name=&#39;BookingService[service_id][]&#39;]" data-filter=":checked" data-function="mustache" data-template="checkedService"></ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-4"><p>Nimi: </p></div>
-                    <div class="col-xs-12 col-sm-8" data-showvalue="[name=&#39;Bookings[driver]&#39;]"><p></p></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-4"><p>E-mail: </p></div>
-                    <div class="col-xs-12 col-sm-8" data-showvalue="[name=&#39;Bookings[email]&#39;]"><p></p></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-4"><p>Telefon: </p></div>
-                    <div class="col-xs-12 col-sm-8" data-showvalue="[name=&#39;Bookings[phone]&#39;]"><p></p></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-4"><p>Auto nr: </p></div>
-                    <div class="col-xs-12 col-sm-8" data-showvalue="[name=&#39;Vehicles[number]&#39;]"><p></p></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-4"><p>Auto mark: </p></div>
-                    <div class="col-xs-12 col-sm-8" data-showvalue="[name=&#39;Vehicles[model]&#39;]"><p></p></div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <div class="row">
-                    <div class="col-xs-4"><p>Kommentaarid:</p></div>
-                    <div class="col-xs-8" data-showvalue="[name=&#39;Bookings[summary]&#39;]"></div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 text-right">
-                <button class="btn btn-success btn-lg" type="button">Saada</button>
-                <input type="hidden" name="redirectTo" value="https://web.skype.com/">
-            </div>
-        </div>
-    </div> --}}
 </div>
 </form>
 </div>
@@ -277,7 +194,9 @@
 						[[#resources]]
 							<h2 class="pull-left">[[name]]</h2>
 						[[/resources]]
-						<div class="clearfix"></div>
+						<div class="clearfix">
+                            
+                        </div>
 					</div>
 				</div>
 			<button type="button" class="btn next-resource pull-right" data-trigger="swipeleft"><i class="fa fa-angle-right"></i></button>

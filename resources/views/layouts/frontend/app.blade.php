@@ -229,7 +229,7 @@
         
         <!-- Template Javascript -->
         <script src="{{asset('assets/frontend/js/main.js')}}"></script>
-        <script src="{{asset('assets/frontend/js/jquery.cbs-plugin.js')}}"></script>
+        {{-- <script src="{{asset('assets/frontend/js/jquery.cbs-plugin.js')}}"></script> --}}
         <!-- Page Javascript -->
         @yield('page_js')
         <!-- End Page Javascript -->

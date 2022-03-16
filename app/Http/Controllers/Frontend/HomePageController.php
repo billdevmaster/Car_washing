@@ -7,13 +7,10 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Locations;
 use App\Models\LocationServices;
-use App\Models\LocationVehicles;
 use App\Models\LocationPesuboxs;
 use App\Models\Orders;
 use App\Models\Bookings;
 use App\Models\Services;
-use App\Models\Mark;
-use App\Models\MarkModel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\BookIdMail;
 // use Illuminate\Support\Facades\Input;
@@ -23,6 +20,11 @@ class HomePageController extends Controller
     //
     public function index(Request $request) {
         if ($request->Bookings != NULL) {
+            $timestamp = strtotime(substr($request->datetime, 0, 10));
+            $day = date('D', $timestamp);
+            $location = Locations::find($request->location_id);
+            $location_date_end_time = $location[$day . "_end"];
+
             $booking = new Bookings();
             // check start time in database already.
             $datetime = substr($request['Bookings']['started_at'], 6, 4) . "-" . substr($request['Bookings']['started_at'], 3, 2) . "-" . substr($request['Bookings']['started_at'], 0, 2) . " " . substr($request['Bookings']['started_at'], 11, 5) . ":00";
@@ -47,28 +49,31 @@ class HomePageController extends Controller
             })
             ->first();
             if ($order_already != null) {
-                return redirect()->route('errorBooking', ["message" => "Your booking time is already booked"]);
+                $end_time = date('Y-m-d H:i:s', strtotime($order_already->started_at. ' +' . $order_already->duration . ' minutes')); 
+                if ($end_time <= $order_already->date . " " . $location_date_end_time) 
+                    return redirect()->route('errorBooking', ["message" => "Your booking time is already booked"]);
             }
             $booking->location_id = $request->location_id;
             $booking->email = $request['Bookings']['email'];
             $booking->phone = $request['Bookings']['phone'];
-            $booking->driver = $request['Bookings']['driver'];
-            $booking->number = $request['Vehicles']['number'];
-            $booking->summary = $request['Bookings']['summary'];
-            $booking->mark_id = $request['Makes']['id'];
-            $booking->model_id = $request['Vehicles']['model_id'];
+            $booking->first_name = $request['Bookings']['first_name'];
+            $booking->birth_date = $request['Bookings']['birthday'];
+            $booking->last_name = $request['Bookings']['last_name'];
+            $booking->message = $request['Bookings']['message'];
             $booking->is_delete = 'N';
             $booking->service_id = implode(",", $request->BookingService['service_id']);
             $booking->pesubox_id = $request['BookingResources']['resource_id'];
-            $booking->vehicle_id = $request['vehicle_id'];
             $booking->date = substr($request['Bookings']['started_at'], 6, 4) . "-" . substr($request['Bookings']['started_at'], 3, 2) . "-" . substr($request['Bookings']['started_at'], 0, 2);
             $booking->time = substr($request['Bookings']['started_at'], 11, 5) . ":00";
             $booking->duration = $request['duration'];
             $booking->started_at = $booking->date . " " . $booking->time;
+            $end_time = date('Y-m-d H:i:s', strtotime($booking->started_at. ' +' . $booking->duration . ' minutes')); 
+            if ($end_time > $booking->date . " " . $location_date_end_time) 
+                return redirect()->route('errorBooking', ["message" => "Your booking time is already booked"]);
             $booking->save();
             // send email
             $data = array(
-                'name'=>$booking->driver,
+                'name'=>$booking->first_name . " " . $booking->last_name,
                 'time'=>$request['Bookings']['started_at'] . "~" . $request['Bookings']['ended_at'],
                 'booking' => $booking
             );
@@ -78,17 +83,13 @@ class HomePageController extends Controller
             $email_data['service_name'] = '';
             $email_data['e_post'] = $booking->email;
             $email_data['telephone'] = $booking->phone;
-            $email_data['summary'] = $booking->summary;
+            $email_data['message'] = $booking->message;
             $arr_service = explode(",", $booking->service_id);
             foreach ($arr_service as $service_id) {
                 $service = Services::find($service_id);
                 $email_data['service_name'] .= $service->name . ", ";
             }
             $email_data['time'] = $request['Bookings']['started_at'];
-            $mark = Mark::find($booking->mark_id);
-            $email_data['mark'] = $mark->name;
-            $model = MarkModel::find($booking->model_id);
-            $email_data['model'] = $model->model;
             $email_data['book_id'] = $booking->id;
             
             Mail::to($booking->email)->send(new BookIdMail($email_data));
@@ -97,11 +98,7 @@ class HomePageController extends Controller
         $location_id = $request->office ? $request->office : 1;
         $location = $this->getCurrentLocation($location_id);
         $location_services = $this->getLocationServices($location_id);
-        $location_marks = Mark::get();
-        $location_mark_models = MarkModel::get();
-        $location_vehicles = $this->getLocationVehicles($location_id);
-        // $location_pesuboxs = $this->getLocationPesuboxs($location_id);
-
+        $location_pesuboxs = LocationPesuboxs::where("location_id", $location_id)->where("status", 1)->get();
         $slots_data = $this->getTimeSlots(date("d"), date("m"), date("Y"), 0, 7, $location_id);
         $usedtime = "none";
         $office = $location_id;
@@ -111,7 +108,7 @@ class HomePageController extends Controller
         //     'end' => strtotime("+6 day", strtotime("today")),
         // );
 
-        return view("frontend.dashboard", compact("office", "location", "location_services", "location_marks", "location_mark_models", "location_id", "location_vehicles"));
+        return view("frontend.dashboard", compact("office", "location", "location_services", "location_pesuboxs", "location_id"));
     }
 
     public function storeBooking(Request $request) {
@@ -140,6 +137,11 @@ class HomePageController extends Controller
     }
 
     public function getLocationPesuboxs($location_id, $date) {
+        $timestamp = strtotime($date);
+        $day = date('D', $timestamp);
+        $location = Locations::find($location_id);
+        $location_date_end_time = $location[$day . "_end"];
+
         $data = [];
         $location = $this->getCurrentLocation($location_id);
         if ($location == null) {
@@ -154,12 +156,15 @@ class HomePageController extends Controller
             if (count($orders) > 0) {
                 $info['bookings_slots'] = [];
                 foreach($orders as $order) {
+                    $end_time = date('Y-m-d H:i:s', strtotime($order->started_at. ' +' . $order->duration . ' minutes')); 
+                    if ($end_time > $order->date . " " . $location_date_end_time) 
+                        continue;
                     $order_info = [];
                     $order_info['id'] = (string) $order->id;
-                    $order_info['slot_duration'] = $order->duration * 1 / 30;
+                    $order_info['slot_duration'] = $order->duration * 1 / $location->interval;
                     $time_start = explode(':', $order->time);
-                    $order_info['slot_start'] = ($time_start[0] * 1 * 2) + ($time_start[1] * 1 / 30);
-                    $order_info['slot_end'] = $order_info['slot_start'] + ($order->duration / 30);
+                    $order_info['slot_start'] = ($time_start[0] * 1 * (60 / $location->interval)) + ($time_start[1] * 1 / $location->interval);
+                    $order_info['slot_end'] = $order_info['slot_start'] + ($order->duration / $location->interval);
                     $info['bookings_slots'][] = $order_info;
                 }
             }
@@ -187,7 +192,7 @@ class HomePageController extends Controller
 
             $slots = [];
 
-            for ($i = $slot_start; $i <= $slot_end; $i += 30 * 60) {
+            for ($i = $slot_start; $i <= $slot_end; $i += $location->interval * 60) {
                 $slots[] = date("H:i:s", $i);
             }
 
@@ -226,7 +231,7 @@ class HomePageController extends Controller
             foreach($data['slots'] as $slot) {
                 $time = strtotime(substr($data['fulldate'], 4, 4) . "-" . substr($data['fulldate'], 2, 2) . "-" . substr($data['fulldate'], 0, 2) . " " . $slot);
                 foreach($date_ranges as $range) {
-                    if (($time >= $range[0] && $time < $range[1]) || ($time + $request->service_duration * 60 > $range[0] && $time + $request->service_duration * 60 < $range[1]) || $time + $request->service_duration * 60 > $last_time + 30 * 60 || ($time <= $range[0]) && $time + $request->service_duration * 60 >= $range[1]) {
+                    if (($time >= $range[0] && $time < $range[1]) || ($time + $request->service_duration * 60 > $range[0] && $time + $request->service_duration * 60 < $range[1]) || $time + $request->service_duration * 60 > $last_time + $location->interval * 60 || ($time <= $range[0]) && $time + $request->service_duration * 60 >= $range[1]) {
                         $usedtime[] = $time;
                     }
                 }
@@ -236,13 +241,14 @@ class HomePageController extends Controller
     }
 
     public function booking(Request $request) {
+        $location = Locations::find($request['office']);
         $ret_data = [];
         $ret_data['office'] = [];
         $ret_data['days'] = [];
         $ret_data['office']['allow_brn_max_time'] = '0';
         $ret_data['office']['allow_brn_min_time'] = '1';
         $ret_data['office']['brn_min_time'] = '60';
-        $ret_data['office']['slot_length'] = '30';
+        $ret_data['office']['slot_length'] = $location->interval;
         $day = [];
         $day['date'] = strtotime($request['start_date']) * 1 - 7200;
         $day['openTimes'] = $this->getLocationOpenTimes($request['office'], $request['start_date']);
@@ -261,8 +267,8 @@ class HomePageController extends Controller
         }
         $open_time = [];
         $open_time['id'] = (string) $location['id'];
-        $open_time['slot_start'] = (string) (($time_start[0] * 1 * 2) + ($time_start[1] * 1 / 30));
-        $open_time['slot_end'] = (string) (($time_end[0] * 1 * 2) + ($time_end[1] * 1 / 30));
+        $open_time['slot_start'] = (string) (($time_start[0] * 1 * 60 / $location->interval) + ($time_start[1] * 1 / $location->interval));
+        $open_time['slot_end'] = (string) (($time_end[0] * 1 * 60 / $location->interval) + ($time_end[1] * 1 / $location->interval));
         return $open_time;
     }
 

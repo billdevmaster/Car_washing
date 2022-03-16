@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateModelTable extends Migration
+class CreateLocationUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateModelTable extends Migration
      */
     public function up()
     {
-        Schema::create('model', function (Blueprint $table) {
+        Schema::create('location_users', function (Blueprint $table) {
             $table->id();
-            $table->string("make");
-            $table->string("model");
+            $table->integer("location_id");
+            $table->integer("user_id");
+            $table->integer("status")->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateModelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('model');
+        Schema::dropIfExists('location_users');
     }
 }

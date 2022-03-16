@@ -63,7 +63,14 @@ $(function () {
 					integer: {}
 				}
 			},
-			'Bookings[driver]':{
+			'Bookings[first_name]':{
+				validators: {
+					notEmpty: {
+						message: ''
+					}
+				}
+			},
+			'Bookings[last_name]':{
 				validators: {
 					notEmpty: {
 						message: ''
@@ -76,6 +83,13 @@ $(function () {
 						message: ''
 					},
 					emailAddress:{}
+				}
+			},
+			'Bookings[birthday]':{
+				validators: {
+					notEmpty: {
+						message: ''
+					}
 				}
 			},
 			'Bookings[phone]':{

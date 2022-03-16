@@ -37,5 +37,24 @@
             var pesubox = $(this).parent().attr("resource");
             getOrder(0, date + " " + time, pesubox);
         })
+
+        $("#calendar .ui-cal-wrapper .ui-cal-event").each(function() {
+            $(this).attr("data-toggle", "tooltip");
+            $(this).attr("data-placement", "top");
+            $(this).attr("title", $(this).find(".details").text());
+        })
+
+        // $("#calendar .ui-cal-wrapper .ui-cal-event").mouseover(function() {
+        //     console.log("in")
+        //     var html = "<div class='tooltip' style='position: absolute;'>ok";
+        //     html += "</div>";
+        //     $(this).append(html)
+        // }).mouseout(function() {
+        //     // $(this).find(".tooltip").remove()
+        // })
+        setTimeout(() => {
+            $('[data-toggle="tooltip"]').tooltip()
+        }, (1000));
+
     });
 </script>

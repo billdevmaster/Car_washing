@@ -79,7 +79,7 @@
     <div class="content-body">
         <form class="form form-horizontal" style="margin-bottom: 15px;">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group row">
                         <div class="col-md-3 col-form-label">
                             <label for="location">Pesulad</label>
@@ -93,7 +93,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4 row">
+                    <div class="col-xs-8 col-md-8">
+                        <input type="text" class="form-control" id="search_input" placeholder="search name...." value="{{ $search_input }}">
+                    </div>
+                    <div class="col-xs-4 col-md-4">
+                        <button type="button" class="btn btn-primary" id="search">Search</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
                     <button type="button" class="btn btn-primary" onclick="getOrder(0)">Lisa broneering</button>
                 </div>
             </div>
@@ -121,7 +129,7 @@
     $(function() {
         
         var getCalendar = function(startDate = null) {
-            var data = {current_location_id: {{ $current_location_id }}};
+            var data = {current_location_id: {{ $current_location_id }}, search_input: '{{ $search_input }}'};
             if (startDate) {
                 data.start_date = startDate
             }
@@ -139,7 +147,6 @@
         }
         getCalendar();
         $("#location").change(function() {
-            console.log($(this).val());
             window.location.href = appUrl + '/admin?location_id=' + $(this).val();
         });
         $(".btn-prev").click(function() {
@@ -149,7 +156,9 @@
             getCalendar($("#next_start_date").val());
         });
 
-        
+        $("#search").click(function() {
+            window.location.href = appUrl + '/admin?location_id=' + $("#location").val() + "&search_input=" + $("#search_input").val();
+        })
     })
     var getOrder = function(uid, time=null, pesubox=null) {
         $.ajax({

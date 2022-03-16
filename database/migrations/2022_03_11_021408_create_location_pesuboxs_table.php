@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLocationServicesTable extends Migration
+class CreateLocationPesuboxsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateLocationServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('location_services', function (Blueprint $table) {
+        Schema::create('location_pesuboxs', function (Blueprint $table) {
             $table->id();
-            $table->integer('location_id');
-            $table->integer('service_id');
+            $table->integer("location_id");
+            $table->string("name")->nullable();
+            $table->string("description")->nullable();
+            $table->integer("status")->default(0);
+            $table->char("is_delete")->default("N");
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateLocationServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('location_services');
+        Schema::dropIfExists('location_pesuboxs');
     }
 }

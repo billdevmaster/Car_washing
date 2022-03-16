@@ -44,9 +44,6 @@
                                     <a class="nav-link" id="services-tab" data-toggle="tab" href="#services" aria-controls="services" role="tab" aria-selected="false">Teenused</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="vehicles-tab" data-toggle="tab" href="#vehicles" aria-controls="services" role="tab" aria-selected="false">Sõidukid</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" id="pesubox-tab" data-toggle="tab" href="#pesubox" aria-controls="pesubox" role="tab" aria-selected="false">PesuBox</a>
                                 </li>
                                 <li class="nav-item">

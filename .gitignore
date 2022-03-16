@@ -2,9 +2,9 @@
 /public/hot
 /public/storage
 /storage/*.key
-.env
 /vendor
 /storage/backup.sql
+.env
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml

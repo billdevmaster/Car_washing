@@ -18,7 +18,7 @@ class AdminClientsController extends Controller
     }
 
     public function get_list() {
-        $clients_list = Bookings::select(['email', 'driver', 'phone'])->where("is_delete", 'N')->where("driver", "!=", "")->groupBy("email", 'driver', 'phone')->get();
+        $clients_list = Bookings::select(['email', 'first_name', 'phone'])->where("is_delete", 'N')->where("first_name", "!=", "")->groupBy("email", 'first_name', 'phone')->get();
         return Datatables::of($clients_list)
             ->addIndexColumn()
             ->make(true);

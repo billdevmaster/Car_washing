@@ -102,8 +102,8 @@
                 </li>
                 <li class="nav-item @php if($menu == 'services') echo 'active' @endphp"><a class="d-flex align-items-center" href="{{ route('admin.services') }}"><i data-feather='activity'></i><span class="menu-title text-truncate" data-i18n="Home">Teenused</span></a>
                 </li>
-                <li class="nav-item @php if($menu == 'vechiles') echo 'active' @endphp"><a class="d-flex align-items-center" href="{{ route('admin.vehicles') }}"><i data-feather='truck'></i><span class="menu-title text-truncate" data-i18n="Home">Sõidukid</span></a>
-                </li>
+                {{-- <li class="nav-item @php if($menu == 'vechiles') echo 'active' @endphp"><a class="d-flex align-items-center" href="{{ route('admin.vehicles') }}"><i data-feather='truck'></i><span class="menu-title text-truncate" data-i18n="Home">Sõidukid</span></a>
+                </li> --}}
                 <li class="nav-item @php if($menu == 'clients') echo 'active' @endphp"><a class="d-flex align-items-center" href="{{ route('admin.clients') }}"><i data-feather='truck'></i><span class="menu-title text-truncate" data-i18n="Home">clients</span></a>
                 </li>
             </ul>
@@ -159,6 +159,7 @@
 
     <script>
         var appUrl = "{{ env("APP_URL") }}";
+        console.log("app_url", appUrl)
     </script>
 
     <!-- BEGIN: Vendor JS-->

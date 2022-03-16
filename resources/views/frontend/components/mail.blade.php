@@ -12,11 +12,10 @@
     <p>Olete broneerinud aja teenindusse: {{ $data['location_name'] }}</p><br/>
     <p>Broneerimise aeg: {{ $data['time'] }}</p>
     <p>Valitud teenused: {{ $data['service_name'] }}</p>
-    <p>{{ $data['mark'] }} : {{ $data['model'] }}</p>
     <p>
         E-post: {{ $data['e_post'] }}<br/>
         Telefon: {{ $data['telephone'] }}<br/>
-        Märkused: {{ $data['summary'] }}<br/><br/>
+        Märkused: {{ $data['message'] }}<br/><br/>
     </p>
     <p>
         Kui leiate, et Te ei saa broneeritud ajal kohale ilmuda, siis<br/>
