@@ -95,7 +95,8 @@ class HomePageController extends Controller
             Mail::to($booking->email)->send(new BookIdMail($email_data));
             return redirect()->route('index', ["office" => $request->location_id]);
         }
-        $location_id = $request->office ? $request->office : 1;
+        $locations = Locations::first();
+        $location_id = $request->office ? $request->office : $locations->id;
         $location = $this->getCurrentLocation($location_id);
         $location_services = $this->getLocationServices($location_id);
         $location_pesuboxs = LocationPesuboxs::where("location_id", $location_id)->where("status", 1)->get();
