@@ -82,7 +82,7 @@
                             <h3>Doctors</h3>
                             <ul>
                                 @foreach ($location_pesuboxs as $pesubox)
-                                    <li style="display: flex">
+                                    <li>
                                         <p style="font-weight: bold">{{ $pesubox->name }}&nbsp;: </p>
                                         <p>&nbsp;&nbsp;{{ $pesubox->description }}</p>
                                     </li>
