@@ -240,6 +240,6 @@
 	<li>[[name]]</li>
 </script>
 @else
-<h2> is no location here. </h2>
+<h1 style="text-align: center; padding-top: 50px">There is no location here. </h1>
 @endif
 @endsection
