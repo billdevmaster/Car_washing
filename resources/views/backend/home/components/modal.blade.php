@@ -120,6 +120,12 @@
                             <input type="text" class="form-control" name="last_name" value="@if ($order != null) {{ $order->last_name }} @endif" />
                         </div>
                         <div class="col-md-6 form-group">
+                            <label for="start_time">Birth Date</label>
+                            <input type="text" id="birth_date" class="form-control flatpickr-date" placeholder="YYYY-MM-DD" value='@if ($order != null)
+                                {{ $order->birth_date }}
+                            @endif' name="birth_date" />
+                        </div>
+                        <div class="col-md-6 form-group">
                             <label for="start_time">Email</label>
                             <input type="text" class="form-control" name="email" value="@if ($order != null) {{ $order->email }} @endif" />
                         </div>
@@ -224,6 +230,10 @@
     $(function() {
         $("#start_time").flatpickr({
             enableTime: true
+        });
+
+        $("#birth_date").flatpickr({
+            enableTime: false
         });
 
         dragula([document.getElementById('order_services')]);

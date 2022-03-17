@@ -143,7 +143,7 @@
                 error: function(err) {
                     console.log(err);
                 }
-            })
+            });
         }
         getCalendar();
         $("#location").change(function() {
