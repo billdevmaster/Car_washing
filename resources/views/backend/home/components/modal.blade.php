@@ -78,30 +78,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="col-md-12">
-                            <label>Teenused</label>
-                            <div class="form-group">
-                                <select class="select2 form-control" multiple="multiple" id="service_id" name="service_id[]">
-                                    @foreach ($location_services as $service)
-                                        <option value={{ $service->id }} @if ($order != null && in_array($service->id, explode(",", $order->service_id)))
-                                            selected
-                                        @endif >{{ $service->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div> --}}
-                        {{-- <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="selectDefault">Pesubox</label>
-                                <select class="form-control mb-1" id="icon" name="pesubox_id">
-                                    @foreach ($location_pesuboxs as $pesubox)
-                                        <option value={{ $pesubox->id }} @if ($order != null && $order->pesubox_id == $pesubox->id)
-                                            selected
-                                        @endif >{{ $pesubox->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div> --}}
+                        
                         <div class="col-md-6 form-group">
                             <label for="start_time">Type</label>
                             <select class="form-control mb-1" id="icon" name="type">
@@ -120,10 +97,36 @@
                             <input type="text" class="form-control" name="last_name" value="@if ($order != null) {{ $order->last_name }} @endif" />
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="start_time">Birth Date</label>
-                            <input type="text" id="birth_date" class="form-control flatpickr-date" placeholder="YYYY-MM-DD" value='@if ($order != null)
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="birth_year">Birth Date: Year</label>
+                                    <select name="birth_year" class="form-control select2">
+                                        @for ($i = 1900; $i <= date("Y"); $i++)
+                                            <option value="{{ $i }}" @if ($order != null && substr($order->birth_date, 0, 4) == $i) selected @endif>{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="birth_month">Month</label>
+                                    <select name="birth_month" class="form-control select2">
+                                        @for ($i = 1; $i <= 12; $i++)
+                                            <option value="{{ $i }}" @if ($order != null && substr($order->birth_date, 5, 2) == $i) selected @endif>{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="birth_date">Date</label>
+                                    <select name="birth_date" class="form-control select2">
+                                        @for ($i = 1; $i <= 31; $i++)
+                                            <option value="{{ $i }}" @if ($order != null && substr($order->birth_date, 8, 2) == $i) selected @endif>{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                            </div>
+                            {{-- <input type="text" id="birth_date" class="form-control flatpickr-date" placeholder="YYYY-MM-DD" value='@if ($order != null)
                                 {{ $order->birth_date }}
-                            @endif' name="birth_date" />
+                            @endif' name="birth_date" /> --}}
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="start_time">Email</label>
@@ -228,12 +231,12 @@
     location_lasttimes_array = JSON.parse(location_lasttimes);
     services_array = [];
     $(function() {
-        $("#start_time").flatpickr({
-            enableTime: true
+        $("#birth_date").flatpickr({
+            dateFormat: 'Y-m-d'
         });
 
-        $("#birth_date").flatpickr({
-            enableTime: false
+        $("#start_time").flatpickr({
+            enableTime: true
         });
 
         dragula([document.getElementById('order_services')]);

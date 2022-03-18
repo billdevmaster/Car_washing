@@ -2,13 +2,13 @@
 
 
 @section('page_vendor_css')
+<link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/plugins/extensions/ext-component-drag-drop.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/vendors/css/forms/select/select2.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/vendors/css/jquery.calendar/jquery.calendar.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/vendors/css/pickers/pickadate/pickadate.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/plugins/forms/pickers/form-flat-pickr.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/plugins/forms/pickers/form-pickadate.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/plugins/extensions/ext-component-drag-drop.min.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/vendors/css/forms/select/select2.min.css')}}">
 <style>
 
 #order_modal {
@@ -85,7 +85,7 @@
                             <label for="location">Pesulad</label>
                         </div>
                         <div class="col-md-9">
-                            <select class="form-control" id="location">
+                            <select class="form-control select2" id="location">
                                 @foreach ($locations as $location)
                                     <option value="{{ $location->id }}" @if ($current_location_id == $location->id) selected @endif>{{ $location->name }}</option>
                                 @endforeach
@@ -127,7 +127,7 @@
 
 <script>
     $(function() {
-        
+        $('.select2').select2();
         var getCalendar = function(startDate = null) {
             var data = {current_location_id: {{ $current_location_id }}, search_input: '{{ $search_input }}'};
             if (startDate) {
@@ -198,12 +198,12 @@
 
 @section('page_vendor_js')
 <script src="{{asset('assets/backend/app-assets/vendors/js/jquery.calendar/jquery.calendar.js')}}"></script>
-<script src="{{asset('assets/backend/app-assets/vendors/js/pickers/pickadate/picker.js')}}"></script>
-<script src="{{asset('assets/backend/app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script>
-<script src="{{asset('assets/backend/app-assets/vendors/js/pickers/pickadate/picker.time.js')}}"></script>
 <script src="{{asset('assets/backend/app-assets/vendors/js/pickers/pickadate/legacy.js')}}"></script>
-<script src="{{asset('assets/backend/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js')}}"></script>
 <script src="{{asset('assets/backend/app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/backend/app-assets/vendors/js/extensions/dragula.min.js')}}"></script>
 <script src="{{asset('assets/backend/app-assets/js/scripts/extensions/ext-component-drag-drop.min.js')}}"></script>
+<script src="{{asset('assets/backend/app-assets/vendors/js/pickers/pickadate/picker.js')}}"></script>
+<script src="{{asset('assets/backend/app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script>
+<script src="{{asset('assets/backend/app-assets/vendors/js/pickers/pickadate/picker.time.js')}}"></script>
+<script src="{{asset('assets/backend/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js')}}"></script>
 @endsection

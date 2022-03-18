@@ -198,7 +198,7 @@ class AdminController extends Controller
         $order->service_id = $request->service_id;
         $order->duration = $request->duration;
         $order->type = $request->type;
-        $order->birth_date = $request->birth_date;
+        $order->birth_date = $request->birth_year . "-" . str_pad($request->birth_month, 2, '0', STR_PAD_LEFT) . "-" . str_pad($request->birth_date, 2, '0', STR_PAD_LEFT);
         $order->started_at = $request->datetime;
         $order->date = substr($request->datetime, 0, 10);
         $order->time = substr($request->datetime, 11, 5) . ":00";

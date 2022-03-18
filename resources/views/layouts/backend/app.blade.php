@@ -22,6 +22,7 @@
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
+    @yield('page_vendor_css')
     <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/bootstrap-extended.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/app-assets/css/colors.css')}}">
@@ -34,7 +35,6 @@
     {{-- <link rel="stylesheet" type="text/css" href="../../../app-assets/css/pages/dashboard-ecommerce.css">
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/plugins/charts/chart-apex.css">
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/plugins/extensions/ext-component-toastr.css"> --}}
-    @yield('page_vendor_css')
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -168,9 +168,9 @@
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
+    @yield('page_vendor_js')
     <script src="{{asset('assets/backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
     <script src="{{asset('assets/backend/app-assets/vendors/js/extensions/polyfill.min.js')}}"></script>
-    @yield('page_vendor_js')
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
