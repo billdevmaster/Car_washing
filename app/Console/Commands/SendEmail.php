@@ -42,7 +42,7 @@ class SendEmail extends Command
      */
     public function handle()
     {
-        $bookings_today = Bookings::where("date", date("Y-m-d"))->get();
+        $bookings_today = Bookings::where("date", "'" . date("Y-m-d") . "'")->get();
         foreach($bookings_today as $booking) {
             $email_data = [];
             $location = Locations::find($booking->location_id);
