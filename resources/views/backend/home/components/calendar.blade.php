@@ -8,7 +8,8 @@
 <script type="text/javascript">
     $(function() {
         var pesuboxs = @json($pesuboxs);
-        // var data = @json($data);
+        var data = @json($data);
+        console.log(data)
         var data = {};
         var resources = {};
         pesuboxs.map(box => {
