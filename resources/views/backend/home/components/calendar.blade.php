@@ -9,11 +9,11 @@
     $(function() {
         var pesuboxs = @json($pesuboxs);
         var data = @json($data);
-        console.log(pesuboxs)
         var resources = {};
         pesuboxs.map(box => {
             resources[box.id] = box.name;
         })
+        console.log(resources)
         $('#calendar').cal({
             resources : resources,
             // allowresize		: true,
