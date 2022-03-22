@@ -7,6 +7,13 @@
 			<h1>{{ $location->name }}</h1>
 		</div>
 	</div>
+    <div class="row">
+        @foreach ($location_list as $location)
+            <div class="col-md-2 form-group">
+                <a class="btn btn-primary" href="{{ route('index') }}?office={{ $location->id }}">{{ $location->name }}</a>
+            </div>
+        @endforeach
+    </div>
 	<div class="row">
 		<div class="col-xs-12 col-md-12 navTabsHolder hidden-xs hidden-sm">
 			<ul class="nav nav-tabs" role="tablist">
