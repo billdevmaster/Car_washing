@@ -165,17 +165,18 @@
         cache: false,
         success: (res) => {
           $("#edit_pesubox_modal").modal("hide");
-          $.ajax({
-            type: 'get',
-            url: appUrl + "/admin/locations/getLocationPesuboxs",
-            data: {id: $(".location-edit #location_id").val()},
-            success: (res) => {
-              $(".location-edit .tab-content #pesubox").html(res)
-            },
-            error: (err) => {
-              console.log(err)
-            }
-          })
+          window.location.href = appUrl + "/admin/locations/edit?id=" + $("#location_id").val() + "&tab=pesubox";
+          // $.ajax({
+          //   type: 'get',
+          //   url: appUrl + "/admin/locations/getLocationPesuboxs",
+          //   data: {id: $(".location-edit #location_id").val()},
+          //   success: (res) => {
+          //     $(".location-edit .tab-content #pesubox").html(res)
+          //   },
+          //   error: (err) => {
+          //     console.log(err)
+          //   }
+          // })
         },
         error: (err) => {
           Swal.fire({
@@ -202,7 +203,7 @@
       url: appUrl + '/admin/locations/deleteLocationPesubox',
       data: {id: id},
       success: (res) => {
-        window.location.reload();
+        window.location.href = appUrl + "/admin/locations/edit?id=" + $("#location_id").val() + "&tab=pesubox";
       },
       error: () => {
         Swal.fire({

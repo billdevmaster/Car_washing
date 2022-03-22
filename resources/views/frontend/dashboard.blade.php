@@ -147,12 +147,12 @@
                 <div class="form-group  form-group-lg">
                     {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_email">Email</label>						 --}}
                     <div class="col-xs-12 col-md-6">
+                        <input name="Bookings[birthday]" class="form-control" placeholder="Sünnipäev" id="Bookings_birthday" type="text" data-bv-field="Bookings[birthday]"><small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[birthday]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
                         <input name="Bookings[email]" class="form-control" placeholder="Email" id="Bookings_email" type="text" data-bv-field="Bookings[email]">						<small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small><small class="help-block" data-bv-validator="emailAddress" data-bv-for="Bookings[email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a valid email address</small>
                     </div>
                     {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_phone">Telefoni number</label>						 --}}
-                    <div class="col-xs-12 col-md-6">
-                        <input name="Bookings[birthday]" class="form-control" placeholder="Sünnipäev" id="Bookings_birthday" type="text" data-bv-field="Bookings[birthday]"><small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[birthday]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
-                    </div>
                 </div>
                 <div class="form-group  form-group-lg">
                     {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_email">Email</label>						 --}}

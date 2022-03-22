@@ -155,17 +155,7 @@
           cache: false,
           success: (res) => {
             $("#edit_user_modal .close").trigger("click");
-            $.ajax({
-              type: 'get',
-              url: appUrl + "/admin/locations/getLocationUsers",
-              data: {id: $(".location-edit #location_id").val()},
-              success: (res) => {
-                $(".location-edit .tab-content #user").html(res)
-              },
-              error: (err) => {
-                console.log(err)
-              }
-            })
+            window.location.href = appUrl + "/admin/locations/edit?id=" + $("#location_id").val() + "&tab=user";
           },
           error: (err) => {
             Swal.fire({

@@ -15,6 +15,7 @@
     getLocation: appUrl + "/admin/locations/get_list",
     editLocation: appUrl + "/admin/locations/edit",
     removeLocation: appUrl + "/admin/locations/delete",
+    getLocationGeneral: appUrl + "/admin/locations/getLocationGeneral",
     saveLocationGeneral: appUrl + "/admin/locations/save_general",
     getLocationServices: appUrl + "/admin/locations/getLocationServices",
     getLocationVehicles: appUrl + "/admin/locations/getLocationVehicles",
@@ -286,7 +287,7 @@
       "lengthMenu": [[10, 50, 200, 1000000000], [10, 50, 200, "All"]],
       "pageLength": 10,
       columns: [
-        { data: 'driver', name: 'driver' },
+        { data: 'full_name', name: 'name' },
         { data: 'email', name: 'description' },
         { data: 'phone', name: 'duration' },
       ],
@@ -324,7 +325,7 @@
 
     ClientsTable.on("click", 'tr', function() {
       clientsData = ClientsTable.DataTable().row(this).data();
-      $("#service_modal #driver").val(clientsData.driver);
+      $("#service_modal #name").val(clientsData.name);
       $("#service_modal #email").val(clientsData.email);
       $("#service_modal #phone").val(clientsData.phone);
     });
@@ -418,6 +419,22 @@
       }
     });
   })
+
+  // location general
+  $(".location-edit #general-tab").click(function () {
+    $.ajax({
+      type: 'get',
+      url: router.getLocationGeneral,
+      data: {id: $(".location-edit #location_id").val()},
+      success: (res) => {
+        $(".location-edit .tab-content #general").html(res)
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
+  });
+  // end location general
 
   // location service
   $(".location-edit #services-tab").click(function () {

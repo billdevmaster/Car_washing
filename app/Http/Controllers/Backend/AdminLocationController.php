@@ -40,9 +40,10 @@ class AdminLocationController extends Controller
 
     public function edit(Request $request) {
         $location = Locations::find($request->id);
+        $tab = $request->tab ? $request->tab : 'general';
         $menu = "locations";
         $id = $request->id;
-        return view('backend.locations.edit', compact("location", "menu", "id"));
+        return view('backend.locations.edit', compact("location", "menu", "id", "tab"));
     }
 
     public function delete(Request $request) {
@@ -50,6 +51,11 @@ class AdminLocationController extends Controller
         $location->is_delete = 'Y';
         $location->save();
         return response(json_encode(['success' => true]));
+    }
+
+    public function getLocationGeneral(Request $request) {
+        $location = Locations::find($request->id);
+        return view('backend.locations.components.general', compact("location"));
     }
 
     public function save_general(Request $request) {

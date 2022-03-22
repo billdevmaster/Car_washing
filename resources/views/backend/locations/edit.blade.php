@@ -52,15 +52,19 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="general" aria-labelledby="general-tab" role="tabpanel">
-                                    @include('backend.locations.components.general')
+
                                 </div>
                                 <div class="tab-pane" id="services" aria-labelledby="services-tab" role="tabpanel">
+                                    
                                 </div>
                                 <div class="tab-pane" id="vehicles" aria-labelledby="services-tab" role="tabpanel">
+                                    
                                 </div>
                                 <div class="tab-pane" id="pesubox" aria-labelledby="pesubox-tab" role="tabpanel">
+                                    
                                 </div>
                                 <div class="tab-pane" id="user" aria-labelledby="user-tab" role="tabpanel">
+                                    
                                 </div>
                             </div>
                         </div>
@@ -70,6 +74,12 @@
         </section>
     </div>
 </div>
+
+<script>
+    $(function() {
+        $("#{{ $tab }}-tab").trigger("click");
+    })
+</script>
 @endsection
 
 @section('page_vendor_js')
