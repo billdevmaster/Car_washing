@@ -58,7 +58,7 @@
 		// Default height and widths.
 		minwidth		: 130,
 		minheight		: null,
-		overlapoffset	: 15,
+		overlapoffset	: 30,
 
 		// Start and end times for the days
 		daytimestart	: '00:00:00',

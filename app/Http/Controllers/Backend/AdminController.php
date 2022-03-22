@@ -26,6 +26,7 @@ class AdminController extends Controller
     }
     
     public function getCalendar(Request $request) {
+        $location = Locations::find($request->current_location_id);
         $colors = [
             "green" => '#008000',
             "yellow" => '#FFFF00',
@@ -68,7 +69,7 @@ class AdminController extends Controller
             // $item['notes'] = "test";
             $data[] = (object)$item;
         }
-        return view('backend.home.components.calendar', compact("start_date", "pesuboxs", "data", "year"))->render();
+        return view('backend.home.components.calendar', compact("start_date", "pesuboxs", "data", "year", "location"))->render();
     }
 
     public function editOrder(Request $request) {
