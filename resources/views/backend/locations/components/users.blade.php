@@ -37,7 +37,7 @@
                             <i data-feather="edit-2" class="mr-50"></i>
                             <span>Muuda</span>
                           </a>
-                          <a class="dropdown-item" href="javascript:void(0);">
+                          <a class="dropdown-item delete-user" href="javascript:void(0);" data-id="{{ $location_user->id }}">
                             <i data-feather="trash" class="mr-50"></i>
                             <span>Kustuta</span>
                           </a>
@@ -170,6 +170,45 @@
           }
         })
       });
+
+      $("#location_user_table .delete-user").click(function() {
+        var id = $(this).data("id");
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, delete it!',
+          customClass: {
+            confirmButton: 'btn btn-primary',
+            cancelButton: 'btn btn-outline-danger ml-1'
+          },
+          buttonsStyling: false,
+          
+        }).then(function (result) {
+          if (result.value) {
+            $.ajax({
+              url: appUrl + "/admin/locations/deleteLocationUser",
+              type: 'post',
+              data: {id},
+              success: (res) => {
+                window.location.href = appUrl + "/admin/locations/edit?id=" + $("#location_id").val() + "&tab=user";
+              },
+              error: () => {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Something went wrong!',
+                  customClass: {
+                    confirmButton: 'btn btn-primary'
+                  },
+                  buttonsStyling: false
+                });
+              }
+            })
+          }
+        });
+      })
     });
     function addNewuser () {
       $("#location_user_id").val(0);

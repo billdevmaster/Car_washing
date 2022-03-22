@@ -186,7 +186,7 @@ class AdminLocationController extends Controller
     public function getLocationUsers(Request $request) {
         $users = User::get();
         $location_id = $request->id;
-        $location_users = LocationUsers::leftJoin('users', 'users.id', '=', 'location_users.user_id')->where("location_users.location_id", $request->id)->get();
+        $location_users = LocationUsers::select(["location_users.id", "location_users.status", "users.name"])->leftJoin('users', 'users.id', '=', 'location_users.user_id')->where("location_users.location_id", $request->id)->get();
         
         return view('backend.locations.components.users', compact("location_id", "location_users", "users"))->render();
     }
@@ -215,5 +215,8 @@ class AdminLocationController extends Controller
         return response(json_encode(['success' => true, "data" => $location_user]));
     }
 
-    
+    public function deleteLocationUser(Request $request) {
+        LocationUsers::where("id", $request->id)->delete();
+        return response(json_encode(['success' => true]));
+    }
 }

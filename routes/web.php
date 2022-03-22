@@ -79,6 +79,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/admin/locations/getLocationUsers', 'Backend\AdminLocationController@getLocationUsers');
         Route::get('/admin/locations/getLocationUser', 'Backend\AdminLocationController@getLocationUser');
         Route::post('/admin/locations/saveLocationUser', 'Backend\AdminLocationController@saveLocationUser');
+        Route::post('/admin/locations/deleteLocationUser', 'Backend\AdminLocationController@deleteLocationUser');
         Route::post('/admin/locations/saveLocationUserStatus', 'Backend\AdminLocationController@saveLocationUserStatus');
         // end location route
 
