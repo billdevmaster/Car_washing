@@ -42,10 +42,12 @@ class AdminController extends Controller
                 $query1->orwhere("last_name", "like", $request->search_input);
             })->whereBetween("date", [$start_date, $end_date])->where("is_delete", 'N')->get();
         } else {
-            $orders = Bookings::where("location_id", $request->current_location_id)->whereBetween("date", [$start_date, $end_date])->where("is_delete", 'N')->get();
+            $orders = Bookings::select(["bookings.*", "location_pesuboxs.is_delete"])->leftJoin("location_pesuboxs", "location_pesuboxs.id", "=", "bookings.pesubox_id")->where("bookings.location_id", $request->current_location_id)->whereBetween("bookings.date", [$start_date, $end_date])->where("bookings.is_delete", 'N')->where("location_pesuboxs.is_delete", "N")->get();
         }
         $data = [];
         foreach($orders as $order) {
+            // check pesubox is avaiable.
+
             $item = [];
             $item['uid'] = $order->id;
             $item['begins'] = $order->date . ' ' . $order->time;

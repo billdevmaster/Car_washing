@@ -9,8 +9,6 @@
     $(function() {
         var pesuboxs = @json($pesuboxs);
         var data = @json($data);
-        console.log(data)
-        var data = {};
         var resources = {};
         pesuboxs.map(box => {
             resources[box.id] = box.name;
@@ -33,7 +31,7 @@
             events : //'http://staff.digitalfusion.co.nz.local/time/calendar/leave/'
             data
         });
-        console.log(resources)
+
         $("#calendar .ui-cal-wrapper .ui-cal-date .ui-cal-time").click(function() {
             var date = $(this).parent().attr("date");
             var time = $(this).attr("time");
