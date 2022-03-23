@@ -928,6 +928,7 @@ h1 {
      padding: 10px 16px;
      font-size: 18px;
      line-height: 1.33;
+     border-radius: 20px;
  }
 .select-client option {
     color: #000;

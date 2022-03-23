@@ -29,3 +29,7 @@
   color: white;
   cursor: no-drop;
 }
+
+.form-control.select2-container {
+  padding:0;
+}

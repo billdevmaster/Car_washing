@@ -64,7 +64,9 @@
         time: 2000
     });
 
-    $( "#Bookings_birthday" ).datetimepicker({pickTime:false,format:"YYYY-MM-DD"});
+    $(".select2").select2();
+
+    // $( "#Bookings_birthday" ).datetimepicker({pickTime:false,format:"YYYY-MM-DD"});
     
 })(jQuery);
 

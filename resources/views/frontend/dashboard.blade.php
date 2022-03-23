@@ -152,16 +152,37 @@
                     </div>
                 </div>
                 <div class="form-group  form-group-lg">
-                    {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_email">Email</label>						 --}}
-                    <div class="col-xs-12 col-md-6">
-                        <input name="Bookings[birthday]" class="form-control" placeholder="Sünnipäev" id="Bookings_birthday" type="text" data-bv-field="Bookings[birthday]"><small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[birthday]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
+                    <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_email">Sünnikuupäev</label>						
+                    <div class="col-xs-12 col-md-4">
+                        <select name="Bookings[birthday_year]" class="form-control select2" placeholder="Birthday year"  data-bv-field="Bookings[birthday_year]">
+                            @for ($i = 1900; $i <= date("Y"); $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[birthday_year]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
                     </div>
-                    <div class="col-xs-12 col-md-6">
-                        <input name="Bookings[email]" class="form-control" placeholder="Email" id="Bookings_email" type="text" data-bv-field="Bookings[email]">						<small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small><small class="help-block" data-bv-validator="emailAddress" data-bv-for="Bookings[email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a valid email address</small>
+                    <div class="col-xs-12 col-md-4">
+                        <select name="Bookings[birthday_month]" class="form-control select2" placeholder="Birthday year"  data-bv-field="Bookings[birthday_month]">
+                            @for ($i = 1; $i <= 12; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[birthday_month]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <select name="Bookings[birthday_date]" class="form-control select2" placeholder="Birthday year"  data-bv-field="Bookings[birthday_date]">
+                            @for ($i = 1; $i <= 31; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[birthday_date]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
                     </div>
                     {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_phone">Telefoni number</label>						 --}}
                 </div>
                 <div class="form-group  form-group-lg">
+                    <div class="col-xs-12 col-md-6">
+                        <input name="Bookings[email]" class="form-control" placeholder="Email" id="Bookings_email" type="text" data-bv-field="Bookings[email]">						<small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small><small class="help-block" data-bv-validator="emailAddress" data-bv-for="Bookings[email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a valid email address</small>
+                    </div>
                     {{-- <label class="col-xs-12 col-md-12 control-label text-left hidden-xs hidden-sm" for="Bookings_email">Email</label>						 --}}
                     <div class="col-xs-12 col-md-6">
                         <input name="Bookings[phone]" class="form-control" placeholder="Sünnipäev" id="Bookings_phone" type="text" data-bv-field="Bookings[phone]"><small class="help-block" data-bv-validator="notEmpty" data-bv-for="Bookings[phone]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>

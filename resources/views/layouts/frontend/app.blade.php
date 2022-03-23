@@ -27,7 +27,6 @@
         <link href="{{asset('assets/frontend/css/booking.css')}}" rel="stylesheet"> --}}
         
         
-        <link href="{{asset('assets/frontend/css/custom.css')}}" rel="stylesheet">
         <link href="{{asset('assets/frontend/css/style.css')}}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/bootstrap.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/bootstrap-datetimepicker.min.css') }}">
@@ -35,6 +34,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/select2.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/font-awesome.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/broneeri.css') }}">
+        <link href="{{asset('assets/frontend/css/custom.css')}}" rel="stylesheet">
 
         {{-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> --}}
         {{-- <script src="{{asset('assets/frontend/lib/jQuery/jQuery-2.1.4.min.js')}}"></script>

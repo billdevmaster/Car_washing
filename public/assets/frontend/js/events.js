@@ -85,7 +85,21 @@ $(function () {
 					emailAddress:{}
 				}
 			},
-			'Bookings[birthday]':{
+			'Bookings[birthday_year]':{
+				validators: {
+					notEmpty: {
+						message: ''
+					}
+				}
+			},
+			'Bookings[birthday_month]':{
+				validators: {
+					notEmpty: {
+						message: ''
+					}
+				}
+			},
+			'Bookings[birthday_date]':{
 				validators: {
 					notEmpty: {
 						message: ''

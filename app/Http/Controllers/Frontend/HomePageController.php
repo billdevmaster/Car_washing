@@ -57,7 +57,7 @@ class HomePageController extends Controller
             $booking->email = $request['Bookings']['email'];
             $booking->phone = $request['Bookings']['phone'];
             $booking->first_name = $request['Bookings']['first_name'];
-            $booking->birth_date = $request['Bookings']['birthday'];
+            $booking->birth_date = $request['Bookings']['birthday_year'] . "-" . str_pad($request['Bookings']['birthday_month'], 2, '0', STR_PAD_LEFT) . "-" . str_pad($request['Bookings']['birthday_date'], 2, '0', STR_PAD_LEFT);
             $booking->last_name = $request['Bookings']['last_name'];
             $booking->message = $request['Bookings']['message'];
             $booking->is_delete = 'N';

@@ -57,8 +57,8 @@ class AdminController extends Controller
             $item['color'] = $colors[$order->type];
             $item['resource'] = $order->pesubox_id;
             $item['title'] = substr($order->time, 0, 5) . " " . $order->first_name . " " . $order->last_name;
-            $item['notes'] = "name: " . $order->first_name . " " . $order->last_name . "\n" . "birth_date: " . $order->birth_date . "\n" . "phone: " . $order->phone . "\n" . "email: " . $order->email . "\n" . "message: " . $order->message;
-            $item['notes'] .= "\n" . "services: ";
+            $item['notes'] = "nimi: " . $order->first_name . " " . $order->last_name . "\n" . "sünnikuupäev: " . $order->birth_date . "\n" . "telefon: " . $order->phone . "\n" . "meili: " . $order->email . "\n" . "sõnum: " . $order->message;
+            $item['notes'] .= "\n" . "teenuseid: ";
             $arr_service = explode(",", $order->service_id);
             foreach($arr_service as $service_id) {
                 if ($service_id != null) {
