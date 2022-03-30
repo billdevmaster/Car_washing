@@ -42,13 +42,13 @@
                         <div class="col-md-12 form-group" id="duration">
                             <label for="start_time">Kestvus</label>
                             <div class="flex">
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 30) selected @endif" data-value="{{ $interval }}">{{ $interval / 60 }}H</button>
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 60) selected @endif" data-value="{{ 2 * $interval }}">{{ 2 * $interval / 60 }}H</button>
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 90) selected @endif" data-value="{{ 3 * $interval }}">{{ 3 * $interval / 60 }}H</button>
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 120) selected @endif" data-value="{{ 4 * $interval }}">{{ 4 * $interval / 60 }}H</button>
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 150) selected @endif" data-value="{{ 5 * $interval }}">{{ 5 * $interval / 60 }}H</button>
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 180) selected @endif" data-value="{{ 6 * $interval }}">{{ 6 * $interval / 60 }}H</button>
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 210) selected @endif" data-value="{{ 7 * $interval }}">{{ 7 * $interval / 60 }}H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 30) selected @endif" data-value="{{ $interval }}">{{ $interval }}M</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 60) selected @endif" data-value="{{ 2 * $interval }}">{{ 2 * $interval }}M</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 90) selected @endif" data-value="{{ 3 * $interval }}">{{ 3 * $interval }}M</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 120) selected @endif" data-value="{{ 4 * $interval }}">{{ 4 * $interval }}M</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 150) selected @endif" data-value="{{ 5 * $interval }}">{{ 5 * $interval }}M</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 180) selected @endif" data-value="{{ 6 * $interval }}">{{ 6 * $interval }}M</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 210) selected @endif" data-value="{{ 7 * $interval }}">{{ 7 * $interval }}M</button>
                                 <button type="button" class="btn btn-default item" data-value="600">Max</button>
                             </div>
                         </div>
