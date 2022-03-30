@@ -42,13 +42,13 @@
                         <div class="col-md-12 form-group" id="duration">
                             <label for="start_time">Kestvus</label>
                             <div class="flex">
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 30) selected @endif" data-value="30">0.5H</button>
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 60) selected @endif" data-value="60">1H</button>
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 90) selected @endif" data-value="90">1.5H</button>
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 120) selected @endif" data-value="120">2H</button>
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 150) selected @endif" data-value="150">2.5H</button>
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 180) selected @endif" data-value="180">3H</button>
-                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 210) selected @endif" data-value="210">3.5H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 30) selected @endif" data-value="{{ $interval }}">{{ $interval / 60 }}H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 60) selected @endif" data-value="{{ 2 * $interval }}">{{ 2 * $interval / 60 }}H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 90) selected @endif" data-value="{{ 3 * $interval }}">{{ 3 * $interval / 60 }}H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 120) selected @endif" data-value="{{ 4 * $interval }}">{{ 4 * $interval / 60 }}H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 150) selected @endif" data-value="{{ 5 * $interval }}">{{ 5 * $interval / 60 }}H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 180) selected @endif" data-value="{{ 6 * $interval }}">{{ 6 * $interval / 60 }}H</button>
+                                <button type="button" class="btn btn-default item @if($order != null && $order->duration == 210) selected @endif" data-value="{{ 7 * $interval }}">{{ 7 * $interval / 60 }}H</button>
                                 <button type="button" class="btn btn-default item" data-value="600">Max</button>
                             </div>
                         </div>
@@ -380,7 +380,7 @@
             var html = "";
             $("#service_modal input[type=checkbox]").each(function() {
                 if ($(this).prop("checked")) {
-                    duration += ($(this).data("duration") / 30) != Math.floor($(this).data("duration") / 30) ? ((Math.floor($(this).data("duration") / 30) + 1) * 30) : $(this).data("duration");
+                    duration += ($(this).data("duration") / {{ $interval }}) != Math.floor($(this).data("duration") / {{ $interval }}) ? ((Math.floor($(this).data("duration") / {{ $interval }}) + 1) * {{ $interval }}) : $(this).data("duration");
                     html += '<li class="list-group-item draggable" data-id="' + $(this).data("value") + '"><span class="handle mr-50">+</span>' + $(this).data("name") + '</li>';
                 }
             })

@@ -124,7 +124,6 @@
 {{-- @include('backend.home.components.modal') --}}
 <div class="modal fade text-left" id="order_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel18" aria-hidden="true" style="overflow-x: hidden; overflow-y: auto;">
 </div>
-
 <script>
     $(function() {
         $('.select2').select2();
